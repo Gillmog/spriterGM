@@ -1,0 +1,14 @@
+{
+	"scms": {
+		"cm": [
+			"male",
+			"cheftain_set_armor",
+			"golem_set_shield",
+			"cheftain_set_gloves",
+			"golem_set_legs",
+			"hair1",
+			"cheftain_set_zweihander"
+		],
+		"ps": []
+	}
+}
