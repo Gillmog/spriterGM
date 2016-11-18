@@ -25,6 +25,8 @@
 
 #include "../spriterengine/objectinfo/boxinstanceinfo.h"
 
+#include "spriterGM.h"
+
 namespace SpriterEngine
 {
 
@@ -34,6 +36,8 @@ namespace SpriterEngine
 		GMBoxInstanceInfo(point initialSize);
 
 		void render() override;
+
+		void renderObject(CSpriterGM::CSpriterGMInstance &Instance);
 	};
 
 }

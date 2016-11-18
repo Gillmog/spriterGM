@@ -25,6 +25,8 @@
 
 #include "../spriterengine/objectinfo/pointinstanceinfo.h"
 
+#include "spriterGM.h"
+
 namespace SpriterEngine
 {
 
@@ -34,6 +36,8 @@ namespace SpriterEngine
 		GMPointInstanceInfo();
 
 		void render() override;
+
+		void renderObject(CSpriterGM::CSpriterGMInstance &Instance);
 	};
 
 }

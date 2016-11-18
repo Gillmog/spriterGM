@@ -3,7 +3,7 @@
   <name>spriterGM</name>
   <version>0.9.0</version>
   <packageID></packageID>
-  <ProductID></ProductID>
+  <ProductID>ACBD3CFF4E539AD869A0E8E3B4B022DD</ProductID>
   <date>10/11/16</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
@@ -28,9 +28,11 @@
   <androidPermissions/>
   <IncludedResources>
     <Resource>Objects\spriterPlayerModel1</Resource>
-    <Resource>Objects\spriterModel_instance</Resource>
     <Resource>Objects\spriterPlayerModel2</Resource>
     <Resource>Objects\spriterPlayerModel3</Resource>
+    <Resource>Objects\spriterModel_point</Resource>
+    <Resource>Objects\spriterModel_box</Resource>
+    <Resource>Objects\spriterModel_image</Resource>
     <Resource>Sprites\debug</Resource>
     <Resource>Scripts\spriterGM\spriter_load_model</Resource>
     <Resource>Scripts\spriterGM\spriter_update_instance</Resource>
@@ -73,6 +75,8 @@
     <Resource>Scripts\spriterGM\spriter_instance_get_sound_count</Resource>
     <Resource>Scripts\spriterGM\spriter_instance_get_trigger_name</Resource>
     <Resource>Scripts\spriterGM\spriter_instance_get_sound_name</Resource>
+    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_alpha</Resource>
+    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_type</Resource>
     <Resource>Scripts\spriter_trigger_callback</Resource>
     <Resource>Scripts\spriter_sound_callback</Resource>
     <Resource>Rooms\room0</Resource>
@@ -140,6 +144,40 @@
     <Resource>Included Files\player\wood_shield\wood_shield_01.png</Resource>
     <Resource>Included Files\player\wood_shield\wood_shield_02.png</Resource>
     <Resource>Included Files\player\wood_shield\wood_shield_03.png</Resource>
+    <Resource>Included Files\moss_golem\moss_golem_chieftain.autosave.scml</Resource>
+    <Resource>Included Files\moss_golem\moss_golem_chieftain.scml</Resource>
+    <Resource>Included Files\moss_golem\images\mg_01.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_01_8c.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_02.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_04.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_05.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_07.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_08.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_11.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_14.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_16.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_17.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_19.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_23.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_24.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_26.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_28.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_29.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_31.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_34.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_37.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_40.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_43.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_45.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_48.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_51.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_52.png</Resource>
+    <Resource>Included Files\moss_golem\images\mg_axe.png</Resource>
+    <Resource>Included Files\moss_golem\images\moss_golem_cut_01.png</Resource>
+    <Resource>Included Files\moss_golem\images\moss_golem_cut_24.png</Resource>
+    <Resource>Included Files\moss_golem\images\moss_golem_cut_29.png</Resource>
+    <Resource>Included Files\moss_golem\images\moss_golem_cut_45.png</Resource>
+    <Resource>Included Files\moss_golem\images\moss_golem_cut_51.png</Resource>
   </IncludedResources>
   <files>
     <file>
@@ -660,6 +698,32 @@
           <kind>12</kind>
           <help></help>
           <returnType>1</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoAlpha</name>
+          <externalName>spriter_GetSpriteInfoAlpha</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoType</name>
+          <externalName>spriter_GetSpriteInfoType</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
             <arg>2</arg>

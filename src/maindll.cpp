@@ -200,6 +200,16 @@ DLLEXPORT double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, doubl
 	return point.y;
 }
 
+DLLEXPORT double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+{
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAlpha();
+}
+
+DLLEXPORT double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+{
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetType();
+}
+
 DLLEXPORT double spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceIndex, const char *pAnimationName, double BlendTime)
 {
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetInstance()->setCurrentAnimation(pAnimationName, BlendTime);
