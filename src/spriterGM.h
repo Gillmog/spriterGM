@@ -90,10 +90,26 @@ public:
 		bool m_bRender;
 		int m_ImageWidth;
 		int m_ImageHeight;
+		float m_Alpha;
 
 	public:
 
-		CGMSpriteInfo() : m_Angle(0.0f), m_bRender(false), m_ImageWidth(0), m_ImageHeight(0)
+		enum EType
+		{
+			UNKNOWN = 0,
+			IMAGE,
+			BOX,
+			POINT,
+			BONE
+		};
+
+	private:
+
+		EType m_Type;
+
+	public:
+
+		CGMSpriteInfo() : m_Angle(0.0f), m_bRender(false), m_ImageWidth(0), m_ImageHeight(0), m_Alpha(1.0f), m_Type(UNKNOWN)
 		{
 
 		}
@@ -107,7 +123,9 @@ public:
 			m_Angle(Spriteinfo.m_Angle),
 			m_bRender(Spriteinfo.m_bRender),
 			m_ImageWidth(Spriteinfo.m_ImageWidth),
-			m_ImageHeight(Spriteinfo.m_ImageHeight)
+			m_ImageHeight(Spriteinfo.m_ImageHeight),
+			m_Alpha(Spriteinfo.m_Alpha),
+			m_Type(Spriteinfo.m_Type)
 		{
 
 		}
@@ -135,6 +153,9 @@ public:
 		int GetImageHeight() const { return m_ImageHeight; }
 		void SetImageHeight(int val) { m_ImageHeight = val; }
 
+		CSpriterGM::CGMSpriteInfo::EType GetType() const { return m_Type; }
+		void SetType(CSpriterGM::CGMSpriteInfo::EType val) { m_Type = val; }
+
 		const SpriterEngine::point & CalculatePosition()
 		{
 			double _sprite_width = m_ImageWidth * GetScale().x;
@@ -160,6 +181,9 @@ public:
 
 			return SpriterEngine::point(_x, _y);
 		}
+	
+		float GetAlpha() const { return m_Alpha; }
+		void SetAlpha(float val) { m_Alpha = val; }
 	};
 
 	class CSpriterGMInstance
@@ -168,6 +192,8 @@ public:
 		std::vector<CGMSpriteInfo> m_Sprites;
 		std::vector<CGMTriggerInfo> m_Triggers;
 		std::vector<CGMSoundInfo> m_Sounds;
+
+		std::vector<void*> m_Garbage;
 
 	public:
 
@@ -244,6 +270,22 @@ public:
 		SpriterEngine::EntityInstance* GetInstance() const
 		{
 			return m_pInstance;
+		}
+
+		void AddToGarbage(void *p)
+		{
+			m_Garbage.push_back(p);
+		}
+
+		void RemoveGarbage()
+		{
+			for (size_t i = 0; i < m_Garbage.size(); i++)
+			{
+				delete m_Garbage[i];
+				m_Garbage[i] = NULL;
+			}
+
+			m_Garbage.clear();
 		}
 	};
 

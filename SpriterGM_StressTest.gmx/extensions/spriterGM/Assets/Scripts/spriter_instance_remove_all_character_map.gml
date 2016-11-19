@@ -1,0 +1,1 @@
+spriter_RemoveInstanceAllCharacterMap(modelIndex, instanceIndex);

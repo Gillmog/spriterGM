@@ -1,0 +1,1 @@
+spriter_InstanceStartResumePlayback(modelIndex, instanceIndex);

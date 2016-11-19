@@ -23,6 +23,8 @@
 #include "spriterGM.h"
 
 #include "gmimagefile.h"
+#include "gmpointinstanceinfo.h"
+#include "gmboxinstanceinfo.h"
 
 CSpriterGM *CSpriterGM::m_pInstance = nullptr;
 
@@ -113,9 +115,26 @@ void CSpriterGM::RenderInstance(int ModelIndex, int InstanceIndex)
 		{
 			for (auto& _it : *pInstance->getZOrder())
 			{
-				SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
+				if (dynamic_cast<SpriterEngine::GMImageFile *>(_it->getImage()))
+				{
+					SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
 
-				pImage->renderSprite(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex), _it);
+					pImage->renderSprite(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex), _it);
+				}
+				else
+				if (dynamic_cast<SpriterEngine::GMPointInstanceInfo *>(_it))
+				{
+					SpriterEngine::GMPointInstanceInfo *pPointInstance = (SpriterEngine::GMPointInstanceInfo *)_it;
+
+					pPointInstance->renderObject(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex));
+				}
+				else
+				if (dynamic_cast<SpriterEngine::GMBoxInstanceInfo *>(_it))
+				{
+					SpriterEngine::GMBoxInstanceInfo *pBoxInstance = (SpriterEngine::GMBoxInstanceInfo *)_it;
+
+					pBoxInstance->renderObject(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex));
+				}
 			}
 		}
 	}
@@ -127,6 +146,7 @@ void CSpriterGM::UpdateInstance(int ModelIndex, int InstanceIndex, double TimeEl
 
 	if (pInstance)
 	{
+		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).RemoveGarbage();
 		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMTriggerInfoReset();
 		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMSoundInfoReset();
 

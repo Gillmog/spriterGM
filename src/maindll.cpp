@@ -100,11 +100,10 @@ DLLEXPORT const char *spriter_GetSpriteInfoFileName(double ModelIndex, double In
 {
 	std::string ImageName = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetSpriteName();
 
-	const char *pImageName = ImageName.c_str();
+	char *pCopyStr = new char[ImageName.length() + 1];
+	strcpy(pCopyStr, ImageName.c_str());
 
-	std::string TmpStr = ImageName;
-	char *pCopyStr = new char[TmpStr.length() + 1];
-	strcpy(pCopyStr, TmpStr.c_str());
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).AddToGarbage(pCopyStr);
 
 	return pCopyStr;
 }
@@ -127,6 +126,8 @@ DLLEXPORT const char *spriter_GetSpriteInfoString(double ModelIndex, double Inst
 
 	char *pCopyStr = new char[SpriteInfoModel.length() + 1];
 	strcpy(pCopyStr, SpriteInfoModel.c_str());
+
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).AddToGarbage(pCopyStr);
 
 	return pCopyStr;
 }
@@ -198,6 +199,16 @@ DLLEXPORT double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, doubl
 	const SpriterEngine::point &point = Info.CalculatePosition();
 
 	return point.y;
+}
+
+DLLEXPORT double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+{
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAlpha();
+}
+
+DLLEXPORT double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+{
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetType();
 }
 
 DLLEXPORT double spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceIndex, const char *pAnimationName, double BlendTime)
@@ -317,7 +328,7 @@ DLLEXPORT const char* spriter_InstanceGetTriggerInfoName(double ModelIndex, doub
 	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMTriggerInfo(TriggerIndex).GetTriggerName();
 	char *pCopyStr = new char[TmpStr.length() + 1];
 	strcpy(pCopyStr, TmpStr.c_str());
-
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).AddToGarbage(pCopyStr);
 	return pCopyStr;
 }
 
@@ -331,7 +342,7 @@ DLLEXPORT const char* spriter_InstanceGetSoundInfoName(double ModelIndex, double
 	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSoundInfo(TriggerIndex).GetSoundFileName();
 	char *pCopyStr = new char[TmpStr.length() + 1];
 	strcpy(pCopyStr, TmpStr.c_str());
-
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).AddToGarbage(pCopyStr);
 	return pCopyStr;
 }
 

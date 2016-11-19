@@ -37,4 +37,20 @@ namespace SpriterEngine
 		
 	}
 
+
+	void GMPointInstanceInfo::renderObject(CSpriterGM::CSpriterGMInstance &Instance)
+	{
+		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
+		GMSpriteInfo.SetPosition(getPosition());
+		GMSpriteInfo.SetPivot(getPivot());
+		GMSpriteInfo.SetScale(getScale());
+		GMSpriteInfo.SetSize(getSize());
+		GMSpriteInfo.SetAngle(getAngle());
+		GMSpriteInfo.SetAlpha(getAlpha());
+		GMSpriteInfo.SetRender(true);
+		GMSpriteInfo.SetType(CSpriterGM::CGMSpriteInfo::POINT);
+		Instance.AddGMSpriteInfo(GMSpriteInfo);
+
+	}
+
 }
