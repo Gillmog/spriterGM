@@ -146,6 +146,7 @@ void CSpriterGM::UpdateInstance(int ModelIndex, int InstanceIndex, double TimeEl
 
 	if (pInstance)
 	{
+		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).RemoveGarbage();
 		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMTriggerInfoReset();
 		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMSoundInfoReset();
 

@@ -193,6 +193,8 @@ public:
 		std::vector<CGMTriggerInfo> m_Triggers;
 		std::vector<CGMSoundInfo> m_Sounds;
 
+		std::vector<void*> m_Garbage;
+
 	public:
 
 		CSpriterGMInstance(SpriterEngine::EntityInstance* pInstance) : 
@@ -268,6 +270,22 @@ public:
 		SpriterEngine::EntityInstance* GetInstance() const
 		{
 			return m_pInstance;
+		}
+
+		void AddToGarbage(void *p)
+		{
+			m_Garbage.push_back(p);
+		}
+
+		void RemoveGarbage()
+		{
+			for (size_t i = 0; i < m_Garbage.size(); i++)
+			{
+				delete m_Garbage[i];
+				m_Garbage[i] = NULL;
+			}
+
+			m_Garbage.clear();
 		}
 	};
 
