@@ -109,5 +109,6 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
     }
         
     instCount+=1;
-    
 }
+
+spriter_check_errors();

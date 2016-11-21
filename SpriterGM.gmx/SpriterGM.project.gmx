@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="351" name="datafiles">
-    <datafiles number="351" name="player">
+  <datafiles number="352" name="datafiles">
+    <datafiles number="352" name="player">
       <datafile>
         <name>human.scml</name>
         <exists>-1</exists>
@@ -56,7 +56,7 @@
         </ConfigOptions>
         <filename>zweihander_charmap.scms</filename>
       </datafile>
-      <datafiles number="351" name="cheftain_set">
+      <datafiles number="352" name="cheftain_set">
         <datafile>
           <name>cheftain_set_armor.png</name>
           <exists>-1</exists>
@@ -177,7 +177,7 @@
           <filename>cheftain_set_zweisword.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="351" name="cloacks">
+      <datafiles number="352" name="cloacks">
         <datafile>
           <name>fur_cloack.png</name>
           <exists>-1</exists>
@@ -196,7 +196,7 @@
           <filename>fur_cloack.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="351" name="gargule_shield">
+      <datafiles number="352" name="gargule_shield">
         <datafile>
           <name>gargule_shield_04.png</name>
           <exists>-1</exists>
@@ -249,7 +249,7 @@
           <filename>gargule_shield_06.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="351" name="golem_set">
+      <datafiles number="352" name="golem_set">
         <datafile>
           <name>golem_sett_shield1.png</name>
           <exists>-1</exists>
@@ -591,7 +591,7 @@
           <filename>golem_set_shoulder2.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="351" name="images">
+      <datafiles number="352" name="images">
         <datafile>
           <name>female_torso.png</name>
           <exists>-1</exists>
@@ -1001,7 +1001,7 @@
           <filename>weapon.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="351" name="rotten_set">
+      <datafiles number="352" name="rotten_set">
         <datafile>
           <name>rotten_set_spear.png</name>
           <exists>-1</exists>
@@ -1020,7 +1020,7 @@
           <filename>rotten_set_spear.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="351" name="waves">
+      <datafiles number="352" name="waves">
         <datafile>
           <name>walk.wav</name>
           <exists>-1</exists>
@@ -1039,7 +1039,7 @@
           <filename>walk.wav</filename>
         </datafile>
       </datafiles>
-      <datafiles number="351" name="wood_shield">
+      <datafiles number="352" name="wood_shield">
         <datafile>
           <name>wood_shield_01.png</name>
           <exists>-1</exists>
@@ -1092,8 +1092,25 @@
           <filename>wood_shield_03.png</filename>
         </datafile>
       </datafiles>
+      <datafile>
+        <name>human.scon</name>
+        <exists>-1</exists>
+        <size>2570013</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>human.scon</filename>
+      </datafile>
     </datafiles>
-    <datafiles number="351" name="moss_golem">
+    <datafiles number="352" name="moss_golem">
       <datafile>
         <name>moss_golem_chieftain.autosave.scml</name>
         <exists>-1</exists>
@@ -1128,7 +1145,7 @@
         </ConfigOptions>
         <filename>moss_golem_chieftain.scml</filename>
       </datafile>
-      <datafiles number="351" name="images">
+      <datafiles number="352" name="images">
         <datafile>
           <name>mg_01.png</name>
           <exists>-1</exists>
@@ -1732,6 +1749,7 @@
       <script>scripts\spriter_instance_get_sound_name.gml</script>
       <script>scripts\spriter_get_instance_sprite_alpha.gml</script>
       <script>scripts\spriter_get_instance_sprite_type.gml</script>
+      <script>scripts\spriter_check_errors.gml</script>
     </scripts>
     <script>scripts\spriter_trigger_callback.gml</script>
     <script>scripts\spriter_sound_callback.gml</script>
@@ -1743,6 +1761,7 @@
     <object>objects\spriterModel_image</object>
     <object>objects\spriterModel_point</object>
     <object>objects\spriterModel_box</object>
+    <object>objects\spriter_Global</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
