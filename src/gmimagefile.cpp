@@ -46,26 +46,13 @@ namespace SpriterEngine
 
 	void GMImageFile::renderSprite(CSpriterGM::CSpriterGMInstance &Instance, UniversalObjectInterface *spriteInfo)
 	{
-		std::set<char> delims{ '/' };
-
-		if (!spriteInfo->getImage())
-			return;
-
 		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
 
-		std::vector<std::string> path = CSpriterGM::SplitPath(spriteInfo->getImage()->path(), delims);
-
-		if (path.size() > 1)
-			GMSpriteInfo.SetSpriteName(path[path.size() - 2] + "/" + path[path.size() - 1]);
-		else
-		{
-			GMSpriteInfo.SetSpriteName(path.back());
-		}
+		GMSpriteInfo.SetSpriteName(spriteInfo->getImage()->path());
 
 		GMSpriteInfo.SetPosition(spriteInfo->getPosition());
 		GMSpriteInfo.SetPivot(spriteInfo->getPivot());
 		GMSpriteInfo.SetScale(spriteInfo->getScale());
-		GMSpriteInfo.SetSize(spriteInfo->getSize());
 		GMSpriteInfo.SetAngle(spriteInfo->getAngle());
 		GMSpriteInfo.SetAlpha(spriteInfo->getAlpha());
 		GMSpriteInfo.SetRender(true);

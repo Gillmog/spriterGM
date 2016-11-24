@@ -25,7 +25,9 @@
 #include "gmimagefile.h"
 #include "gmpointinstanceinfo.h"
 #include "gmboxinstanceinfo.h"
-
+#include "gmboneinstanceinfo.h"
+#include "gmtriggerobjectinfo.h"
+#include "gmsoundobjectinforeference.h"
 CSpriterGM *CSpriterGM::m_pInstance = nullptr;
 
 static void SpriterErrorFunction(const std::string &errorMessage)
@@ -130,11 +132,10 @@ void CSpriterGM::RenderInstance(int ModelIndex, int InstanceIndex)
 		{
 			for (auto& _it : *pInstance->getZOrder())
 			{
-				if (dynamic_cast<SpriterEngine::GMImageFile *>(_it->getImage()))
+				if (dynamic_cast<SpriterEngine::BoneInstanceInfo *>(_it))
 				{
-					SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
-
-					pImage->renderSprite(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex), _it);
+					SpriterEngine::BoneInstanceInfo *pBoneInstance = (SpriterEngine::BoneInstanceInfo *)_it;
+					pBoneInstance->render();
 				}
 				else
 				if (dynamic_cast<SpriterEngine::GMPointInstanceInfo *>(_it))
@@ -149,6 +150,17 @@ void CSpriterGM::RenderInstance(int ModelIndex, int InstanceIndex)
 					SpriterEngine::GMBoxInstanceInfo *pBoxInstance = (SpriterEngine::GMBoxInstanceInfo *)_it;
 
 					pBoxInstance->renderObject(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex));
+				}
+				else
+				if (dynamic_cast<SpriterEngine::GMImageFile *>(_it->getImage()))
+				{
+					SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
+
+					pImage->renderSprite(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex), _it);
+				}
+				else
+				{
+					_it->render();
 				}
 			}
 		}

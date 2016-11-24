@@ -42,9 +42,7 @@ namespace SpriterEngine
 	{
 		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
 		GMSpriteInfo.SetPosition(getPosition());
-		GMSpriteInfo.SetPivot(getPivot());
 		GMSpriteInfo.SetScale(getScale());
-		GMSpriteInfo.SetSize(getSize());
 		GMSpriteInfo.SetAngle(getAngle());
 		GMSpriteInfo.SetAlpha(getAlpha());
 		GMSpriteInfo.SetRender(true);
