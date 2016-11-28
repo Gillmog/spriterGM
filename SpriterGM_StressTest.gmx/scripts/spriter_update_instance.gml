@@ -1,3 +1,4 @@
+///spriter_update_instance()
 var elapsedTime =  current_time - startTime;
 
 spriter_set_instance_angle(degtorad(spriter_angle));
@@ -9,7 +10,6 @@ spriter_set_instance_position(x + sprite_width * 0.5, y + sprite_height * 0.5);
 spriter_UpdateInstance(modelIndex, instanceIndex, elapsedTime);
 
 spriter_render_instance();
-
 
 var nSpriteInfos = spriter_get_instance_sprite_count();
 
@@ -39,7 +39,6 @@ if instCount != nSpriteInfos
     {
         inst[nSpriteInfos - 1] = instance_create(0, 0, spriterModel_image);
         sprite_names[SpriteInfos - 1] = "empty_name";
-        
     }
 }
 
@@ -49,12 +48,10 @@ for (i = instCount - 1; i >= 0; i--)
     inst[i].visible = 0;
 }
 
-
 for (i = nSpriteInfos - 1; i >= 0; i--)
 {
     var type = spriter_get_instance_sprite_type(i);
     var spriteName = spriter_get_instance_sprite_name(i);
-    
     var px = spriter_get_instance_sprite_xposition(i);
     var py = spriter_get_instance_sprite_yposition(i);
     var pivotX = spriter_get_instance_sprite_xpivot(i);
@@ -77,7 +74,7 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
         {
             sprite_names[i] = spriteName;
             sprite_delete(sprite[i]);
-            sprite[i] = sprite_add(imagePath + sprite_names[i],1,0,0,0,0);
+            sprite[i] = sprite_add(sprite_names[i],1,0,0,0,0);
             inst[i].sprite_index = sprite[i];
         }
     }
@@ -117,5 +114,6 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
 
 startTime = current_time;
 
+spriter_check_errors();
 
 

@@ -1,3 +1,4 @@
+///spriter_delete_gm_instance()
 var nSpriteInfos = spriter_GetSpriteInfoCount(modelIndex, instanceIndex);
 
 for (i = nSpriteInfos - 1; i >= 0; i--)

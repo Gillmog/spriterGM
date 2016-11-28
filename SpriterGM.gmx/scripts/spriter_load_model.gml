@@ -1,3 +1,4 @@
+///spriter_load_model(file, instance_name)
 var file = argument0;
 var instanceName = argument1;
 

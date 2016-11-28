@@ -229,3 +229,79 @@ int CSpriterGM::ForceGarbageCollection()
 
 	return nCount;
 }
+
+bool CSpriterGM::IsModelValid(int ModelIndex)
+{
+	if (ModelIndex >= m_Models.size())
+	{
+		Error("Model not valid!");
+		return false;
+	}
+
+	return true;
+}
+
+bool CSpriterGM::IsInstanceValid(int ModelIndex, int InstanceIndex)
+{
+	if (!IsModelValid(ModelIndex))
+		return false;
+
+	if (InstanceIndex >= m_Models[ModelIndex].GetNumInstances())
+	{
+		Error("Instance not valid!");
+		return false;
+	}
+
+	return true;
+}
+
+bool CSpriterGM::IsSpriteInfoValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex)
+{
+	if (!IsModelValid(ModelIndex))
+		return false;
+
+	if (!IsInstanceValid(ModelIndex, InstanceIndex))
+		return false;
+
+	if (SpriteInfoIndex >= m_Models[ModelIndex].GetInstance(InstanceIndex).GetNumGMSpriteInfo())
+	{
+		Error("ImageFile not valid!");
+		return false;
+	}
+
+	return true;
+}
+
+bool CSpriterGM::IsTriggerInfoValid(int ModelIndex, int InstanceIndex, int TriggerInfoIndex)
+{
+	if (!IsModelValid(ModelIndex))
+		return false;
+
+	if (!IsInstanceValid(ModelIndex, InstanceIndex))
+		return false;
+
+	if (TriggerInfoIndex >= m_Models[ModelIndex].GetInstance(InstanceIndex).GetNumGMTriggerInfo())
+	{
+		Error("Trigger not valid!");
+		return false;
+	}
+
+	return true;
+}
+
+bool CSpriterGM::IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundInfoIndex)
+{
+	if (!IsModelValid(ModelIndex))
+		return false;
+
+	if (!IsInstanceValid(ModelIndex, InstanceIndex))
+		return false;
+
+	if (SoundInfoIndex >= m_Models[ModelIndex].GetInstance(InstanceIndex).GetNumGMSoundInfo())
+	{
+		Error("Sound not valid!");
+		return false;
+	}
+
+	return true;
+}

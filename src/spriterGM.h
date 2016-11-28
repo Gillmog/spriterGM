@@ -452,5 +452,15 @@ public:
 	}
 
 	int ForceGarbageCollection();
+
+	bool IsModelValid(int ModelIndex);
+
+	bool IsInstanceValid(int ModelIndex, int InstanceIndex);
+
+	bool IsSpriteInfoValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex);
+
+	bool IsTriggerInfoValid(int ModelIndex, int InstanceIndex, int TriggerInfoIndex);
+
+	bool IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundInfoIndex);
 };
 #endif //_SPRITER_GM_INCLUDED

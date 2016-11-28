@@ -641,6 +641,7 @@
       <script>scripts\spriter_instance_get_sound_name.gml</script>
       <script>scripts\spriter_get_instance_sprite_alpha.gml</script>
       <script>scripts\spriter_get_instance_sprite_type.gml</script>
+      <script>scripts\spriter_check_errors.gml</script>
     </scripts>
     <script>scripts\spriter_trigger_callback.gml</script>
     <script>scripts\spriter_sound_callback.gml</script>
