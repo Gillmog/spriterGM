@@ -73,7 +73,7 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
         {
             sprite_names[i] = spriteName;
             sprite_delete(sprite[i]);
-            sprite[i] = sprite_add(imagePath + sprite_names[i],1,0,0,0,0);
+            sprite[i] = sprite_add(sprite_names[i],1,0,0,0,0);
             inst[i].sprite_index = sprite[i];
         }
     }

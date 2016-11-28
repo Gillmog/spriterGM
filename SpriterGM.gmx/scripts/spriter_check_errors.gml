@@ -1,4 +1,3 @@
-/*
 if spriter_GetErrorsCount() > 0
 {
     var Error = "";
@@ -13,4 +12,3 @@ if spriter_GetErrorsCount() > 0
     show_error(Error, true);
     spriter_ForceGarbageCollection();
 }
-*/

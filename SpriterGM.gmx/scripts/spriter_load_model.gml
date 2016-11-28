@@ -1,18 +1,15 @@
 var file = argument0;
-var dir = argument1;
-var instanceName = argument2;
+var instanceName = argument1;
 
 spriter_angle = 0.0;
 spriter_xscale = 1.0;
 spriter_yscale = 1.0;
 
-spriterFile = working_directory + dir + "/" + file;
-imagePath = working_directory + dir + "/";
-
+spriterFile = working_directory + file;
 modelIndex = spriter_LoadModel(spriterFile);
-
+spriter_check_errors();
 instanceIndex = spriter_CreateInstance(modelIndex, instanceName);
-
+spriter_check_errors();
 spriter_set_instance_position(x + sprite_width * 0.5, y + sprite_height * 0.5);
 spriter_set_instance_scale(1.0, 1.0);
 
@@ -44,7 +41,7 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
     
     if type == 1
     {
-        sprite[i] = sprite_add(imagePath + spriteName,1,0,0,0,0);
+        sprite[i] = sprite_add(spriteName,1,0,0,0,0);
         sprite_names[i] = spriteName;
     }
     

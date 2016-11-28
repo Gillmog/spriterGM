@@ -23,6 +23,7 @@
 #include "tinyxmlspriterfiledocumentwrapper.h"
 
 #include "tinyxmlspriterfileelementwrapper.h"
+#include "../spriterengine/global/settings.h"
 
 namespace SpriterEngine
 {
@@ -36,12 +37,13 @@ namespace SpriterEngine
 
 		if (Error == tinyxml2::XMLError::XML_ERROR_FILE_NOT_FOUND)
 		{
-			std::string Message = "XML Error: File not founded " + fileName;
+			std::string Message = "File not founded " + fileName;
 		}
 		else
 		if (Error > 0)
 		{
 			std::string Message = "XML Error: " + std::to_string((int)Error);
+			SpriterEngine::Settings::error(Message);
 		}
 	}
 
