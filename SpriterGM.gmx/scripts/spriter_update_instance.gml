@@ -1,3 +1,4 @@
+///spriter_update_instance()
 var elapsedTime =  current_time - startTime;
 
 spriter_set_instance_angle(degtorad(spriter_angle));
