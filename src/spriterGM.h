@@ -35,13 +35,47 @@
 #include<map>
 #include<algorithm>
 
-class CSpriterGM
+class CGMGarbageCollector
 {
-	static CSpriterGM *m_pInstance;
+	std::vector<void*> m_Garbage;
 
 public:
 
-	class CGMTriggerInfo
+	~CGMGarbageCollector()
+	{
+		RemoveGarbage();
+	}
+
+	void AddToGarbage(void *p)
+	{
+		m_Garbage.push_back(p);
+	}
+
+	int RemoveGarbage()
+	{
+		for (size_t i = 0; i < m_Garbage.size(); i++)
+		{
+			delete m_Garbage[i];
+			m_Garbage[i] = NULL;
+		}
+
+		int nCount = m_Garbage.size();
+		m_Garbage.clear();
+
+		return nCount;
+	}
+
+};
+
+class CSpriterGM : public CGMGarbageCollector
+{
+	static CSpriterGM *m_pInstance;
+
+	bool m_bInit;
+
+public:
+
+	class CGMTriggerInfo : public CGMGarbageCollector
 	{
 		std::string m_TriggerName;
 
@@ -60,7 +94,7 @@ public:
 		std::string GetTriggerName() const { return m_TriggerName; }
 	};
 
-	class CGMSoundInfo
+	class CGMSoundInfo : public CGMGarbageCollector
 	{
 		std::string m_SoundFileName;
 
@@ -79,7 +113,7 @@ public:
 		std::string GetSoundFileName() const { return m_SoundFileName; }
 	};
 
-	class CGMSpriteInfo
+	class CGMSpriteInfo : public CGMGarbageCollector
 	{
 		std::string m_SpriteName;
 		SpriterEngine::point m_Position;
@@ -132,6 +166,7 @@ public:
 
 		~CGMSpriteInfo()
 		{
+			RemoveGarbage();
 		}
 
 		std::string GetSpriteName() const { return m_SpriteName; }
@@ -186,14 +221,12 @@ public:
 		void SetAlpha(float val) { m_Alpha = val; }
 	};
 
-	class CSpriterGMInstance
+	class CSpriterGMInstance : public CGMGarbageCollector
 	{
 		SpriterEngine::EntityInstance* m_pInstance;
 		std::vector<CGMSpriteInfo> m_Sprites;
 		std::vector<CGMTriggerInfo> m_Triggers;
 		std::vector<CGMSoundInfo> m_Sounds;
-
-		std::vector<void*> m_Garbage;
 
 	public:
 
@@ -216,6 +249,7 @@ public:
 		{
 			m_Sprites.clear();
 			m_pInstance = NULL;
+			RemoveGarbage();
 		}
 
 		int GetNumGMSpriteInfo() const { return m_Sprites.size(); }
@@ -271,25 +305,9 @@ public:
 		{
 			return m_pInstance;
 		}
-
-		void AddToGarbage(void *p)
-		{
-			m_Garbage.push_back(p);
-		}
-
-		void RemoveGarbage()
-		{
-			for (size_t i = 0; i < m_Garbage.size(); i++)
-			{
-				delete m_Garbage[i];
-				m_Garbage[i] = NULL;
-			}
-
-			m_Garbage.clear();
-		}
 	};
 
-	class CSpriterGMModel
+	class CSpriterGMModel : public CGMGarbageCollector
 	{
 		SpriterEngine::SpriterModel* m_pModel;
 		std::vector<CSpriterGMInstance> m_Instances;
@@ -306,6 +324,11 @@ public:
 			m_Instances(std::move(Model.m_Instances))
 		{
 
+		}
+
+		~CSpriterGMModel()
+		{
+			RemoveGarbage();
 		}
 
 		SpriterEngine::SpriterModel* GetModel()
@@ -334,17 +357,23 @@ private:
 	int m_CurrentUpdatedModelIndex;
 	int m_CurrentUpdatedInstanceIndex;
 
+	std::vector<std::string> m_ErrorsList;
+
 public:
 
-	CSpriterGM() : m_CurrentUpdatedModelIndex(-1), m_CurrentUpdatedInstanceIndex(-1)
+	CSpriterGM() : m_CurrentUpdatedModelIndex(-1), m_CurrentUpdatedInstanceIndex(-1), m_bInit(false)
 	{
 
 	}
 
 	~CSpriterGM()
 	{
+		m_ErrorsList.clear();
+		RemoveGarbage();
 		m_pInstance = nullptr;
 	}
+
+	void Init();
 
 	CSpriterGMModel &GetSpriterGMModel(int Index)
 	{
@@ -367,12 +396,30 @@ public:
 	int GetCurrentUpdatedInstanceIndex() const { return m_CurrentUpdatedInstanceIndex; }
 	void SetCurrentUpdatedInstanceIndex(int val) { m_CurrentUpdatedInstanceIndex = val; }
 
-	static CSpriterGM *GetSingleton()
-	{
-		if (!m_pInstance)
-			m_pInstance = new CSpriterGM();
+	static CSpriterGM *GetSingleton();
 
-		 return m_pInstance;
+	void Error(const std::string &ErrorMessage)
+	{
+		m_ErrorsList.push_back(ErrorMessage);
+	}
+
+	int GetNumErrors()
+	{
+		return m_ErrorsList.size();
+	}
+
+	const char *GetLastError()
+	{
+		std::string Error = m_ErrorsList.back();
+
+		char *pCopyStr = new char[Error.length() + 1];
+		strcpy(pCopyStr, Error.c_str());
+
+		AddToGarbage(pCopyStr);
+
+		m_ErrorsList.pop_back();
+
+		return pCopyStr;
 	}
 
 	static std::vector<std::string> SplitPath(
@@ -403,5 +450,7 @@ public:
 
 		return result;
 	}
+
+	int ForceGarbageCollection();
 };
 #endif //_SPRITER_GM_INCLUDED
