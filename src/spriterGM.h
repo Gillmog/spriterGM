@@ -34,6 +34,7 @@
 #include<set>
 #include<map>
 #include<algorithm>
+#include <math.h>
 
 class CGMGarbageCollector
 {

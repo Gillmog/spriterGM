@@ -24,7 +24,7 @@
 #define JSONSPRITERFILEDOCUMENTWRAPPER_H
 
 #include "../spriterengine/override/spriterfiledocumentwrapper.h"
-#include "json.hpp"
+#include "../nlohmann-json/json.hpp"
 
 using json = nlohmann::json;
 
