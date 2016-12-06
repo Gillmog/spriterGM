@@ -20,29 +20,35 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-#ifndef GMATLASFILE_H
-#define GMATLASFILE_H
+#include "com_libspritergm_spriterGMNative.h"
+#include "spriterGM.h"
 
-#include "../spriterengine/override/atlasfile.h"
+void GetJStringContent(JNIEnv *AEnv, jstring AStr, std::string &ARes) {
+    if (!AStr) {
+        ARes.clear();
+        return;
+    }
 
-namespace SpriterEngine
-{
-	class GMAtlasFile : public AtlasFile
-	{
-	public:
-		GMAtlasFile(const std::string &initialFilePath);
-
-		bool loaded() {return m_loaded;}
-
-	private:
-
-		void initializeFile();
-
-		void renderSprite(UniversalObjectInterface *spriteInfo, const atlasframedata data) override;
-
-		bool m_loaded;
-	};
-
+    const char *s = AEnv->GetStringUTFChars(AStr,NULL);
+    ARes=s;
+    AEnv->ReleaseStringUTFChars(AStr,s);
 }
 
-#endif // GMATLASFILE_H
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1LoadModel
+		(JNIEnv *env, jclass object, jstring filePath)
+{
+    std::string str;
+    GetJStringContent(env, filePath, str);
+    double result = (double)CSpriterGM::GetSingleton()->LoadModel(str.c_str());
+
+    if (CSpriterGM::GetSingleton()->GetNumErrors() > 0)
+        result = -1.0;;
+
+    return  result;
+}
+
+
+
+
+
+

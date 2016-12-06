@@ -27,7 +27,7 @@
 namespace SpriterEngine
 {
 
-	GMAtlasFile::GMAtlasFile(std::string initialFilePath) :
+	GMAtlasFile::GMAtlasFile(const std::string &initialFilePath) :
 		AtlasFile(initialFilePath), m_loaded(false)
 	{
 		initializeFile();

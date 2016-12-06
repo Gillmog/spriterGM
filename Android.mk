@@ -23,6 +23,7 @@ spriterengine/timeline/proxytimelinekey.cpp \
 spriterengine/timeline/timeline.cpp \
 spriterengine/global/settings.cpp \
 spriterengine/override/imagefile.cpp \
+spriterengine/override/atlasfile.cpp \
 spriterengine/override/soundfile.cpp \
 spriterengine/override/spriterfiledocumentwrapper.cpp \
 spriterengine/override/objectfactory.cpp \
@@ -113,7 +114,8 @@ src/jsonspriterfiledocumentwrapper.cpp \
 src/jsonspriterfiledocumentwrapper.h \
 src/jsonspriterfileelementwrapper.cpp \
 src/jsonspriterfileelementwrapper.h \
-src/maindll.cpp \
+src/mainjni.cpp \
+src/com_libspritergm_spriterGMNative.h \
 src/pugixmlspriterfileattributewrapper.cpp \
 src/pugixmlspriterfileattributewrapper.h \
 src/pugixmlspriterfiledocumentwrapper.cpp \
@@ -129,4 +131,4 @@ src/tinyxmlspriterfiledocumentwrapper.h \
 src/tinyxmlspriterfileelementwrapper.cpp \
 src/tinyxmlspriterfileelementwrapper.h \
 
-include $(BUILD_STATIC_LIBRARY)
+include $(BUILD_SHARED_LIBRARY)
