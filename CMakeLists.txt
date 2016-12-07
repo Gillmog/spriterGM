@@ -35,6 +35,7 @@ set( SOURCE_LIB
 	src/pugixmlspriterfileattributewrapper.h
 	src/pugixmlspriterfileattributewrapper.cpp
 	src/maindll.cpp
+	src/maindll.h
 	src/jsonspriterfileelementwrapper.h
 	src/jsonspriterfileelementwrapper.cpp
 	src/jsonspriterfiledocumentwrapper.h

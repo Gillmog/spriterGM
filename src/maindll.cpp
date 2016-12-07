@@ -19,60 +19,27 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
-
-#ifdef _WIN32
-
-#define WIN32_LEAN_AND_MEAN 
-
-#include <windows.h>
-
-#define DLLEXPORT extern "C" __declspec(dllexport)
-
-BOOL APIENTRY DllMain(HMODULE hModule,
-	DWORD  ul_reason_for_call,
-	LPVOID lpReserved
-)
-{
-	switch (ul_reason_for_call)
-	{
-	case DLL_PROCESS_ATTACH:
-		break;
-	case DLL_THREAD_ATTACH:
-		break;
-	case DLL_THREAD_DETACH:
-		break;
-	case DLL_PROCESS_DETACH:
-		break;
-	}
-	return TRUE;
-}
-
-#endif
-
-#if defined(__linux__) || defined(__unix__ )
-#define DLLEXPORT extern "C"
-#endif
-
+#include "maindll.h"
 #include "spriterGM.h"
 
-DLLEXPORT double spriter_LoadModel(const char *pFile)
+double spriter_LoadModel(const char *pFile)
 {
 	return CSpriterGM::GetSingleton()->LoadModel(pFile);
 }
 
-DLLEXPORT double spriter_CreateInstance(double ModelIndex, const char *pInstanceName)
+double spriter_CreateInstance(double ModelIndex, const char *pInstanceName)
 {
 	return CSpriterGM::GetSingleton()->CreateInstance(ModelIndex, pInstanceName);
 }
 
-DLLEXPORT double spriter_Render(double TimeElapsed)
+double spriter_Render(double TimeElapsed)
 {
 	CSpriterGM::GetSingleton()->Render(TimeElapsed);
 
 	return 0;
 }
 
-DLLEXPORT double spriter_RenderInstance(double ModelIndex, double InstanceIndex)
+double spriter_RenderInstance(double ModelIndex, double InstanceIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -82,7 +49,7 @@ DLLEXPORT double spriter_RenderInstance(double ModelIndex, double InstanceIndex)
 	return 0;
 }
 
-DLLEXPORT double spriter_UpdateInstance(double ModelIndex, double InstanceIndex, double TimeElapsed)
+double spriter_UpdateInstance(double ModelIndex, double InstanceIndex, double TimeElapsed)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -92,7 +59,7 @@ DLLEXPORT double spriter_UpdateInstance(double ModelIndex, double InstanceIndex,
 	return 0;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIndex)
+double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
 		return -1;
@@ -105,7 +72,7 @@ DLLEXPORT double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIn
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetNumGMSpriteInfo();
 }
 
-DLLEXPORT const char *spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+const char *spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -120,7 +87,7 @@ DLLEXPORT const char *spriter_GetSpriteInfoFileName(double ModelIndex, double In
 	return pCopyStr;
 }
 
-DLLEXPORT const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -147,7 +114,7 @@ DLLEXPORT const char *spriter_GetSpriteInfoString(double ModelIndex, double Inst
 	return pCopyStr;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -155,7 +122,7 @@ DLLEXPORT double spriter_GetSpriteInfoPositionX(double ModelIndex, double Instan
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetPosition().x;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -163,7 +130,7 @@ DLLEXPORT double spriter_GetSpriteInfoPositionY(double ModelIndex, double Instan
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetPosition().y;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoPivotX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoPivotX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -171,7 +138,7 @@ DLLEXPORT double spriter_GetSpriteInfoPivotX(double ModelIndex, double InstanceI
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetPivot().x;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoPivotY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoPivotY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -179,7 +146,7 @@ DLLEXPORT double spriter_GetSpriteInfoPivotY(double ModelIndex, double InstanceI
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetPivot().y;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -187,7 +154,7 @@ DLLEXPORT double spriter_GetSpriteInfoSizeX(double ModelIndex, double InstanceIn
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetSize().x;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -195,7 +162,7 @@ DLLEXPORT double spriter_GetSpriteInfoSizeY(double ModelIndex, double InstanceIn
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetSize().y;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoScaleX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoScaleX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -204,7 +171,7 @@ DLLEXPORT double spriter_GetSpriteInfoScaleX(double ModelIndex, double InstanceI
 }
 
 
-DLLEXPORT double spriter_GetSpriteInfoScaleY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoScaleY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -212,7 +179,7 @@ DLLEXPORT double spriter_GetSpriteInfoScaleY(double ModelIndex, double InstanceI
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetScale().y;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoAngle(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoAngle(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -220,7 +187,7 @@ DLLEXPORT double spriter_GetSpriteInfoAngle(double ModelIndex, double InstanceIn
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAngle();
 }
 
-DLLEXPORT double spriter_IsGetSpriteInfoRender(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_IsGetSpriteInfoRender(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -228,7 +195,7 @@ DLLEXPORT double spriter_IsGetSpriteInfoRender(double ModelIndex, double Instanc
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).IsRender();
 }
 
-DLLEXPORT double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -240,7 +207,7 @@ DLLEXPORT double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, doubl
 	return point.x;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -252,7 +219,7 @@ DLLEXPORT double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, doubl
 	return point.y;
 }
 
-DLLEXPORT double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -260,7 +227,7 @@ DLLEXPORT double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIn
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAlpha();
 }
 
-DLLEXPORT double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -268,7 +235,7 @@ DLLEXPORT double spriter_GetSpriteInfoType(double ModelIndex, double InstanceInd
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetType();
 }
 
-DLLEXPORT double spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceIndex, const char *pAnimationName, double BlendTime)
+double spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceIndex, const char *pAnimationName, double BlendTime)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -278,7 +245,7 @@ DLLEXPORT double spriter_SetInstanceCurrentAnimation(double ModelIndex, double I
 	return 0;
 }
 
-DLLEXPORT double spriter_SetSpriteInfoImageWidth(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageWidth)
+double spriter_SetSpriteInfoImageWidth(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageWidth)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -288,7 +255,7 @@ DLLEXPORT double spriter_SetSpriteInfoImageWidth(double ModelIndex, double Insta
 	return 0;
 }
 
-DLLEXPORT double spriter_SetSpriteInfoImageHeight(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageHeight)
+double spriter_SetSpriteInfoImageHeight(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageHeight)
 {
 	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
 		return 0;
@@ -298,7 +265,7 @@ DLLEXPORT double spriter_SetSpriteInfoImageHeight(double ModelIndex, double Inst
 	return 0;
 }
 
-DLLEXPORT double spriter_SetInstancePosition(double ModelIndex, double InstanceIndex, double px, double py)
+double spriter_SetInstancePosition(double ModelIndex, double InstanceIndex, double px, double py)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -308,7 +275,7 @@ DLLEXPORT double spriter_SetInstancePosition(double ModelIndex, double InstanceI
 	return 0;
 }
 
-DLLEXPORT double spriter_GetInstancePositionX(double ModelIndex, double InstanceIndex)
+double spriter_GetInstancePositionX(double ModelIndex, double InstanceIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -316,7 +283,7 @@ DLLEXPORT double spriter_GetInstancePositionX(double ModelIndex, double Instance
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetInstance()->getPosition().x;
 }
 
-DLLEXPORT double spriter_GetInstancePositionY(double ModelIndex, double InstanceIndex)
+double spriter_GetInstancePositionY(double ModelIndex, double InstanceIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -324,7 +291,7 @@ DLLEXPORT double spriter_GetInstancePositionY(double ModelIndex, double Instance
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetInstance()->getPosition().y;
 }
 
-DLLEXPORT double spriter_SetInstanceScale(double ModelIndex, double InstanceIndex, double sx, double sy)
+double spriter_SetInstanceScale(double ModelIndex, double InstanceIndex, double sx, double sy)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -334,7 +301,7 @@ DLLEXPORT double spriter_SetInstanceScale(double ModelIndex, double InstanceInde
 	return 0;
 }
 
-DLLEXPORT double spriter_SetInstanceAngle(double ModelIndex, double InstanceIndex, double angle)
+double spriter_SetInstanceAngle(double ModelIndex, double InstanceIndex, double angle)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -344,7 +311,7 @@ DLLEXPORT double spriter_SetInstanceAngle(double ModelIndex, double InstanceInde
 	return 0;
 }
 
-DLLEXPORT double spriter_ApplyInstanceCharacterMap(double ModelIndex, double InstanceIndex, const char *charMap)
+double spriter_ApplyInstanceCharacterMap(double ModelIndex, double InstanceIndex, const char *charMap)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -354,7 +321,7 @@ DLLEXPORT double spriter_ApplyInstanceCharacterMap(double ModelIndex, double Ins
 	return 0;
 }
 
-DLLEXPORT double spriter_RemoveInstanceCharacterMap(double ModelIndex, double InstanceIndex, const char *charMap)
+double spriter_RemoveInstanceCharacterMap(double ModelIndex, double InstanceIndex, const char *charMap)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -364,7 +331,7 @@ DLLEXPORT double spriter_RemoveInstanceCharacterMap(double ModelIndex, double In
 	return 0;
 }
 
-DLLEXPORT double spriter_RemoveInstanceAllCharacterMap(double ModelIndex, double InstanceIndex)
+double spriter_RemoveInstanceAllCharacterMap(double ModelIndex, double InstanceIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -375,7 +342,7 @@ DLLEXPORT double spriter_RemoveInstanceAllCharacterMap(double ModelIndex, double
 }
 
 
-DLLEXPORT double spriter_SetInstancePlaybackSpeedRatio(double ModelIndex, double InstanceIndex, double PlaybackSpeedRatio)
+double spriter_SetInstancePlaybackSpeedRatio(double ModelIndex, double InstanceIndex, double PlaybackSpeedRatio)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -385,7 +352,7 @@ DLLEXPORT double spriter_SetInstancePlaybackSpeedRatio(double ModelIndex, double
 	return 0;
 }
 
-DLLEXPORT double spriter_InstanceStartResumePlayback(double ModelIndex, double InstanceIndex)
+double spriter_InstanceStartResumePlayback(double ModelIndex, double InstanceIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -395,7 +362,7 @@ DLLEXPORT double spriter_InstanceStartResumePlayback(double ModelIndex, double I
 	return 0;
 }
 
-DLLEXPORT double spriter_InstancePausePlayback(double ModelIndex, double InstanceIndex)
+double spriter_InstancePausePlayback(double ModelIndex, double InstanceIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -405,7 +372,7 @@ DLLEXPORT double spriter_InstancePausePlayback(double ModelIndex, double Instanc
 	return 0;
 }
 
-DLLEXPORT double spriter_InstanceSetTimeRatio(double ModelIndex, double InstanceIndex, double TimeRatio)
+double spriter_InstanceSetTimeRatio(double ModelIndex, double InstanceIndex, double TimeRatio)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -415,7 +382,7 @@ DLLEXPORT double spriter_InstanceSetTimeRatio(double ModelIndex, double Instance
 	return 0;
 }
 
-DLLEXPORT double spriter_InstanceAnimationJustFinished(double ModelIndex, double InstanceIndex, double bLooped)
+double spriter_InstanceAnimationJustFinished(double ModelIndex, double InstanceIndex, double bLooped)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -423,7 +390,7 @@ DLLEXPORT double spriter_InstanceAnimationJustFinished(double ModelIndex, double
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetInstance()->animationJustFinished(bLooped);
 }
 
-DLLEXPORT double spriter_InstanceGetTriggerInfoCount(double ModelIndex, double InstanceIndex)
+double spriter_InstanceGetTriggerInfoCount(double ModelIndex, double InstanceIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -431,7 +398,7 @@ DLLEXPORT double spriter_InstanceGetTriggerInfoCount(double ModelIndex, double I
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetNumGMTriggerInfo();
 }
 
-DLLEXPORT const char* spriter_InstanceGetTriggerInfoName(double ModelIndex, double InstanceIndex, double TriggerIndex)
+const char* spriter_InstanceGetTriggerInfoName(double ModelIndex, double InstanceIndex, double TriggerIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsTriggerInfoValid(ModelIndex, InstanceIndex, TriggerIndex))
 		return 0;
@@ -443,7 +410,7 @@ DLLEXPORT const char* spriter_InstanceGetTriggerInfoName(double ModelIndex, doub
 	return pCopyStr;
 }
 
-DLLEXPORT double spriter_InstanceGetSoundInfoCount(double ModelIndex, double InstanceIndex)
+double spriter_InstanceGetSoundInfoCount(double ModelIndex, double InstanceIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return 0;
@@ -451,7 +418,7 @@ DLLEXPORT double spriter_InstanceGetSoundInfoCount(double ModelIndex, double Ins
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetNumGMSoundInfo();
 }
 
-DLLEXPORT const char* spriter_InstanceGetSoundInfoName(double ModelIndex, double InstanceIndex, double SoundIndex)
+const char* spriter_InstanceGetSoundInfoName(double ModelIndex, double InstanceIndex, double SoundIndex)
 {
 	if (!CSpriterGM::GetSingleton()->IsSoundInfoValid(ModelIndex, InstanceIndex, SoundIndex))
 		return 0;
@@ -463,17 +430,17 @@ DLLEXPORT const char* spriter_InstanceGetSoundInfoName(double ModelIndex, double
 	return pCopyStr;
 }
 
-DLLEXPORT double spriter_GetErrorsCount()
+double spriter_GetErrorsCount()
 {
 	return CSpriterGM::GetSingleton()->GetNumErrors();
 }
 
-DLLEXPORT const char* spriter_GetLastError()
+const char* spriter_GetLastError()
 {
 	return CSpriterGM::GetSingleton()->GetLastError();
 }
 
-DLLEXPORT double spriter_ForceGarbageCollection()
+double spriter_ForceGarbageCollection()
 {
 	return CSpriterGM::GetSingleton()->ForceGarbageCollection();
 }
