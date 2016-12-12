@@ -24,7 +24,12 @@
 
 double spriter_LoadModel(const char *pFile)
 {
-	return CSpriterGM::GetSingleton()->LoadModel(pFile);
+	double modelIndex = CSpriterGM::GetSingleton()->LoadModel(pFile);
+
+	if (spriter_GetErrorsCount() > 0)
+		modelIndex = -1.0;
+
+	return modelIndex;
 }
 
 double spriter_CreateInstance(double ModelIndex, const char *pInstanceName)
@@ -202,9 +207,7 @@ double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double Instance
 
 	CSpriterGM::CGMSpriteInfo &Info = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex);
 
-	const SpriterEngine::point &point = Info.CalculatePosition();
-
-	return point.x;
+	return Info.CalculatePosition().x;
 }
 
 double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
@@ -214,9 +217,7 @@ double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double Instance
 
 	CSpriterGM::CGMSpriteInfo &Info = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex);
 
-	const SpriterEngine::point &point = Info.CalculatePosition();
-
-	return point.y;
+	return Info.CalculatePosition().y;
 }
 
 double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)

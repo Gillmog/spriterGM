@@ -115,5 +115,3 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
 startTime = current_time;
 
 spriter_check_errors();
-
-

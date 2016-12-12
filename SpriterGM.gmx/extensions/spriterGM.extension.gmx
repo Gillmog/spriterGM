@@ -8,11 +8,11 @@
   <license>Free to use, also for commercial games.</license>
   <description></description>
   <helpfile></helpfile>
-  <androidProps>0</androidProps>
+  <androidProps>-1</androidProps>
   <iosProps>0</iosProps>
   <installdir></installdir>
   <classname></classname>
-  <androidclassname></androidclassname>
+  <androidclassname>spriterGM</androidclassname>
   <sourcedir></sourcedir>
   <androidsourcedir></androidsourcedir>
   <macsourcedir></macsourcedir>
@@ -22,10 +22,12 @@
   <androidmanifestinject></androidmanifestinject>
   <iosplistinject></iosplistinject>
   <androidactivityinject></androidactivityinject>
-  <gradleinject></gradleinject>
+  <gradleinject>compile project(':libspritergm')</gradleinject>
   <iosSystemFrameworks/>
   <iosThirdPartyFrameworks/>
-  <androidPermissions/>
+  <androidPermissions>
+    <Permission>android.permission.READ_EXTERNAL_STORAGE</Permission>
+  </androidPermissions>
   <IncludedResources>
     <Resource>Objects\spriterPlayerModel1</Resource>
     <Resource>Objects\spriterPlayerModel2</Resource>
@@ -190,7 +192,588 @@
       <uncompress>0</uncompress>
       <ConfigOptions>
         <Config name="Default">
-          <CopyToMask>17592199794926</CopyToMask>
+          <CopyToMask>1065024</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <ProxyFiles/>
+      <functions>
+        <function>
+          <name>spriter_LoadModel</name>
+          <externalName>spriter_LoadModel</externalName>
+          <kind>12</kind>
+          <help>double spriter_LoadModel(const char *pFile)</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_CreateInstance</name>
+          <externalName>spriter_CreateInstance</externalName>
+          <kind>12</kind>
+          <help>double spriter_CreateInstance(double ModelIndex, const char *pInstanceName)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_Render</name>
+          <externalName>spriter_Render</externalName>
+          <kind>12</kind>
+          <help>void spriter_Render(double TimeElapsed)</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoCount</name>
+          <externalName>spriter_GetSpriteInfoCount</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIndex)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoFileName</name>
+          <externalName>spriter_GetSpriteInfoFileName</externalName>
+          <kind>12</kind>
+          <help>const char *spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>1</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoString</name>
+          <externalName>spriter_GetSpriteInfoString</externalName>
+          <kind>12</kind>
+          <help>const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>1</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoPositionX</name>
+          <externalName>spriter_GetSpriteInfoPositionX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoPositionY</name>
+          <externalName>spriter_GetSpriteInfoPositionY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoPivotX</name>
+          <externalName>spriter_GetSpriteInfoPivotX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoPivotX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoPivotY</name>
+          <externalName>spriter_GetSpriteInfoPivotY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoPivotY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoSizeX</name>
+          <externalName>spriter_GetSpriteInfoSizeX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoSizeY</name>
+          <externalName>spriter_GetSpriteInfoSizeY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoScaleX</name>
+          <externalName>spriter_GetSpriteInfoScaleX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoScaleX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoScaleY</name>
+          <externalName>spriter_GetSpriteInfoScaleY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoScaleY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoAngle</name>
+          <externalName>spriter_GetSpriteInfoAngle</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoAngle(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_IsGetSpriteInfoRender</name>
+          <externalName>spriter_IsGetSpriteInfoRender</externalName>
+          <kind>12</kind>
+          <help>double spriter_IsGetSpriteInfoRender(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoGMRenderPositionX</name>
+          <externalName>spriter_GetSpriteInfoGMRenderPositionX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoGMRenderPositionY</name>
+          <externalName>spriter_GetSpriteInfoGMRenderPositionY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetInstanceCurrentAnimation</name>
+          <externalName>spriter_SetInstanceCurrentAnimation</externalName>
+          <kind>12</kind>
+          <help>void spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceIndex, const char *pAnimationName, double BlendTime)</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>1</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetInstancePosition</name>
+          <externalName>spriter_SetInstancePosition</externalName>
+          <kind>12</kind>
+          <help>void spriter_SetInstancePosition(double ModelIndex, double InstanceIndex, double px, double py)</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetInstanceScale</name>
+          <externalName>spriter_SetInstanceScale</externalName>
+          <kind>12</kind>
+          <help>void spriter_SetInstanceScale(double ModelIndex, double InstanceIndex, double sx, double sy)</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetInstanceAngle</name>
+          <externalName>spriter_SetInstanceAngle</externalName>
+          <kind>12</kind>
+          <help>void spriter_SetInstanceAngle(double ModelIndex, double InstanceIndex, double angle)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetSpriteInfoImageWidth</name>
+          <externalName>spriter_SetSpriteInfoImageWidth</externalName>
+          <kind>12</kind>
+          <help>void spriter_SetSpriteInfoImageWidth(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageWidth)</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetSpriteInfoImageHeight</name>
+          <externalName>spriter_SetSpriteInfoImageHeight</externalName>
+          <kind>12</kind>
+          <help>void spriter_SetSpriteInfoImageHeight(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageHeight)</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetInstancePositionX</name>
+          <externalName>spriter_GetInstancePositionX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetInstancePositionX(double ModelIndex, double InstanceIndex)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetInstancePositionY</name>
+          <externalName>spriter_GetInstancePositionY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetInstancePositionY(double ModelIndex, double InstanceIndex)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_ApplyInstanceCharacterMap</name>
+          <externalName>spriter_ApplyInstanceCharacterMap</externalName>
+          <kind>12</kind>
+          <help>void spriter_ApplyInstanceCharacterMap(double ModelIndex, double InstanceIndex, const char *charMap)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_RenderInstance</name>
+          <externalName>spriter_RenderInstance</externalName>
+          <kind>12</kind>
+          <help>void spriter_RenderInstance(double ModelIndex, double InstanceIndex)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_UpdateInstance</name>
+          <externalName>spriter_UpdateInstance</externalName>
+          <kind>12</kind>
+          <help>void spriter_UpdateInstance(double ModelIndex, double InstanceIndex, double TimeElapsed)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_RemoveInstanceCharacterMap</name>
+          <externalName>spriter_RemoveInstanceCharacterMap</externalName>
+          <kind>12</kind>
+          <help>void spriter_RemoveInstanceCharacterMap(double ModelIndex, double InstanceIndex, const char *charMap)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_RemoveInstanceAllCharacterMap</name>
+          <externalName>spriter_RemoveInstanceAllCharacterMap</externalName>
+          <kind>12</kind>
+          <help>void spriter_RemoveInstanceAllCharacterMap(double ModelIndex, double InstanceIndex)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetInstancePlaybackSpeedRatio</name>
+          <externalName>spriter_SetInstancePlaybackSpeedRatio</externalName>
+          <kind>12</kind>
+          <help>void spriter_SetInstancePlaybackSpeedRatio(double ModelIndex, double InstanceIndex, double PlaybackSpeedRatio)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_InstanceStartResumePlayback</name>
+          <externalName>spriter_InstanceStartResumePlayback</externalName>
+          <kind>12</kind>
+          <help>void spriter_InstanceStartResumePlayback(double ModelIndex, double InstanceIndex)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_InstancePausePlayback</name>
+          <externalName>spriter_InstancePausePlayback</externalName>
+          <kind>12</kind>
+          <help>void spriter_InstancePausePlayback(double ModelIndex, double InstanceIndex)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_InstanceSetTimeRatio</name>
+          <externalName>spriter_InstanceSetTimeRatio</externalName>
+          <kind>12</kind>
+          <help>void spriter_InstanceSetTimeRatio(double ModelIndex, double InstanceIndex, double TimeRatio)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_InstanceAnimationJustFinished</name>
+          <externalName>spriter_InstanceAnimationJustFinished</externalName>
+          <kind>12</kind>
+          <help>bool spriter_InstanceAnimationJustFinished(double ModelIndex, double InstanceIndex, double bLooped)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_InstanceGetTriggerInfoCount</name>
+          <externalName>spriter_InstanceGetTriggerInfoCount</externalName>
+          <kind>12</kind>
+          <help>double spriter_InstanceGetTriggerInfoCount(double ModelIndex, double InstanceIndex)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_InstanceGetTriggerInfoName</name>
+          <externalName>spriter_InstanceGetTriggerInfoName</externalName>
+          <kind>12</kind>
+          <help>const char* spriter_InstanceGetTriggerInfoName(double ModelIndex, double InstanceIndex, double TriggerIndex)</help>
+          <returnType>1</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_InstanceGetSoundInfoCount</name>
+          <externalName>spriter_InstanceGetSoundInfoCount</externalName>
+          <kind>12</kind>
+          <help>double spriter_InstanceGetSoundInfoCount(double ModelIndex, double InstanceIndex)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_InstanceGetSoundInfoName</name>
+          <externalName>spriter_InstanceGetSoundInfoName</externalName>
+          <kind>12</kind>
+          <help>const char* spriter_InstanceGetSoundInfoName(double ModelIndex, double InstanceIndex, double SoundIndex)</help>
+          <returnType>1</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoAlpha</name>
+          <externalName>spriter_GetSpriteInfoAlpha</externalName>
+          <kind>11</kind>
+          <help>double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoType</name>
+          <externalName>spriter_GetSpriteInfoType</externalName>
+          <kind>11</kind>
+          <help>double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetErrorsCount</name>
+          <externalName>spriter_GetErrorsCount</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetErrorsCount()</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>spriter_GetLastError</name>
+          <externalName>spriter_GetLastError</externalName>
+          <kind>12</kind>
+          <help>onst char* spriter_GetLastError()</help>
+          <returnType>1</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>spriter_ForceGarbageCollection</name>
+          <externalName>spriter_ForceGarbageCollection</externalName>
+          <kind>12</kind>
+          <help>void spriter_ForceGarbageCollection()</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+      </functions>
+      <constants/>
+    </file>
+    <file>
+      <filename>spriterGM.ext</filename>
+      <origname>extensions\spriterGM.ext</origname>
+      <init></init>
+      <final></final>
+      <kind>4</kind>
+      <uncompress>0</uncompress>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>2097160</CopyToMask>
         </Config>
       </ConfigOptions>
       <ProxyFiles/>

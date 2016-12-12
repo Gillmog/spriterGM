@@ -3,9 +3,10 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := spriterGM
-
+LOCAL_CFLAGS := -include "src/android_fopen.h"
 LOCAL_MODULE_FILENAME := libspriterGM
-
+LOCAL_LDLIBS := -landroid
+LOCAL_LDLIBS += -llog
 LOCAL_SRC_FILES := \
 nlohmann-json/json.hpp \
 tinyxml2/tinyxml2.cpp \
@@ -115,7 +116,9 @@ src/jsonspriterfiledocumentwrapper.h \
 src/jsonspriterfileelementwrapper.cpp \
 src/jsonspriterfileelementwrapper.h \
 src/mainjni.cpp \
-src/com_libspritergm_spriterGMNative.h \
+src/mainjni.h \
+src/maindll.cpp \
+src/maindll.h \
 src/pugixmlspriterfileattributewrapper.cpp \
 src/pugixmlspriterfileattributewrapper.h \
 src/pugixmlspriterfiledocumentwrapper.cpp \
@@ -130,5 +133,6 @@ src/tinyxmlspriterfiledocumentwrapper.cpp \
 src/tinyxmlspriterfiledocumentwrapper.h \
 src/tinyxmlspriterfileelementwrapper.cpp \
 src/tinyxmlspriterfileelementwrapper.h \
+src/android_fopen.c \
 
 include $(BUILD_SHARED_LIBRARY)

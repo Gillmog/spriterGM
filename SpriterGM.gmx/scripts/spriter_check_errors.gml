@@ -1,4 +1,5 @@
 ///spriter_check_errors()
+return 0;
 if spriter_GetErrorsCount() > 0
 {
     var Error = "";

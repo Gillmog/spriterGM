@@ -6,9 +6,11 @@ spriter_angle = 0.0;
 spriter_xscale = 1.0;
 spriter_yscale = 1.0;
 
-spriterFile = working_directory + file;
+//spriterFile = working_directory + file;
+spriterFile = file;
 modelIndex = spriter_LoadModel(spriterFile);
 spriter_check_errors();
+
 instanceIndex = spriter_CreateInstance(modelIndex, instanceName);
 spriter_check_errors();
 spriter_set_instance_position(x + sprite_width * 0.5, y + sprite_height * 0.5);
@@ -24,22 +26,28 @@ var nSpriteInfos = spriter_get_instance_sprite_count();
 //sprite info types
 //IMAGE = 1, BOX = 2, POINT = 3, BONE = 4
 
+var text = "";
+
 for (i = nSpriteInfos - 1; i >= 0; i--)
 {
-    var type = spriter_get_instance_sprite_type(i);
     var spriteName = spriter_get_instance_sprite_name(i);
+    text = text + ", " + spriteName;
+    var type = spriter_get_instance_sprite_type(i);
     var px = spriter_get_instance_sprite_xposition(i);
     var py = spriter_get_instance_sprite_yposition(i);
     var pivotX = spriter_get_instance_sprite_xpivot(i);
     var pivotY =  spriter_get_instance_sprite_ypivot(i);
     var scaleX = spriter_get_instance_sprite_xscale(i);
     var scaleY = spriter_get_instance_sprite_yscale(i);
+    
     var sizeX = spriter_get_instance_sprite_xsize(i);
     var sizeY = spriter_get_instance_sprite_ysize(i);
+    
     var angle = spriter_get_instance_sprite_angle(i);
+    
     var isRender = spriter_get_instance_sprite_visible(i);
     var alpha = spriter_get_instance_sprite_alpha(i);
-    
+
     if type == 1
     {
         sprite[i] = sprite_add(spriteName,1,0,0,0,0);

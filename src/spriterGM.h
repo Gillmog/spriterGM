@@ -192,31 +192,7 @@ public:
 		CSpriterGM::CGMSpriteInfo::EType GetType() const { return m_Type; }
 		void SetType(CSpriterGM::CGMSpriteInfo::EType val) { m_Type = val; }
 
-		const SpriterEngine::point & CalculatePosition()
-		{
-			double _sprite_width = m_ImageWidth * GetScale().x;
-			double _sprite_height = m_ImageHeight * GetScale().y;
-
-			double bitmap_center_x = _sprite_width * 0.5;
-			double bitmap_center_y = _sprite_height * 0.5;
-
-			double pivotOffset_x = (_sprite_width * GetPivot().x) - bitmap_center_x;
-			double pivotOffset_y = (_sprite_height * GetPivot().y) - bitmap_center_y;
-
-			double rad = GetAngle();
-			double _cos = cos(rad);
-			double _sin = sin(rad);
-			double _x = pivotOffset_x;
-			double _y = pivotOffset_y;
-
-			double pivotOffsetAdjustment_x = (_x - ((_x * _cos) - (_y * _sin)));
-			double pivotOffsetAdjustment_y = (_y - ((_y * _cos) + (_x * _sin)));
-
-			_x = (GetPosition().x - pivotOffset_x + pivotOffsetAdjustment_x);
-			_y = (GetPosition().y - pivotOffset_y + pivotOffsetAdjustment_y) * -1.0;
-
-			return SpriterEngine::point(_x, _y);
-		}
+		SpriterEngine::point CalculatePosition();
 	
 		float GetAlpha() const { return m_Alpha; }
 		void SetAlpha(float val) { m_Alpha = val; }
@@ -464,4 +440,5 @@ public:
 
 	bool IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundInfoIndex);
 };
+
 #endif //_SPRITER_GM_INCLUDED

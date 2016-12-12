@@ -74,8 +74,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_lime);
-draw_circle(x, y, 5, 1);
+            <string>//draw_set_color(c_lime);
+//draw_circle(x, y, 5, 1);
 </string>
           </argument>
         </arguments>

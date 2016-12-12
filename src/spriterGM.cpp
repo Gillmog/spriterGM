@@ -305,3 +305,29 @@ bool CSpriterGM::IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundIn
 
 	return true;
 }
+
+SpriterEngine::point CSpriterGM::CGMSpriteInfo::CalculatePosition()
+{
+	double _sprite_width = m_ImageWidth * GetScale().x;
+	double _sprite_height = m_ImageHeight * GetScale().y;
+
+	double bitmap_center_x = _sprite_width * 0.5;
+	double bitmap_center_y = _sprite_height * 0.5;
+
+	double pivotOffset_x = (_sprite_width * GetPivot().x) - bitmap_center_x;
+	double pivotOffset_y = (_sprite_height * GetPivot().y) - bitmap_center_y;
+
+	double rad = GetAngle();
+	double _cos = cos(rad);
+	double _sin = sin(rad);
+	double _x = pivotOffset_x;
+	double _y = pivotOffset_y;
+
+	double pivotOffsetAdjustment_x = (_x - ((_x * _cos) - (_y * _sin)));
+	double pivotOffsetAdjustment_y = (_y - ((_y * _cos) + (_x * _sin)));
+
+	_x = (GetPosition().x - pivotOffset_x + pivotOffsetAdjustment_x);
+	_y = (GetPosition().y - pivotOffset_y + pivotOffsetAdjustment_y) * -1.0;
+
+	return SpriterEngine::point(_x, _y);
+}

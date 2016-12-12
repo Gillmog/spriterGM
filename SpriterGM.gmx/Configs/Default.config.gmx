@@ -4,11 +4,16 @@
     <option_aborterrors>False</option_aborterrors>
     <option_android_GPU_device>0</option_android_GPU_device>
     <option_android_adcolony_ads>0</option_android_adcolony_ads>
+    <option_android_adcolony_enable_V4VC>false</option_android_adcolony_enable_V4VC>
     <option_android_advertising_enable>false</option_android_advertising_enable>
     <option_android_advertising_key></option_android_advertising_key>
     <option_android_advertising_type>MoPub</option_android_advertising_type>
     <option_android_amazon_ads>0</option_android_amazon_ads>
     <option_android_amazon_game_circle>0</option_android_amazon_game_circle>
+    <option_android_amazon_gc_achievements>true</option_android_amazon_gc_achievements>
+    <option_android_amazon_gc_leaderboards>true</option_android_amazon_gc_leaderboards>
+    <option_android_amazon_gc_whispersync>false</option_android_amazon_gc_whispersync>
+    <option_android_amazon_iap>false</option_android_amazon_iap>
     <option_android_apk_expansion>0</option_android_apk_expansion>
     <option_android_arch_armv5>True</option_android_arch_armv5>
     <option_android_arch_armv7>True</option_android_arch_armv7>
@@ -25,6 +30,8 @@
     <option_android_facebook_appid></option_android_facebook_appid>
     <option_android_facebook_enable>0</option_android_facebook_enable>
     <option_android_flurry_analytics>0</option_android_flurry_analytics>
+    <option_android_flurry_enable>false</option_android_flurry_enable>
+    <option_android_flurry_id></option_android_flurry_id>
     <option_android_google_analytics>0</option_android_google_analytics>
     <option_android_google_analytics_enable>false</option_android_google_analytics_enable>
     <option_android_google_mobile_ads>0</option_android_google_mobile_ads>
@@ -32,6 +39,7 @@
     <option_android_google_play_cloud_save_enable>0</option_android_google_play_cloud_save_enable>
     <option_android_google_play_id></option_android_google_play_id>
     <option_android_google_tracking_id></option_android_google_tracking_id>
+    <option_android_iap_suppress_toast>false</option_android_iap_suppress_toast>
     <option_android_icade_support>-1</option_android_icade_support>
     <option_android_icon_hdpi>Configs\Default\android\icons\icon_hdpi.png</option_android_icon_hdpi>
     <option_android_icon_ldpi>Configs\Default\android\icons\icon_ldpi.png</option_android_icon_ldpi>
@@ -45,7 +53,7 @@
     <option_android_licensing_key></option_android_licensing_key>
     <option_android_lint>-1</option_android_lint>
     <option_android_major_version>1</option_android_major_version>
-    <option_android_min_sdk_version>9</option_android_min_sdk_version>
+    <option_android_min_sdk_version>15</option_android_min_sdk_version>
     <option_android_minor_version>0</option_android_minor_version>
     <option_android_mmedia_ads>0</option_android_mmedia_ads>
     <option_android_moga>0</option_android_moga>
@@ -60,6 +68,9 @@
     <option_android_package_domain>com</option_android_package_domain>
     <option_android_package_product>SpriterGM</option_android_package_product>
     <option_android_permission_flags>8</option_android_permission_flags>
+    <option_android_pocketchange_enable>false</option_android_pocketchange_enable>
+    <option_android_pocketchange_id></option_android_pocketchange_id>
+    <option_android_pocketchange_test_enable>false</option_android_pocketchange_test_enable>
     <option_android_portrait_splash_png>Configs\Default\android\portrait_splash.png</option_android_portrait_splash_png>
     <option_android_push_enable>0</option_android_push_enable>
     <option_android_push_id></option_android_push_id>
@@ -260,7 +271,9 @@
     <option_html5_usebuiltinparticles>True</option_html5_usebuiltinparticles>
     <option_html5_usesplash>False</option_html5_usesplash>
     <option_icon>nil</option_icon>
+    <option_in_app_purchase_enable>false</option_in_app_purchase_enable>
     <option_in_app_purchase_sandbox_mode>0</option_in_app_purchase_sandbox_mode>
+    <option_in_app_purchase_server_url></option_in_app_purchase_server_url>
     <option_information></option_information>
     <option_interpolate>True</option_interpolate>
     <option_ios_adcolony_enable_V4VC>false</option_ios_adcolony_enable_V4VC>
@@ -373,12 +386,16 @@
     <option_noscreensaver>true</option_noscreensaver>
     <option_ouya_packaging>0</option_ouya_packaging>
     <option_priority>0</option_priority>
+    <option_ps3_build_version>0</option_ps3_build_version>
     <option_ps3_interpolate>-1</option_ps3_interpolate>
+    <option_ps3_major_version>1</option_ps3_major_version>
+    <option_ps3_minor_version>0</option_ps3_minor_version>
     <option_ps3_nptitleid></option_ps3_nptitleid>
     <option_ps3_nptitlepassphrase>Memo1</option_ps3_nptitlepassphrase>
     <option_ps3_nptitlesecret>Memo1</option_ps3_nptitlesecret>
     <option_ps3_package_id></option_ps3_package_id>
     <option_ps3_passcode></option_ps3_passcode>
+    <option_ps3_revision_version>0</option_ps3_revision_version>
     <option_ps3_scale>0</option_ps3_scale>
     <option_ps3_texture_page>2048</option_ps3_texture_page>
     <option_ps3_version>1.00</option_ps3_version>
