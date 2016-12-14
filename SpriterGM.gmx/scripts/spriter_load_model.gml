@@ -22,7 +22,6 @@ spriter_RenderInstance(modelIndex, instanceIndex);
 
 var nSpriteInfos = spriter_get_instance_sprite_count();
 
-spitesMap = ds_map_create();
 //sprite info types
 //IMAGE = 1, BOX = 2, POINT = 3, BONE = 4
 for (i = nSpriteInfos - 1; i >= 0; i--)
@@ -46,17 +45,12 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
     
     if type == 1
     {
-        sprite = ds_map_find_value(spitesMap, spriteName);
-        
-        if is_undefined(sprite)
-        {
-            sprite = -1;
-        }
+        sprite = spriter_FindLoadedSprite(modelIndex, spriteName);
         
         if sprite == -1
         {
             sprite = sprite_add(spriteName,1,0,0,0,0);
-            ds_map_add(spitesMap, spriteName, sprite);
+            spriter_AddLoadedSprite(modelIndex, spriteName, sprite);
         }
     }
     

@@ -145,5 +145,7 @@ public class spriterGMNative {
 
 	native public static double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
 
-	native public static double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+	native public static double spriter_AddLoadedSprite(double ModelIndex, String pSpriteName, double SpritePtr);
+
+	native public static double spriter_FindLoadedSprite(double ModelIndex, String pSpriteName);
 }

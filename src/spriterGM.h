@@ -315,6 +315,7 @@ public:
 	{
 		SpriterEngine::SpriterModel* m_pModel;
 		std::vector<CSpriterGMInstance> m_Instances;
+		std::map<std::string, int> m_LoadedSprites;
 
 	public:
 
@@ -350,6 +351,30 @@ public:
 		void AddInstance(const CSpriterGMInstance &Instance)
 		{
 			m_Instances.push_back(Instance);
+		}
+
+		int FindLoadedSprite(const std::string &SpriteName)
+		{
+			auto Iter = m_LoadedSprites.find(SpriteName);
+
+			if (Iter != m_LoadedSprites.end())
+			{
+				return Iter->second;
+			}
+
+			return -1;
+		}
+
+		bool AddLoadedSprite(const std::string &SpriteName, int SpritePtr)
+		{
+			if (FindLoadedSprite(SpriteName) == -1)
+			{
+				m_LoadedSprites.insert(std::pair<std::string, int>(SpriteName, SpritePtr));
+
+				return true;
+			}
+
+			return false;
 		}
 	};
 

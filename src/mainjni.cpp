@@ -411,6 +411,22 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpri
 	return spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(modelIndex, instanceIndex, spriteInfoIndex);
 }
 
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1AddLoadedSprite
+(JNIEnv *env, jclass object, jdouble modelIndex, jstring spriteName, jdouble spritePtr)
+{
+	std::string str;
+	GetJStringContent(env, spriteName, str);
+	return spriter_AddLoadedSprite(modelIndex, str.c_str(), spritePtr);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1FindLoadedSprite
+(JNIEnv *env, jclass object, jdouble modelIndex, jstring spriteName)
+{
+	std::string str;
+	GetJStringContent(env, spriteName, str);
+
+	return spriter_FindLoadedSprite(modelIndex, str.c_str());
+}
 
 
 

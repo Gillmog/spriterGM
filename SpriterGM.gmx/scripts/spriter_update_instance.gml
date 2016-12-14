@@ -70,17 +70,12 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
     
     if type == 1
     {
-        sprite = ds_map_find_value(spitesMap, spriteName);
-        
-        if is_undefined(sprite)
-        {
-            sprite = -1;
-        }
+        sprite = spriter_FindLoadedSprite(modelIndex, spriteName);
         
         if sprite == -1
         {
             sprite = sprite_add(spriteName,1,0,0,0,0);
-            ds_map_add(spitesMap, spriteName, sprite);
+            spriter_AddLoadedSprite(modelIndex, spriteName, sprite);
         }
         
         inst[i].sprite_index = sprite;

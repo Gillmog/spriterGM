@@ -168,4 +168,8 @@ DLLEXPORT double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(double ModelIn
 
 DLLEXPORT double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
 
+DLLEXPORT double spriter_AddLoadedSprite(double ModelIndex, const char *pSpriteName, double SpritePtr);
+
+DLLEXPORT double spriter_FindLoadedSprite(double ModelIndex, const char *pSpriteName);
+
 

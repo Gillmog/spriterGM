@@ -505,6 +505,22 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpri
 JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourceSizeY
 (JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_AddLoadedSprite
+* Signature: (DLjava/lang/String;D)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1AddLoadedSprite
+(JNIEnv *, jclass, jdouble, jstring, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_FindLoadedSprite
+* Signature: (DLjava/lang/String;)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1FindLoadedSprite
+(JNIEnv *, jclass, jdouble, jstring);
+
 #ifdef __cplusplus
 }
 #endif

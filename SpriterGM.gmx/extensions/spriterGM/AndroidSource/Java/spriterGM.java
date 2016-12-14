@@ -285,4 +285,12 @@ public class spriterGM {
 	public double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
         return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(ModelIndex, InstanceIndex, SpriteInfoIndex);
     }
+
+	public double spriter_AddLoadedSprite(double ModelIndex, String pSpriteName, double SpritePtr) {
+		return spriterGMNative.spriter_AddLoadedSprite(ModelIndex, pSpriteName, SpritePtr);
+	}
+
+	public double spriter_FindLoadedSprite(double ModelIndex, String pSpriteName) {
+		return spriterGMNative.spriter_FindLoadedSprite(ModelIndex, pSpriteName);
+	}
 }

@@ -84,12 +84,16 @@ const char *spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceInde
 
 	std::string ImageName = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetSpriteName();
 
+#if defined(ANDROID)
+	return ImageName.c_str();
+#else
 	char *pCopyStr = new char[ImageName.length() + 1];
 	strcpy(pCopyStr, ImageName.c_str());
 
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).AddToGarbage(pCopyStr);
 
 	return pCopyStr;
+#endif
 }
 
 const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
@@ -111,12 +115,16 @@ const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex,
 		" " + std::to_string(SpriteInfo.GetAngle()) +
 		" " + std::to_string(SpriteInfo.IsRender());
 
+#if defined(ANDROID)
+	return SpriteInfoModel.c_str();
+#else
 	char *pCopyStr = new char[SpriteInfoModel.length() + 1];
 	strcpy(pCopyStr, SpriteInfoModel.c_str());
 
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).AddToGarbage(pCopyStr);
 
 	return pCopyStr;
+#endif
 }
 
 double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
@@ -404,11 +412,15 @@ const char* spriter_InstanceGetTriggerInfoName(double ModelIndex, double Instanc
 	if (!CSpriterGM::GetSingleton()->IsTriggerInfoValid(ModelIndex, InstanceIndex, TriggerIndex))
 		return 0;
 
+#if defined(ANDROID)
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMTriggerInfo(TriggerIndex).GetTriggerName().c_str();
+#else
 	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMTriggerInfo(TriggerIndex).GetTriggerName();
 	char *pCopyStr = new char[TmpStr.length() + 1];
 	strcpy(pCopyStr, TmpStr.c_str());
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMTriggerInfo(TriggerIndex).AddToGarbage(pCopyStr);
 	return pCopyStr;
+#endif
 }
 
 double spriter_InstanceGetSoundInfoCount(double ModelIndex, double InstanceIndex)
@@ -424,11 +436,15 @@ const char* spriter_InstanceGetSoundInfoName(double ModelIndex, double InstanceI
 	if (!CSpriterGM::GetSingleton()->IsSoundInfoValid(ModelIndex, InstanceIndex, SoundIndex))
 		return 0;
 
+#if defined(ANDROID)
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSoundInfo(SoundIndex).GetSoundFileName().c_str();
+#else
 	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSoundInfo(SoundIndex).GetSoundFileName();
 	char *pCopyStr = new char[TmpStr.length() + 1];
 	strcpy(pCopyStr, TmpStr.c_str());
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSoundInfo(SoundIndex).AddToGarbage(pCopyStr);
 	return pCopyStr;
+#endif
 }
 
 double spriter_GetErrorsCount()
@@ -551,6 +567,23 @@ double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, doubl
 
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_SpriteSourceSizeY;
 }
+
+double spriter_AddLoadedSprite(double ModelIndex, const char *pSpriteName, double SpritePtr)
+{
+	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
+		return 0;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).AddLoadedSprite(pSpriteName, SpritePtr);
+}
+
+double spriter_FindLoadedSprite(double ModelIndex, const char *pSpriteName)
+{
+	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
+		return 0;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).FindLoadedSprite(pSpriteName);
+}
+
 
 
 
