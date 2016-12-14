@@ -142,9 +142,29 @@ public:
 
 		EType m_Type;
 
+		struct CAtlasFrame
+		{
+			double m_FramePositionX = -1.0;
+			double m_FramePositionY = -1.0;
+			double m_FrameSizeX = -1.0;
+			double m_FrameSizeY = -1.0;
+			double m_SourceSizeX = -1.0;
+			double m_SourceSizeY = -1.0;
+			double m_SpriteSourcePositionX = -1.0;
+			double m_SpriteSourcePositionY = -1.0;
+			double m_SpriteSourceSizeX = -1.0;
+			double m_SpriteSourceSizeY = -1.0;
+			bool m_bRotated = false;
+			bool m_bTrimmed = false;
+		};
+
+		bool m_bAtlasFile;
+
+		CAtlasFrame m_AtlasFrame;
+
 	public:
 
-		CGMSpriteInfo() : m_Angle(0.0f), m_bRender(false), m_ImageWidth(0), m_ImageHeight(0), m_Alpha(1.0f), m_Type(UNKNOWN)
+		CGMSpriteInfo() : m_Angle(0.0f), m_bRender(false), m_ImageWidth(0), m_ImageHeight(0), m_Alpha(1.0f), m_Type(UNKNOWN), m_bAtlasFile(false)
 		{
 
 		}
@@ -160,7 +180,9 @@ public:
 			m_ImageWidth(Spriteinfo.m_ImageWidth),
 			m_ImageHeight(Spriteinfo.m_ImageHeight),
 			m_Alpha(Spriteinfo.m_Alpha),
-			m_Type(Spriteinfo.m_Type)
+			m_Type(Spriteinfo.m_Type),
+			m_bAtlasFile(Spriteinfo.m_bAtlasFile),
+			m_AtlasFrame(Spriteinfo.m_AtlasFrame)
 		{
 
 		}
@@ -196,6 +218,11 @@ public:
 	
 		float GetAlpha() const { return m_Alpha; }
 		void SetAlpha(float val) { m_Alpha = val; }
+
+		bool IsAtlasFile() const { return m_bAtlasFile; }
+		void SetAtlasFile(bool val) { m_bAtlasFile = val; }
+
+		CAtlasFrame &GetAtlasFrame() { return m_AtlasFrame; }
 	};
 
 	class CSpriterGMInstance : public CGMGarbageCollector
@@ -439,6 +466,8 @@ public:
 	bool IsTriggerInfoValid(int ModelIndex, int InstanceIndex, int TriggerInfoIndex);
 
 	bool IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundInfoIndex);
+
+	bool IsSpriteInfoAtlasFileValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex);
 };
 
 #endif //_SPRITER_GM_INCLUDED

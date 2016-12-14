@@ -306,6 +306,20 @@ bool CSpriterGM::IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundIn
 	return true;
 }
 
+bool CSpriterGM::IsSpriteInfoAtlasFileValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex)
+{
+	if (!IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+		return false;
+
+	if (!m_Models[ModelIndex].GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).IsAtlasFile())
+	{
+		Error("ImageFile not atlas file!");
+		return false;
+	}
+
+	return true;
+}
+
 SpriterEngine::point CSpriterGM::CGMSpriteInfo::CalculatePosition()
 {
 	double _sprite_width = m_ImageWidth * GetScale().x;

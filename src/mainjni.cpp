@@ -333,6 +333,85 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1ForceGa
 }
 
 
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsSpriteInfoAtlasFile
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_IsSpriteInfoAtlasFile(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFramePositionX
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFramePositionX(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFramePositionY
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFramePositionY(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsSpriteInfoAtlasFrameRotated
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_IsSpriteInfoAtlasFrameRotated(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsSpriteInfoAtlasFrameTrimmed
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_IsSpriteInfoAtlasFrameTrimmed(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameFrameSizeX
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFrameFrameSizeX(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameFrameSizeY
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFrameFrameSizeY(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSourceSizeX
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFrameSourceSizeX(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSourceSizeY
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFrameSourceSizeY(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourcePositionX
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourcePositionY
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourceSizeX
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourceSizeY
+(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+
 
 
 

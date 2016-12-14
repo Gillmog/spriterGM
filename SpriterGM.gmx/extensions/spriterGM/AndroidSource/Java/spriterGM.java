@@ -233,4 +233,56 @@ public class spriterGM {
     public double spriter_ForceGarbageCollection() {
         return spriterGMNative.spriter_ForceGarbageCollection();
     }
+
+	public double spriter_IsSpriteInfoAtlasFile(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_IsSpriteInfoAtlasFile(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFramePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFramePositionX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFramePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFramePositionY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_IsSpriteInfoAtlasFrameRotated(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_IsSpriteInfoAtlasFrameRotated(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_IsSpriteInfoAtlasFrameTrimmed(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_IsSpriteInfoAtlasFrameTrimmed(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFrameFrameSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameFrameSizeX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFrameFrameSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameFrameSizeY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFrameSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSourceSizeX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFrameSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSourceSizeY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
+
+	public double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
+        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
 }

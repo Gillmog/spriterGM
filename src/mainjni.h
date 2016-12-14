@@ -401,6 +401,110 @@ JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetLast
 JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1ForceGarbageCollection
   (JNIEnv *, jclass);
 
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_IsSpriteInfoAtlasFile
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsSpriteInfoAtlasFile
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFramePositionX
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFramePositionX
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFramePositionY
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFramePositionY
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_IsSpriteInfoAtlasFrameRotated
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsSpriteInfoAtlasFrameRotated
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_IsSpriteInfoAtlasFrameTrimmed
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsSpriteInfoAtlasFrameTrimmed
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFrameFrameSizeX
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameFrameSizeX
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFrameFrameSizeY
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameFrameSizeY
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFrameSourceSizeX
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSourceSizeX
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFrameSourceSizeY
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSourceSizeY
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourcePositionX
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourcePositionY
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourceSizeX
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourceSizeY
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
 #ifdef __cplusplus
 }
 #endif

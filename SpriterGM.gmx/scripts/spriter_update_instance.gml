@@ -38,7 +38,6 @@ if instCount != nSpriteInfos
     if instCount < nSpriteInfos
     {
         inst[nSpriteInfos - 1] = instance_create(0, 0, spriterModel_image);
-        sprite_names[SpriteInfos - 1] = "empty_name";
     }
 }
 
@@ -63,26 +62,35 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
     var angle = spriter_get_instance_sprite_angle(i);
     var isRender = spriter_get_instance_sprite_visible(i);
     var alpha = spriter_get_instance_sprite_alpha(i);
+    var isAtlas = spriter_IsSpriteInfoAtlasFile(modelIndex, instanceIndex, i);
     
     inst[i].visible = isRender;
     
-    if sprite[i] != -1
+    var sprite = -1;
+    
+    if type == 1
     {
-        var currentSpriteName = sprite_names[i];
+        sprite = ds_map_find_value(spitesMap, spriteName);
         
-        if currentSpriteName != spriteName
+        if is_undefined(sprite)
         {
-            sprite_names[i] = spriteName;
-            sprite_delete(sprite[i]);
-            sprite[i] = sprite_add(sprite_names[i],1,0,0,0,0);
-            inst[i].sprite_index = sprite[i];
+            sprite = -1;
         }
+        
+        if sprite == -1
+        {
+            sprite = sprite_add(spriteName,1,0,0,0,0);
+            ds_map_add(spitesMap, spriteName, sprite);
+        }
+        
+        inst[i].sprite_index = sprite;
     }
          
     inst[i].image_xscale = scaleX;
     inst[i].image_yscale = scaleY;
     inst[i].image_angle = radtodeg(angle);
     inst[i].image_alpha = alpha;
+    inst[i].nSpriteInfo = i;
         
     spriter_set_instance_sprite_width(i, inst[i].sprite_width / scaleX);
     spriter_set_instance_sprite_height(i, inst[i].sprite_height / scaleY);
@@ -106,9 +114,25 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
         inst[i].y2 = dy + rectHeight * 0.5;
     }
     
-    if sprite[i] != -1
+    if isAtlas 
     {
-        sprite_set_offset(sprite[i], inst[i].sprite_width / scaleX * 0.5, inst[i].sprite_height / scaleY * 0.5);
+        var framePositionX = spriter_GetSpriteInfoAtlasFramePositionX(modelIndex, instanceIndex, i);
+        var framePositionY = spriter_GetSpriteInfoAtlasFramePositionY(modelIndex, instanceIndex, i);
+        var frameRotated = spriter_IsSpriteInfoAtlasFrameRotated(modelIndex, instanceIndex, i);
+        var frameTrimmed = spriter_IsSpriteInfoAtlasFrameTrimmed(modelIndex, instanceIndex, i);
+        var frameSizeX = spriter_GetSpriteInfoAtlasFrameFrameSizeX(modelIndex, instanceIndex, i);
+        var frameSizeY = spriter_GetSpriteInfoAtlasFrameFrameSizeY(modelIndex, instanceIndex, i);
+        var frameSourceSizeX = spriter_GetSpriteInfoAtlasFrameSourceSizeX(modelIndex, instanceIndex, i);
+        var frameSourceSizeY = spriter_GetSpriteInfoAtlasFrameSourceSizeY(modelIndex, instanceIndex, i);
+        var frameSpriteSourcePositionX = spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(modelIndex, instanceIndex, i);
+        var frameSpriteSourcePositionY = spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(modelIndex, instanceIndex, i);
+        var frameSpriteSourceSizeX = spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(modelIndex, instanceIndex, i);
+        var frameSpriteSourceSizeY = spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(modelIndex, instanceIndex, i);
+    }
+    
+    if sprite != -1
+    {
+        sprite_set_offset(sprite, inst[i].sprite_width / scaleX * 0.5, inst[i].sprite_height / scaleY * 0.5);
     }
 }
 

@@ -48,7 +48,25 @@ namespace SpriterEngine
 	{
 		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
 
-		GMSpriteInfo.SetSpriteName(spriteInfo->getImage()->path());
+		if (atlasFile)
+		{
+			GMSpriteInfo.SetSpriteName(atlasFile->path());
+			GMSpriteInfo.SetAtlasFile(true);
+			GMSpriteInfo.GetAtlasFrame().m_bRotated = atlasFrameData.rotated;
+			GMSpriteInfo.GetAtlasFrame().m_bTrimmed = atlasFrameData.trimmed;
+			GMSpriteInfo.GetAtlasFrame().m_FramePositionX = atlasFrameData.framePosition.x;
+			GMSpriteInfo.GetAtlasFrame().m_FramePositionY = atlasFrameData.framePosition.y;
+			GMSpriteInfo.GetAtlasFrame().m_FrameSizeX = atlasFrameData.frameSize.x;
+			GMSpriteInfo.GetAtlasFrame().m_FrameSizeY = atlasFrameData.frameSize.y;
+			GMSpriteInfo.GetAtlasFrame().m_SourceSizeX = atlasFrameData.sourceSize.x;
+			GMSpriteInfo.GetAtlasFrame().m_SourceSizeY = atlasFrameData.sourceSize.y;
+			GMSpriteInfo.GetAtlasFrame().m_SpriteSourcePositionX = atlasFrameData.spriteSourcePosition.x;
+			GMSpriteInfo.GetAtlasFrame().m_SpriteSourcePositionY = atlasFrameData.spriteSourcePosition.y;
+			GMSpriteInfo.GetAtlasFrame().m_SpriteSourceSizeX = atlasFrameData.spriteSourceSize.x;
+			GMSpriteInfo.GetAtlasFrame().m_SpriteSourceSizeY = atlasFrameData.spriteSourceSize.y;
+		}
+		else
+			GMSpriteInfo.SetSpriteName(spriteInfo->getImage()->path());
 
 		GMSpriteInfo.SetPosition(spriteInfo->getPosition());
 		GMSpriteInfo.SetPivot(spriteInfo->getPivot());
@@ -69,6 +87,6 @@ namespace SpriterEngine
 	// Overwritten so we can create the sprite from the texture.
 	void GMImageFile::setAtlasFile(AtlasFile *initialAtlasFile, atlasframedata initialAtlasFrameData) 
 	{
-		
+		ImageFile::setAtlasFile(initialAtlasFile, initialAtlasFrameData);
 	}
 }
