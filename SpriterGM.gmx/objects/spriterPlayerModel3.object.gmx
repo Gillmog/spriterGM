@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_load_model("moss_golem_atlas/moss_golem_atlas.scml", "moss_golem");
+            <string>spriter_load_model("moss_golem/moss_golem_chieftain.scml", "moss_golem");
 </string>
           </argument>
         </arguments>

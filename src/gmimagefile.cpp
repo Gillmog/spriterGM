@@ -37,6 +37,8 @@ namespace SpriterEngine
 		ImageFile(initialFilePath,initialDefaultPivot)
 	{
 		initializeFile();
+		
+		CSpriterGM::GetSingleton()->GetLastLoadedModel().AddSprite(initialFilePath);
 	}
 
 	void GMImageFile::initializeFile()
@@ -44,7 +46,7 @@ namespace SpriterEngine
 		
 	}
 
-	void GMImageFile::renderSprite(CSpriterGM::CSpriterGMInstance &Instance, UniversalObjectInterface *spriteInfo)
+	void GMImageFile::renderSprite(CSpriterGM::CSpriterGMModel &Model, CSpriterGM::CSpriterGMInstance &Instance, UniversalObjectInterface *spriteInfo)
 	{
 		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
 
@@ -67,6 +69,9 @@ namespace SpriterEngine
 		}
 		else
 			GMSpriteInfo.SetSpriteName(spriteInfo->getImage()->path());
+
+		int GMSpriteIndex = Model.FindLoadedSprite(spriteInfo->getImage()->path());
+		GMSpriteInfo.SetGMSpriteIndex(GMSpriteIndex);
 
 		GMSpriteInfo.SetPosition(spriteInfo->getPosition());
 		GMSpriteInfo.SetPivot(spriteInfo->getPivot());

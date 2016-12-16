@@ -1814,6 +1814,7 @@
     <object>objects\spriterModel_image</object>
     <object>objects\spriterModel_point</object>
     <object>objects\spriterModel_box</object>
+    <object>objects\test</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

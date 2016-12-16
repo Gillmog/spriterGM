@@ -150,4 +150,10 @@ public class spriterGMNative {
 	native public static double spriter_AddLoadedSprite(double ModelIndex, String pSpriteName, double SpritePtr);
 
 	native public static double spriter_FindLoadedSprite(double ModelIndex, String pSpriteName);
+
+	native public static double spriter_GetNumSprites(double ModelIndex);
+
+	native public static String spriter_GetSprite(double ModelIndex, double SpriteIndex);
+
+	native public static double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
 }

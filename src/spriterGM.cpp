@@ -62,9 +62,13 @@ int CSpriterGM::LoadModel(const char *pFile)
 	
 	SpriterEngine::SpriterModel *pScmlModel = new SpriterEngine::SpriterModel(ModelFile, new SpriterEngine::GMFileFactory, new SpriterEngine::GMObjectFactory);
 
-	m_Models.push_back(CSpriterGMModel(pScmlModel));
+	m_LastLoadedModel.SetModel(pScmlModel);
+
+	m_Models.push_back(CSpriterGMModel(m_LastLoadedModel));
 
 	m_LoadedModels.insert(std::make_pair(ModelFile, m_Models.size() - 1));
+
+	m_LastLoadedModel.Reset();
 
 	return m_Models.size() - 1;
 }
@@ -109,7 +113,7 @@ void CSpriterGM::Render(double timeElapsed)
 					{
 						SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
 
-						pImage->renderSprite(it->GetInstance(i), _it);
+						pImage->renderSprite(*it, it->GetInstance(i), _it);
 					}
 				}
 			}
@@ -156,7 +160,7 @@ void CSpriterGM::RenderInstance(int ModelIndex, int InstanceIndex)
 				{
 					SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
 
-					pImage->renderSprite(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex), _it);
+					pImage->renderSprite(GetSpriterGMModel(ModelIndex), GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex), _it);
 				}
 				else
 				{

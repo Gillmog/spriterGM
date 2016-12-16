@@ -52,6 +52,8 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 #define DLLEXPORT extern "C"
 #endif
 
+#include <string>
+
 DLLEXPORT double spriter_LoadModel(const char *pFile);
 
 DLLEXPORT double spriter_CreateInstance(double ModelIndex, const char *pInstanceName);
@@ -64,9 +66,15 @@ DLLEXPORT double spriter_UpdateInstance(double ModelIndex, double InstanceIndex,
 
 DLLEXPORT double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIndex);
 
+#if defined(ANDROID)
+DLLEXPORT std::string spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+
+DLLEXPORT std::string spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+#else
 DLLEXPORT const char *spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
 
 DLLEXPORT const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+#endif
 
 DLLEXPORT double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
 
@@ -130,15 +138,27 @@ DLLEXPORT double spriter_InstanceAnimationJustFinished(double ModelIndex, double
 
 DLLEXPORT double spriter_InstanceGetTriggerInfoCount(double ModelIndex, double InstanceIndex);
 
+#if defined(ANDROID)
+DLLEXPORT std::string spriter_InstanceGetTriggerInfoName(double ModelIndex, double InstanceIndex, double TriggerIndex);
+#else
 DLLEXPORT const char* spriter_InstanceGetTriggerInfoName(double ModelIndex, double InstanceIndex, double TriggerIndex);
+#endif
 
 DLLEXPORT double spriter_InstanceGetSoundInfoCount(double ModelIndex, double InstanceIndex);
 
+#if defined(ANDROID)
+DLLEXPORT std::string spriter_InstanceGetSoundInfoName(double ModelIndex, double InstanceIndex, double SoundIndex);
+#else
 DLLEXPORT const char* spriter_InstanceGetSoundInfoName(double ModelIndex, double InstanceIndex, double SoundIndex);
+#endif
 
 DLLEXPORT double spriter_GetErrorsCount();
 
+#if defined(ANDROID)
+DLLEXPORT std::string spriter_GetLastError();
+#else
 DLLEXPORT const char* spriter_GetLastError();
+#endif
 
 DLLEXPORT double spriter_ForceGarbageCollection();
 
@@ -172,4 +192,13 @@ DLLEXPORT double spriter_AddLoadedSprite(double ModelIndex, const char *pSpriteN
 
 DLLEXPORT double spriter_FindLoadedSprite(double ModelIndex, const char *pSpriteName);
 
+DLLEXPORT double spriter_GetNumSprites(double ModelIndex);
+
+#if defined(ANDROID)
+DLLEXPORT std::string spriter_GetSprite(double ModelIndex, double SpriteIndex);
+#else
+DLLEXPORT const char* spriter_GetSprite(double ModelIndex, double SpriteIndex);
+#endif
+
+DLLEXPORT double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
 

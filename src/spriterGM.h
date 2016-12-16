@@ -38,7 +38,7 @@
 
 class CGMGarbageCollector
 {
-	std::vector<void*> m_Garbage;
+	std::vector<char*> m_Garbage;
 
 public:
 
@@ -47,7 +47,7 @@ public:
 		RemoveGarbage();
 	}
 
-	void AddToGarbage(void *p)
+	void AddToGarbage(char *p)
 	{
 		m_Garbage.push_back(p);
 	}
@@ -126,7 +126,7 @@ public:
 		int m_ImageWidth;
 		int m_ImageHeight;
 		float m_Alpha;
-
+		
 	public:
 
 		enum EType
@@ -162,9 +162,19 @@ public:
 
 		CAtlasFrame m_AtlasFrame;
 
+		int m_GMSpriteIndex;
+
 	public:
 
-		CGMSpriteInfo() : m_Angle(0.0f), m_bRender(false), m_ImageWidth(0), m_ImageHeight(0), m_Alpha(1.0f), m_Type(UNKNOWN), m_bAtlasFile(false)
+		CGMSpriteInfo() :
+			m_Angle(0.0f), 
+			m_bRender(false),
+			m_ImageWidth(0), 
+			m_ImageHeight(0), 
+			m_Alpha(1.0f), 
+			m_Type(UNKNOWN), 
+			m_bAtlasFile(false), 
+			m_GMSpriteIndex(-1)
 		{
 
 		}
@@ -182,7 +192,8 @@ public:
 			m_Alpha(Spriteinfo.m_Alpha),
 			m_Type(Spriteinfo.m_Type),
 			m_bAtlasFile(Spriteinfo.m_bAtlasFile),
-			m_AtlasFrame(Spriteinfo.m_AtlasFrame)
+			m_AtlasFrame(Spriteinfo.m_AtlasFrame),
+			m_GMSpriteIndex(Spriteinfo.m_GMSpriteIndex)
 		{
 
 		}
@@ -223,6 +234,9 @@ public:
 		void SetAtlasFile(bool val) { m_bAtlasFile = val; }
 
 		CAtlasFrame &GetAtlasFrame() { return m_AtlasFrame; }
+
+		int GetGMSpriteIndex() const { return m_GMSpriteIndex; }
+		void SetGMSpriteIndex(int val) { m_GMSpriteIndex = val; }
 	};
 
 	class CSpriterGMInstance : public CGMGarbageCollector
@@ -315,9 +329,15 @@ public:
 	{
 		SpriterEngine::SpriterModel* m_pModel;
 		std::vector<CSpriterGMInstance> m_Instances;
-		std::map<std::string, int> m_LoadedSprites;
+		std::map<std::string, int> m_MapSprites;
+		std::vector<std::string> m_Sprites;
 
 	public:
+
+		CSpriterGMModel() : m_pModel(NULL)
+		{
+
+		}
 
 		CSpriterGMModel(SpriterEngine::SpriterModel* pModel) : m_pModel(pModel)
 		{
@@ -326,9 +346,19 @@ public:
 
 		CSpriterGMModel(const CSpriterGMModel &Model) : 
 			m_pModel(Model.m_pModel),
-			m_Instances(std::move(Model.m_Instances))
+			m_Instances(std::move(Model.m_Instances)),
+			m_MapSprites(std::move(Model.m_MapSprites)),
+			m_Sprites(std::move(Model.m_Sprites))
 		{
 
+		}
+
+		void Reset()
+		{
+			m_pModel = NULL;
+			m_Instances.clear();
+			m_MapSprites.clear();
+			m_Sprites.clear();
 		}
 
 		~CSpriterGMModel()
@@ -339,6 +369,11 @@ public:
 		SpriterEngine::SpriterModel* GetModel()
 		{
 			return m_pModel;
+		}
+
+		void SetModel(SpriterEngine::SpriterModel* val)
+		{
+			m_pModel = val;
 		}
 
 		int GetNumInstances() const { return m_Instances.size();  }
@@ -355,9 +390,9 @@ public:
 
 		int FindLoadedSprite(const std::string &SpriteName)
 		{
-			auto Iter = m_LoadedSprites.find(SpriteName);
+			auto Iter = m_MapSprites.find(SpriteName);
 
-			if (Iter != m_LoadedSprites.end())
+			if (Iter != m_MapSprites.end())
 			{
 				return Iter->second;
 			}
@@ -369,13 +404,30 @@ public:
 		{
 			if (FindLoadedSprite(SpriteName) == -1)
 			{
-				m_LoadedSprites.insert(std::pair<std::string, int>(SpriteName, SpritePtr));
+				m_MapSprites.insert(std::pair<std::string, int>(SpriteName, SpritePtr)); 
 
 				return true;
 			}
 
 			return false;
 		}
+
+		bool AddSprite(const std::string &SpriteName)
+		{
+			for (size_t n = 0; n < m_Sprites.size(); n++)
+			{
+				if (m_Sprites[n] == SpriteName)
+					return false;
+			}
+
+			m_Sprites.push_back(SpriteName);
+
+			return true;
+		}
+
+		int GetNumSprites() const { return (int)m_Sprites.size(); }
+
+		std::string GetSprite(int Index) const { return m_Sprites[Index]; }
 	};
 
 private:
@@ -387,6 +439,8 @@ private:
 	int m_CurrentUpdatedInstanceIndex;
 
 	std::vector<std::string> m_ErrorsList;
+
+	CSpriterGMModel m_LastLoadedModel;
 
 public:
 
@@ -437,6 +491,16 @@ public:
 		return m_ErrorsList.size();
 	}
 
+#if defined(ANDROID)
+	std::string GetLastError()
+	{
+		std::string Error = m_ErrorsList.back();
+
+		m_ErrorsList.pop_back();
+
+		return Error;
+	}
+#else
 	const char *GetLastError()
 	{
 		std::string Error = m_ErrorsList.back();
@@ -450,6 +514,7 @@ public:
 
 		return pCopyStr;
 	}
+#endif
 
 	static std::vector<std::string> SplitPath(
 		const std::string& str
@@ -493,6 +558,8 @@ public:
 	bool IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundInfoIndex);
 
 	bool IsSpriteInfoAtlasFileValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex);
+
+	CSpriterGMModel &GetLastLoadedModel() { return m_LastLoadedModel; }
 };
 
 #endif //_SPRITER_GM_INCLUDED

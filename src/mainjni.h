@@ -521,6 +521,30 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1AddLoad
 JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1FindLoadedSprite
 (JNIEnv *, jclass, jdouble, jstring);
 
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetNumSprites
+* Signature: (D)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetNumSprites
+(JNIEnv *, jclass, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSprite
+* Signature: (DD)Ljava/lang/String;
+*/
+JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSprite
+(JNIEnv *, jclass, jdouble, jdouble);
+
+/*
+* Class:     com_libspritergm_spriterGMNative
+* Method:    spriter_GetSpriteInfoSpriteIndex
+* Signature: (DDD)D
+*/
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoSpriteIndex
+(JNIEnv *, jclass, jdouble, jdouble, jdouble);
+
 #ifdef __cplusplus
 }
 #endif

@@ -3,7 +3,7 @@
   <name>spriterGM</name>
   <version>1.0.0</version>
   <packageID>com.vitaliyzhygotsky.spritergm</packageID>
-  <ProductID>ACBD3CFF4E539AD869A0E8E3B4B022DD</ProductID>
+  <ProductID></ProductID>
   <date>10/11/16</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
@@ -955,6 +955,42 @@
             <arg>1</arg>
           </args>
         </function>
+        <function>
+          <name>spriter_GetNumSprites</name>
+          <externalName>spriter_GetNumSprites</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetNumSprites(double ModelIndex);</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSprite</name>
+          <externalName>spriter_GetSprite</externalName>
+          <kind>12</kind>
+          <help>const char* spriter_GetSprite(double ModelIndex, double SpriteIndex);</help>
+          <returnType>1</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoSpriteIndex</name>
+          <externalName>spriter_GetSpriteInfoSpriteIndex</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
       </functions>
       <constants/>
     </file>
@@ -1728,6 +1764,42 @@
           <args>
             <arg>2</arg>
             <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetNumSprites</name>
+          <externalName>spriter_GetNumSprites</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetNumSprites(double ModelIndex);</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSprite</name>
+          <externalName>spriter_GetSprite</externalName>
+          <kind>12</kind>
+          <help>const char* spriter_GetSprite(double ModelIndex, double SpriteIndex);</help>
+          <returnType>1</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoSpriteIndex</name>
+          <externalName>spriter_GetSpriteInfoSpriteIndex</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
           </args>
         </function>
       </functions>

@@ -13,7 +13,6 @@ spriter_render_instance();
 
 var nSpriteInfos = spriter_get_instance_sprite_count();
 
-
 var nTriggerCount = spriter_instance_get_trigger_count();
 var nSoundCount = spriter_instance_get_sound_count();
 
@@ -32,25 +31,10 @@ for (i = nSoundCount - 1; i >= 0; i--)
 //sprite info types
 //IMAGE = 1, BOX = 2, POINT = 3, BONE = 4
 
-//FIXME
-if instCount != nSpriteInfos
-{
-    if instCount < nSpriteInfos
-    {
-        inst[nSpriteInfos - 1] = instance_create(0, 0, spriterModel_image);
-    }
-}
-
-
-for (i = instCount - 1; i >= 0; i--)
-{
-    inst[i].visible = 0;
-}
-
 for (i = nSpriteInfos - 1; i >= 0; i--)
 {
+    var sprite = spriter_GetSpriteInfoSpriteIndex(modelIndex, instanceIndex, i);
     var type = spriter_get_instance_sprite_type(i);
-    var spriteName = spriter_get_instance_sprite_name(i);
     var px = spriter_get_instance_sprite_xposition(i);
     var py = spriter_get_instance_sprite_yposition(i);
     var pivotX = spriter_get_instance_sprite_xpivot(i);
@@ -64,22 +48,12 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
     var alpha = spriter_get_instance_sprite_alpha(i);
     var isAtlas = spriter_IsSpriteInfoAtlasFile(modelIndex, instanceIndex, i);
     
-    inst[i].visible = isRender;
-    
-    var sprite = -1;
-    
     if type == 1
     {
-        sprite = spriter_FindLoadedSprite(modelIndex, spriteName);
-        
-        if sprite == -1
-        {
-            sprite = sprite_add(spriteName,1,0,0,0,0);
-            spriter_AddLoadedSprite(modelIndex, spriteName, sprite);
-        }
-        
         inst[i].sprite_index = sprite;
     }
+    
+    inst[i].visible = isRender;
          
     inst[i].image_xscale = scaleX;
     inst[i].image_yscale = scaleY;

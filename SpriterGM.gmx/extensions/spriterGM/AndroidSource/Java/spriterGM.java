@@ -293,4 +293,19 @@ public class spriterGM {
 	public double spriter_FindLoadedSprite(double ModelIndex, String pSpriteName) {
 		return spriterGMNative.spriter_FindLoadedSprite(ModelIndex, pSpriteName);
 	}
+	
+	public double spriter_GetNumSprites(double ModelIndex)
+    {
+        return spriterGMNative.spriter_GetNumSprites(ModelIndex);
+    }
+
+    public String spriter_GetSprite(double ModelIndex, double SpriteIndex)
+    {
+        return spriterGMNative.spriter_GetSprite(ModelIndex, SpriteIndex);
+    }
+
+    public double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+    {
+        return spriterGMNative.spriter_GetSpriteInfoSpriteIndex(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    }
 }

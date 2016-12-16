@@ -22,7 +22,6 @@
 #include "mainjni.h"
 #include "maindll.h"
 #include "android_fopen.h"
-#include <string>
 
 void GetJStringContent(JNIEnv *AEnv, jstring AStr, std::string &ARes) {
     if (!AStr) {
@@ -35,9 +34,11 @@ void GetJStringContent(JNIEnv *AEnv, jstring AStr, std::string &ARes) {
     AEnv->ReleaseStringUTFChars(AStr,s);
 }
 
-jstring GetJStringContent(JNIEnv *AEnv, const char *byte)
+jstring GetJStringContent(JNIEnv *AEnv, const std::string &ARes)
 {
-    return AEnv->NewStringUTF(byte);
+	jstring r = AEnv->NewStringUTF(ARes.c_str());
+
+	return r;
 }
 
 JNIEXPORT void JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetAssetManager
@@ -426,6 +427,24 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1FindLoa
 	GetJStringContent(env, spriteName, str);
 
 	return spriter_FindLoadedSprite(modelIndex, str.c_str());
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetNumSprites
+(JNIEnv *env, jclass object, jdouble modelIndex)
+{
+	return spriter_GetNumSprites(modelIndex);
+}
+
+JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSprite
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble spriteIndex)
+{
+	return GetJStringContent(env, spriter_GetSprite(modelIndex, spriteIndex));
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoSpriteIndex
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+{
+	return spriter_GetSpriteInfoSpriteIndex(modelIndex, instanceIndex, spriteInfoIndex);
 }
 
 

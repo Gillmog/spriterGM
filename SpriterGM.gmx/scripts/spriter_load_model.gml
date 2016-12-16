@@ -10,6 +10,22 @@ spriterFile = file;
 modelIndex = spriter_LoadModel(spriterFile);
 spriter_check_errors();
 
+var spritesCount = spriter_GetNumSprites(modelIndex);
+
+for (var i = 0; i < spritesCount; i++)
+{
+    var spriteName = spriter_GetSprite(modelIndex, i);
+    
+    var spriteIndex = spriter_FindLoadedSprite(modelIndex, spriteName);
+    
+    if spriteIndex == -1
+    {
+        spriteIndex = sprite_add(spriteName,1,0,0,0,0);
+    
+        spriter_AddLoadedSprite(modelIndex, spriteName, spriteIndex);
+    }
+}
+
 instanceIndex = spriter_CreateInstance(modelIndex, instanceName);
 spriter_check_errors();
 spriter_set_instance_position(x + sprite_width * 0.5, y + sprite_height * 0.5);
@@ -24,9 +40,9 @@ var nSpriteInfos = spriter_get_instance_sprite_count();
 
 //sprite info types
 //IMAGE = 1, BOX = 2, POINT = 3, BONE = 4
-for (i = nSpriteInfos - 1; i >= 0; i--)
+for (var i = nSpriteInfos - 1; i >= 0; i--)
 {
-    var spriteName = spriter_get_instance_sprite_name(i);
+    var sprite = spriter_GetSpriteInfoSpriteIndex(modelIndex, instanceIndex, i);
     var type = spriter_get_instance_sprite_type(i);
     var px = spriter_get_instance_sprite_xposition(i);
     var py = spriter_get_instance_sprite_yposition(i);
@@ -40,19 +56,6 @@ for (i = nSpriteInfos - 1; i >= 0; i--)
     var isRender = spriter_get_instance_sprite_visible(i);
     var alpha = spriter_get_instance_sprite_alpha(i);
     var isAtlas = spriter_IsSpriteInfoAtlasFile(modelIndex, instanceIndex, i);
-    
-    var sprite = -1;
-    
-    if type == 1
-    {
-        sprite = spriter_FindLoadedSprite(modelIndex, spriteName);
-        
-        if sprite == -1
-        {
-            sprite = sprite_add(spriteName,1,0,0,0,0);
-            spriter_AddLoadedSprite(modelIndex, spriteName, sprite);
-        }
-    }
     
     var instanceObject = -1;
     
