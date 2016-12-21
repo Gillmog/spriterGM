@@ -10,17 +10,12 @@ draw_set_alpha_test(false);
 for (i = 0; i < nSpriteInfos; i++)
 {
     var sprite = spriter_GetSpriteInfoSpriteIndex(modelIndex, instanceIndex, i);
-    var type = spriter_get_instance_sprite_type(i);
-    var px = spriter_get_instance_sprite_xposition(i);
-    var py = spriter_get_instance_sprite_yposition(i);
-    var pivotX = spriter_get_instance_sprite_xpivot(i);
-    var pivotY =  spriter_get_instance_sprite_ypivot(i);
-    var scaleX = spriter_get_instance_sprite_xscale(i);
-    var scaleY = spriter_get_instance_sprite_yscale(i);
-    var sizeX = spriter_get_instance_sprite_xsize(i);
-    var sizeY = spriter_get_instance_sprite_ysize(i);
-    var angle = spriter_get_instance_sprite_angle(i);
-    var alpha = spriter_get_instance_sprite_alpha(i);
+    var scaleX = spriter_GetSpriteInfoScaleX(modelIndex, instanceIndex, i);
+    var scaleY = spriter_GetSpriteInfoScaleY(modelIndex, instanceIndex, i);
+    var sizeX = 0;
+    var sizeY = 0;
+    var angle = spriter_GetSpriteInfoAngle(modelIndex, instanceIndex, i);
+    var alpha = spriter_GetSpriteInfoAlpha(modelIndex, instanceIndex, i);
     var isAtlas = spriter_IsSpriteInfoAtlasFile(modelIndex, instanceIndex, i);
     
     if sprite != -1
@@ -57,12 +52,12 @@ for (i = 0; i < nSpriteInfos; i++)
         
         angle = -angle;
         
-        spriter_set_instance_sprite_width(i, srcImageWidth);
-        spriter_set_instance_sprite_height(i, srcImageHeight);
+        spriter_SetSpriteInfoImageWidth(modelIndex, instanceIndex, i, srcImageWidth);
+        spriter_SetSpriteInfoImageHeight(modelIndex, instanceIndex, i, srcImageHeight);
     
-        var _x = spriter_get_instance_sprite_render_xposition(i);
-        var _y =  spriter_get_instance_sprite_render_yposition(i);
-        
+        var _x = spriter_GetSpriteInfoGMRenderPositionX(modelIndex, instanceIndex, i);
+        var _y =  spriter_GetSpriteInfoGMRenderPositionY(modelIndex, instanceIndex, i);
+            
         var m = matrix_2D_identity();
          
         m = matrix_2D_orientate(m, angle);
@@ -80,7 +75,7 @@ for (i = 0; i < nSpriteInfos; i++)
         var tbly = matrix_2D_y_multiply(m, pivotOffsetX, pivotOffsetY + sizeY) + _y;
         
         m = 0;
-      
+        
          // Flip X?
         if scaleX < 0.0
         {
@@ -150,7 +145,7 @@ for (i = 0; i < nSpriteInfos; i++)
         var text_tbly = matrix_2D_y_multiply(tex_m, texLeft, texBottom);
         
         tex_m = 0;
-        
+      
         draw_set_alpha(alpha);   
         draw_set_colour(image_blend);
         draw_primitive_begin_texture(pr_trianglefan, texture);
