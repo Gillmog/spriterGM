@@ -38,7 +38,8 @@ namespace SpriterEngine
 	{
 		initializeFile();
 		
-		CSpriterGM::GetSingleton()->GetLastLoadedModel().AddSprite(initialFilePath);
+		if (!CSpriterGM::GetSingleton()->GetLastLoadedModel().IsAtlas())
+			CSpriterGM::GetSingleton()->GetLastLoadedModel().AddSprite(initialFilePath);
 	}
 
 	void GMImageFile::initializeFile()
@@ -66,13 +67,17 @@ namespace SpriterEngine
 			GMSpriteInfo.GetAtlasFrame().m_SpriteSourcePositionY = atlasFrameData.spriteSourcePosition.y;
 			GMSpriteInfo.GetAtlasFrame().m_SpriteSourceSizeX = atlasFrameData.spriteSourceSize.x;
 			GMSpriteInfo.GetAtlasFrame().m_SpriteSourceSizeY = atlasFrameData.spriteSourceSize.y;
+
+			int GMSpriteIndex = Model.FindLoadedSprite(atlasFile->path());
+			GMSpriteInfo.SetGMSpriteIndex(GMSpriteIndex);
 		}
 		else
-			GMSpriteInfo.SetSpriteName(spriteInfo->getImage()->path());
+		{
+			int GMSpriteIndex = Model.FindLoadedSprite(spriteInfo->getImage()->path());
+			GMSpriteInfo.SetGMSpriteIndex(GMSpriteIndex);
+		}
 
-		int GMSpriteIndex = Model.FindLoadedSprite(spriteInfo->getImage()->path());
-		GMSpriteInfo.SetGMSpriteIndex(GMSpriteIndex);
-
+		GMSpriteInfo.SetSpriteName(spriteInfo->getImage()->path());
 		GMSpriteInfo.SetPosition(spriteInfo->getPosition());
 		GMSpriteInfo.SetPivot(spriteInfo->getPivot());
 		GMSpriteInfo.SetScale(spriteInfo->getScale());
@@ -92,6 +97,14 @@ namespace SpriterEngine
 	// Overwritten so we can create the sprite from the texture.
 	void GMImageFile::setAtlasFile(AtlasFile *initialAtlasFile, atlasframedata initialAtlasFrameData) 
 	{
+		if (!CSpriterGM::GetSingleton()->GetLastLoadedModel().IsAtlas())
+		{
+			CSpriterGM::GetSingleton()->GetLastLoadedModel().SetAtlas(true);
+			CSpriterGM::GetSingleton()->GetLastLoadedModel().ClearSprites();
+		}
+
 		ImageFile::setAtlasFile(initialAtlasFile, initialAtlasFrameData);
+
+		CSpriterGM::GetSingleton()->GetLastLoadedModel().AddSprite(initialAtlasFile->path());
 	}
 }

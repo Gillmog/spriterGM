@@ -52,7 +52,7 @@ public:
 		m_Garbage.push_back(p);
 	}
 
-	int RemoveGarbage()
+	virtual int RemoveGarbage()
 	{
 		for (size_t i = 0; i < m_Garbage.size(); i++)
 		{
@@ -167,13 +167,13 @@ public:
 	public:
 
 		CGMSpriteInfo() :
-			m_Angle(0.0f), 
+			m_Angle(0.0f),
 			m_bRender(false),
-			m_ImageWidth(0), 
-			m_ImageHeight(0), 
-			m_Alpha(1.0f), 
-			m_Type(UNKNOWN), 
-			m_bAtlasFile(false), 
+			m_ImageWidth(0),
+			m_ImageHeight(0),
+			m_Alpha(1.0f),
+			m_Type(UNKNOWN),
+			m_bAtlasFile(false),
 			m_GMSpriteIndex(-1)
 		{
 
@@ -267,6 +267,8 @@ public:
 		{
 			m_Sprites.clear();
 			m_pInstance = NULL;
+			GMSoundInfoReset();
+			GMTriggerInfoReset();
 			RemoveGarbage();
 		}
 
@@ -301,6 +303,11 @@ public:
 
 		void GMTriggerInfoReset()
 		{
+			for (size_t nTrigger = 0; nTrigger < m_Triggers.size(); nTrigger++)
+			{
+				m_Triggers[nTrigger].RemoveGarbage();
+			}
+
 			m_Triggers.clear();
 		}
 
@@ -316,6 +323,11 @@ public:
 
 		void GMSoundInfoReset()
 		{
+			for (size_t nSound = 0; nSound < m_Sounds.size(); nSound++)
+			{
+				m_Sounds[nSound].RemoveGarbage();
+			}
+
 			m_Sounds.clear();
 		}
 
@@ -331,6 +343,7 @@ public:
 		std::vector<CSpriterGMInstance> m_Instances;
 		std::map<std::string, int> m_MapSprites;
 		std::vector<std::string> m_Sprites;
+		bool m_bAtlas = false;
 
 	public:
 
@@ -344,11 +357,12 @@ public:
 
 		}
 
-		CSpriterGMModel(const CSpriterGMModel &Model) : 
+		CSpriterGMModel(const CSpriterGMModel &Model) :
 			m_pModel(Model.m_pModel),
 			m_Instances(std::move(Model.m_Instances)),
 			m_MapSprites(std::move(Model.m_MapSprites)),
-			m_Sprites(std::move(Model.m_Sprites))
+			m_Sprites(std::move(Model.m_Sprites)),
+			m_bAtlas(Model.m_bAtlas)
 		{
 
 		}
@@ -359,6 +373,7 @@ public:
 			m_Instances.clear();
 			m_MapSprites.clear();
 			m_Sprites.clear();
+			m_bAtlas = false;
 		}
 
 		~CSpriterGMModel()
@@ -412,6 +427,12 @@ public:
 			return false;
 		}
 
+		void ClearSprites()
+		{
+			m_Sprites.clear();
+			m_MapSprites.clear();
+		}
+
 		bool AddSprite(const std::string &SpriteName)
 		{
 			for (size_t n = 0; n < m_Sprites.size(); n++)
@@ -428,6 +449,8 @@ public:
 		int GetNumSprites() const { return (int)m_Sprites.size(); }
 
 		std::string GetSprite(int Index) const { return m_Sprites[Index]; }
+		bool IsAtlas() const { return m_bAtlas; }
+		void SetAtlas(bool val) { m_bAtlas = val; }
 	};
 
 private:

@@ -1803,6 +1803,16 @@
       <script>scripts\spriter_get_instance_sprite_alpha.gml</script>
       <script>scripts\spriter_get_instance_sprite_type.gml</script>
       <script>scripts\spriter_check_errors.gml</script>
+      <scripts name="utils">
+        <script>scripts\matrix_2D_identity.gml</script>
+        <script>scripts\matrix_2D_orientate.gml</script>
+        <script>scripts\matrix_2D_x_multiply.gml</script>
+        <script>scripts\matrix_2D_y_multiply.gml</script>
+        <script>scripts\matrix_2D_translate.gml</script>
+        <script>scripts\matrix_2D_scale.gml</script>
+        <script>scripts\matrix_2D_rotate.gml</script>
+        <script>scripts\matrix_2D_pretranslate.gml</script>
+      </scripts>
     </scripts>
     <script>scripts\spriter_trigger_callback.gml</script>
     <script>scripts\spriter_sound_callback.gml</script>
@@ -1814,7 +1824,6 @@
     <object>objects\spriterModel_image</object>
     <object>objects\spriterModel_point</object>
     <object>objects\spriterModel_box</object>
-    <object>objects\test</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

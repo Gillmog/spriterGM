@@ -667,5 +667,3 @@ double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex,
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetGMSpriteIndex();
 }
 
-
-
