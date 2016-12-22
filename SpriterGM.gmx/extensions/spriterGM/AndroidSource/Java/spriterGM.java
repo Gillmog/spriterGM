@@ -146,14 +146,6 @@ public class spriterGM {
         return spriterGMNative.spriter_SetInstanceCurrentAnimation(ModelIndex, InstanceIndex, pAnimationName, BlendTime);
     }
 
-    public double spriter_SetSpriteInfoImageWidth(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageWidth) {
-        return spriterGMNative.spriter_SetSpriteInfoImageWidth(ModelIndex, InstanceIndex, SpriteInfoIndex, ImageWidth);
-    }
-
-    public double spriter_SetSpriteInfoImageHeight(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageHeight) {
-        return spriterGMNative.spriter_SetSpriteInfoImageHeight(ModelIndex, InstanceIndex, SpriteInfoIndex, ImageHeight);
-    }
-
     public double spriter_SetInstancePosition(double ModelIndex, double InstanceIndex, double px, double py) {
         return spriterGMNative.spriter_SetInstancePosition(ModelIndex, InstanceIndex, px, py);
     }
@@ -234,58 +226,6 @@ public class spriterGM {
         return spriterGMNative.spriter_ForceGarbageCollection();
     }
 
-	public double spriter_IsSpriteInfoAtlasFile(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_IsSpriteInfoAtlasFile(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFramePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFramePositionX(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFramePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFramePositionY(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_IsSpriteInfoAtlasFrameRotated(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_IsSpriteInfoAtlasFrameRotated(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_IsSpriteInfoAtlasFrameTrimmed(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_IsSpriteInfoAtlasFrameTrimmed(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFrameFrameSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameFrameSizeX(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFrameFrameSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameFrameSizeY(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFrameSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSourceSizeX(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFrameSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSourceSizeY(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
-	public double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(ModelIndex, InstanceIndex, SpriteInfoIndex);
-    }
-
 	public double spriter_AddLoadedSprite(double ModelIndex, String pSpriteName, double SpritePtr) {
 		return spriterGMNative.spriter_AddLoadedSprite(ModelIndex, pSpriteName, SpritePtr);
 	}
@@ -308,4 +248,34 @@ public class spriterGM {
     {
         return spriterGMNative.spriter_GetSpriteInfoSpriteIndex(ModelIndex, InstanceIndex, SpriteInfoIndex);
     }
+
+	public static double spriter_SetLoadedSpriteTexelSize(double ModelIndex, String pSpriteName, double TexelWidth, double TexelHeight)
+	{
+		return spriterGMNative.spriter_SetLoadedSpriteTexelSize(ModelIndex, pSpriteName, TexelWidth, TexelHeight);
+	}
+
+	public static double spriter_SetLoadedSpriteSize(double ModelIndex, String pSpriteName, double TextureWidth, double TextureHeight)
+	{
+		return spriterGMNative.spriter_SetLoadedSpriteSize(ModelIndex, pSpriteName, TextureWidth, TextureHeight);
+	}
+
+	public static double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+	{
+		return spriterGMNative.spriter_GetSpriteInfoMeshPointX(ModelIndex, InstanceIndex, SpriteInfoIndex, PointIndex);
+	}
+
+	public static double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+	{
+		return spriterGMNative.spriter_GetSpriteInfoMeshPointY(ModelIndex, InstanceIndex, SpriteInfoIndex, PointIndex);
+	}
+
+	public static double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+	{
+		return spriterGMNative.spriter_GetSpriteInfoMeshUVX(ModelIndex, InstanceIndex, SpriteInfoIndex, PointIndex);
+	}
+
+	public static double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+	{
+		return spriterGMNative.spriter_GetSpriteInfoMeshUVY(ModelIndex, InstanceIndex, SpriteInfoIndex, PointIndex);
+	}
 }

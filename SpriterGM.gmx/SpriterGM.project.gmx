@@ -1762,30 +1762,12 @@
       <script>scripts\spriter_load_model.gml</script>
       <script>scripts\spriter_update_instance.gml</script>
       <script>scripts\spriter_delete_gm_instance.gml</script>
-      <script>scripts\spriter_render.gml</script>
-      <script>scripts\spriter_get_instance_sprite_count.gml</script>
-      <script>scripts\spriter_get_instance_sprite_name.gml</script>
       <script>scripts\spriter_render_instance.gml</script>
-      <script>scripts\spriter_get_instance_sprite_string.gml</script>
-      <script>scripts\spriter_get_instance_sprite_xposition.gml</script>
-      <script>scripts\spriter_get_instance_sprite_yposition.gml</script>
-      <script>scripts\spriter_get_instance_sprite_xpivot.gml</script>
-      <script>scripts\spriter_get_instance_sprite_ypivot.gml</script>
-      <script>scripts\spriter_get_instance_sprite_xsize.gml</script>
-      <script>scripts\spriter_get_instance_sprite_ysize.gml</script>
-      <script>scripts\spriter_get_instance_sprite_xscale.gml</script>
-      <script>scripts\spriter_get_instance_sprite_yscale.gml</script>
-      <script>scripts\spriter_get_instance_sprite_angle.gml</script>
-      <script>scripts\spriter_get_instance_sprite_visible.gml</script>
-      <script>scripts\spriter_get_instance_sprite_render_xposition.gml</script>
-      <script>scripts\spriter_get_instance_sprite_render_yposition.gml</script>
       <script>scripts\spriter_set_instance_current_animation.gml</script>
       <script>scripts\spriter_set_instance_position.gml</script>
       <script>scripts\spriter_set_instance_scale.gml</script>
       <script>scripts\spriter_set_instance_angle.gml</script>
       <script>scripts\spriter_instance_apply_character_map.gml</script>
-      <script>scripts\spriter_set_instance_sprite_width.gml</script>
-      <script>scripts\spriter_set_instance_sprite_height.gml</script>
       <script>scripts\spriter_instance_get_xposition.gml</script>
       <script>scripts\spriter_instance_get_yposition.gml</script>
       <script>scripts\spriter_instance_remove_character_map.gml</script>
@@ -1795,24 +1777,11 @@
       <script>scripts\spriter_instance_pause_playback.gml</script>
       <script>scripts\spriter_instance_set_time_ratio.gml</script>
       <script>scripts\spriter_instance_animation_just_finished.gml</script>
-      <script>scripts\spriter_create_instance.gml</script>
       <script>scripts\spriter_instance_get_trigger_count.gml</script>
       <script>scripts\spriter_instance_get_sound_count.gml</script>
       <script>scripts\spriter_instance_get_trigger_name.gml</script>
       <script>scripts\spriter_instance_get_sound_name.gml</script>
-      <script>scripts\spriter_get_instance_sprite_alpha.gml</script>
-      <script>scripts\spriter_get_instance_sprite_type.gml</script>
       <script>scripts\spriter_check_errors.gml</script>
-      <scripts name="utils">
-        <script>scripts\matrix_2D_identity.gml</script>
-        <script>scripts\matrix_2D_orientate.gml</script>
-        <script>scripts\matrix_2D_x_multiply.gml</script>
-        <script>scripts\matrix_2D_y_multiply.gml</script>
-        <script>scripts\matrix_2D_translate.gml</script>
-        <script>scripts\matrix_2D_scale.gml</script>
-        <script>scripts\matrix_2D_rotate.gml</script>
-        <script>scripts\matrix_2D_pretranslate.gml</script>
-      </scripts>
     </scripts>
     <script>scripts\spriter_trigger_callback.gml</script>
     <script>scripts\spriter_sound_callback.gml</script>

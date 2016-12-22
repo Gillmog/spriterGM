@@ -13,8 +13,9 @@
   <code>show_debug_overlay(true);
 
 var inst1 = instance_create(100, 768 / 2, spriterPlayerModel3);
-var inst2 = instance_create(300, 768 / 2, spriterPlayerModel3);
+var inst2 = instance_create(300, 768 / 2, spriterPlayerModel2);
 var inst3 = instance_create(600, 768 / 2, spriterPlayerModel3);
+
 return 0;
 //for stress test only
 var gx = 32;

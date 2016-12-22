@@ -195,18 +195,6 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetInst
     return spriter_SetInstanceCurrentAnimation(modelIndex, instanceIndex, str.c_str(), blendTime);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetSpriteInfoImageWidth
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble imageWidth)
-{
-    return spriter_SetSpriteInfoImageWidth(modelIndex, instanceIndex, spriteInfoIndex, imageWidth);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetSpriteInfoImageHeight
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble imageHeight)
-{
-    return spriter_SetSpriteInfoImageHeight(modelIndex, instanceIndex, spriteInfoIndex, imageHeight);
-}
-
 JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetInstancePosition
         (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble px, jdouble py)
 {
@@ -333,85 +321,6 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1ForceGa
     return spriter_ForceGarbageCollection();
 }
 
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsSpriteInfoAtlasFile
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_IsSpriteInfoAtlasFile(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFramePositionX
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFramePositionX(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFramePositionY
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFramePositionY(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsSpriteInfoAtlasFrameRotated
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_IsSpriteInfoAtlasFrameRotated(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsSpriteInfoAtlasFrameTrimmed
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_IsSpriteInfoAtlasFrameTrimmed(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameFrameSizeX
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFrameFrameSizeX(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameFrameSizeY
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFrameFrameSizeY(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSourceSizeX
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFrameSourceSizeX(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSourceSizeY
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFrameSourceSizeY(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourcePositionX
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourcePositionY
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourceSizeX
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAtlasFrameSpriteSourceSizeY
-(JNIEnv * env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
-{
-	return spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(modelIndex, instanceIndex, spriteInfoIndex);
-}
-
 JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1AddLoadedSprite
 (JNIEnv *env, jclass object, jdouble modelIndex, jstring spriteName, jdouble spritePtr)
 {
@@ -445,6 +354,51 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpri
 (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
 {
 	return spriter_GetSpriteInfoSpriteIndex(modelIndex, instanceIndex, spriteInfoIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetLoadedSpriteTexelSize
+(JNIEnv *env, jclass object, jdouble modelIndex, jstring spriteName, jdouble texelWidth, jdouble texelHeight)
+{
+	std::string str;
+	GetJStringContent(env, spriteName, str);
+	return spriter_SetLoadedSpriteTexelSize(modelIndex, str, texelWidth, texelHeight);
+}
+
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetLoadedSpriteSize
+(JNIEnv *env, jclass object, jdouble modelIndex, jstring spriteName, jdouble spriteWidth, jdouble spriteHeight)
+{
+	std::string str;
+	GetJStringContent(env, spriteName, str);
+	return spriter_SetLoadedSpriteSize(modelIndex, str, spriteWidth, spriteHeight);
+}
+
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshPointX
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble pointIndex)
+{
+	return spriter_GetSpriteInfoMeshPointX(modelIndex, instanceIndex, spriteInfoIndex, pointIndex);
+}
+
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshPointY
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble pointIndex)
+{
+	return spriter_GetSpriteInfoMeshPointY(modelIndex, instanceIndex, spriteInfoIndex, pointIndex);
+}
+
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshUVX
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble pointIndex)
+{
+	return spriter_GetSpriteInfoMeshUVX(modelIndex, instanceIndex, spriteInfoIndex, pointIndex);
+}
+
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshUVY
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble pointIndex)
+{
+	return spriter_GetSpriteInfoMeshUVY(modelIndex, instanceIndex, spriteInfoIndex, pointIndex);
 }
 
 

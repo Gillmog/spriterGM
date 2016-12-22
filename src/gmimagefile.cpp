@@ -51,6 +51,8 @@ namespace SpriterEngine
 	{
 		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
 
+		CSpriterGM::CSprite *pSprite = NULL;
+		
 		if (atlasFile)
 		{
 			GMSpriteInfo.SetSpriteName(atlasFile->path());
@@ -68,13 +70,12 @@ namespace SpriterEngine
 			GMSpriteInfo.GetAtlasFrame().m_SpriteSourceSizeX = atlasFrameData.spriteSourceSize.x;
 			GMSpriteInfo.GetAtlasFrame().m_SpriteSourceSizeY = atlasFrameData.spriteSourceSize.y;
 
-			int GMSpriteIndex = Model.FindLoadedSprite(atlasFile->path());
-			GMSpriteInfo.SetGMSpriteIndex(GMSpriteIndex);
+			pSprite = Model.FindLoadedSprite(atlasFile->path());
+			
 		}
 		else
 		{
-			int GMSpriteIndex = Model.FindLoadedSprite(spriteInfo->getImage()->path());
-			GMSpriteInfo.SetGMSpriteIndex(GMSpriteIndex);
+			pSprite = Model.FindLoadedSprite(spriteInfo->getImage()->path());
 		}
 
 		GMSpriteInfo.SetSpriteName(spriteInfo->getImage()->path());
@@ -85,6 +86,14 @@ namespace SpriterEngine
 		GMSpriteInfo.SetAlpha(spriteInfo->getAlpha());
 		GMSpriteInfo.SetRender(true);
 		GMSpriteInfo.SetType(CSpriterGM::CGMSpriteInfo::IMAGE);
+
+		if (pSprite)
+		{
+			GMSpriteInfo.SetGMSpriteIndex(pSprite->GetPointer());
+			GMSpriteInfo.CalculateShape(*pSprite);
+		}
+
+
 		Instance.AddGMSpriteInfo(GMSpriteInfo);
 
 	}

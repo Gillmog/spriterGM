@@ -34,6 +34,7 @@
 #include<set>
 #include<map>
 #include<algorithm>
+#define _USE_MATH_DEFINES 
 #include <math.h>
 
 class CGMGarbageCollector
@@ -76,6 +77,219 @@ class CSpriterGM : public CGMGarbageCollector
 
 public:
 
+	class CPoint
+	{
+	public:
+
+		double x = 0.0;
+		double y = 0.0;
+
+		CPoint()
+		{
+		}
+
+		CPoint(double _x, double _y) : x(_x), y(_y)
+		{
+		}
+
+		CPoint(const SpriterEngine::point &p)
+		{
+			*this = p;
+		}
+
+		CPoint(const CPoint &p) : x(p.x), y(p.y)
+		{
+
+		}
+
+		void operator+=(const CPoint &p)
+		{
+			x += p.x;
+			y += p.y;
+		}
+
+		CPoint &operator=(const SpriterEngine::point &p)
+		{
+			x = p.x;
+			y = p.y;
+
+			return *this;
+		}
+
+		void operator-=(const CPoint &p)
+		{
+			x -= p.x;
+			y -= p.y;
+		}
+
+		CPoint operator+(const CPoint &p) const
+		{
+			return CPoint(x + p.x, y + p.y);
+		}
+
+		CPoint operator-(const CPoint &p) const
+		{
+			return CPoint(x - p.x, y - p.y);
+		}
+
+	};
+
+
+	class CRect
+	{
+	public:
+
+		double left;
+		double right;
+		double top;
+		double bottom;
+
+		CRect(double _left, double _top, double _right, double _bottom) : left(_left), top(_top), right(_right), bottom(_bottom)
+		{
+
+		}
+
+		CRect() : left(0.0), top(0.0), right(0.0), bottom(0.0)
+		{
+
+		}
+
+		CPoint GetLeftTop() const
+		{
+			return CPoint(left, top);
+		}
+
+		CPoint GetRightBottom() const
+		{
+			return CPoint(right, bottom);
+		}
+	};
+
+	class CMatrix
+	{
+
+	public:
+
+		double m00 = 0.0;
+		double m01 = 0.0;
+		double m02 = 0.0;
+		double m10 = 0.0;
+		double m11 = 0.0;
+		double m12 = 0.0;
+
+		CMatrix()
+		{
+
+		}
+
+		void Identity()
+		{
+			m00 = 1.0;
+			m01 = 0.0;
+			m02 = 0.0;
+			m10 = 0.0;
+			m11 = 1.0;
+			m12 = 0.0;
+		}
+
+		void operator =(const CMatrix &matrix)
+		{
+			m00 = matrix.m00;
+			m01 = matrix.m01;
+			m02 = matrix.m02;
+			m10 = matrix.m10;
+			m11 = matrix.m11;
+			m12 = matrix.m12;
+		}
+
+		CPoint operator *(const CPoint &p) const
+		{
+			return CPoint(m00 * p.x + m01 * p.y + m02,
+				m10 * p.x + m11 * p.y + m12);
+		}
+
+		void PreTranslate(const CPoint &p)
+		{
+			m02 -= m00 * p.x + m01 * p.y;
+			m12 -= m10 * p.x + m11 * p.y;
+		}
+
+		void PreTranslate(double x, double y)
+		{
+			m02 -= m00 * x + m01 * y;
+			m12 -= m10 * x + m11 * y;
+		}
+
+		void Translate(const CPoint &p)
+		{
+			m02 += p.x;
+			m12 += p.y;
+		}
+
+		void Scale(const CPoint &p)
+		{
+			m00 *= p.x; m01 *= p.x; m02 *= p.x;
+			m10 *= p.y; m11 *= p.y; m12 *= p.y;
+		}
+
+		void Orientate(double angle)
+		{
+			double sangle = sin(angle);
+			double cangle = cos(angle);
+
+			m00 = cangle;
+			m01 = -sangle;
+			m02 = 0.0;
+			m10 = sangle;
+			m11 = cangle;
+			m12 = 0.0;
+		}
+
+		void Rotate(double angle)
+		{
+			double sangle = sin(angle);
+			double cangle = cos(angle);
+
+			double _m00 = 0.0;
+			double _m01 = 0.0;
+			double _m10 = 0.0;
+			double _m11 = 0.0;
+
+			_m00 = m00 * cangle + m01 * sangle;
+
+			_m01 = -m00 * sangle + m01 * cangle;
+
+			_m10 = m10 * cangle + m11 * sangle;
+
+			_m11 = -m10 * sangle + m11 * cangle;
+
+			m00 = _m00;
+			m01 = _m01;
+			m10 = _m10;
+			m11 = _m11;
+		}
+
+	};
+
+	class CSprite
+	{
+		std::string m_FileName;
+		int m_Pointer = -1;
+		CPoint m_Size;
+		CPoint m_TexelSize;
+
+	public:
+
+		const std::string &GetFileName() const { return m_FileName; }
+		void SetFileName(const std::string &val) { m_FileName = val; }
+		int GetPointer() const { return m_Pointer; }
+		void SetPointer(int val) { m_Pointer = val; }
+		CPoint GetSize() const { return m_Size; }
+		void SetSize(CPoint val) { m_Size = val; }
+		CPoint GetTexelSize() const { return m_TexelSize; }
+		void SetTexelSize(CPoint val) { m_TexelSize = val; }
+	};
+
 	class CGMTriggerInfo : public CGMGarbageCollector
 	{
 		std::string m_TriggerName;
@@ -117,14 +331,12 @@ public:
 	class CGMSpriteInfo : public CGMGarbageCollector
 	{
 		std::string m_SpriteName;
-		SpriterEngine::point m_Position;
-		SpriterEngine::point m_Pivot;
-		SpriterEngine::point m_Size;
-		SpriterEngine::point m_Scale;
+		CPoint m_Position;
+		CPoint m_Pivot;
+		CPoint m_Size;
+		CPoint m_Scale;
 		float m_Angle;
 		bool m_bRender;
-		int m_ImageWidth;
-		int m_ImageHeight;
 		float m_Alpha;
 		
 	public:
@@ -164,13 +376,39 @@ public:
 
 		int m_GMSpriteIndex;
 
+		class CMesh
+		{
+		public:
+
+			std::vector<CPoint> m_Points;
+			std::vector<CPoint> m_UV;
+
+			CMesh(const CMesh &Mesh) : m_Points(std::move(Mesh.m_Points)), m_UV(std::move(Mesh.m_UV))
+			{
+
+			}
+
+			CMesh()
+			{
+			}
+
+			void Reset()
+			{
+				m_Points.clear();
+				m_UV.clear();
+			}
+		};
+
+		CMesh m_Mesh;
+		CPoint m_RenderPosition;
+
+		CPoint CalculatePosition(const CSprite &Sprite);
+
 	public:
 
 		CGMSpriteInfo() :
 			m_Angle(0.0f),
 			m_bRender(false),
-			m_ImageWidth(0),
-			m_ImageHeight(0),
 			m_Alpha(1.0f),
 			m_Type(UNKNOWN),
 			m_bAtlasFile(false),
@@ -187,13 +425,13 @@ public:
 			m_Scale(Spriteinfo.m_Scale),
 			m_Angle(Spriteinfo.m_Angle),
 			m_bRender(Spriteinfo.m_bRender),
-			m_ImageWidth(Spriteinfo.m_ImageWidth),
-			m_ImageHeight(Spriteinfo.m_ImageHeight),
 			m_Alpha(Spriteinfo.m_Alpha),
 			m_Type(Spriteinfo.m_Type),
 			m_bAtlasFile(Spriteinfo.m_bAtlasFile),
 			m_AtlasFrame(Spriteinfo.m_AtlasFrame),
-			m_GMSpriteIndex(Spriteinfo.m_GMSpriteIndex)
+			m_GMSpriteIndex(Spriteinfo.m_GMSpriteIndex),
+			m_Mesh(Spriteinfo.m_Mesh),
+			m_RenderPosition(Spriteinfo.m_RenderPosition)
 		{
 
 		}
@@ -204,28 +442,24 @@ public:
 		}
 
 		std::string GetSpriteName() const { return m_SpriteName; }
-		void SetSpriteName(std::string val) { m_SpriteName = val; }
-		SpriterEngine::point GetPosition() const { return m_Position; }
-		void SetPosition(SpriterEngine::point val) { m_Position = val; }
-		SpriterEngine::point GetPivot() const { return m_Pivot; }
-		void SetPivot(SpriterEngine::point val) { m_Pivot = val; }
-		SpriterEngine::point GetSize() const { return m_Size; }
-		void SetSize(SpriterEngine::point val) { m_Size = val; }
-		SpriterEngine::point GetScale() const { return m_Scale; }
-		void SetScale(SpriterEngine::point val) { m_Scale = val; }
+		void SetSpriteName(const std::string &val) { m_SpriteName = val; }
+		CPoint GetPosition() const { return m_Position; }
+		void SetPosition(const CPoint &val) { m_Position = val; }
+		CPoint GetPivot() const { return m_Pivot; }
+		void SetPivot(const CPoint &val) { m_Pivot = val; }
+		CPoint GetSize() const { return m_Size; }
+		void SetSize(const CPoint &val) { m_Size = val; }
+		CPoint GetScale() const { return m_Scale; }
+		void SetScale(const CPoint &val) { m_Scale = val; }
 		float GetAngle() const { return m_Angle; }
 		void SetAngle(float val) { m_Angle = val; }
 		bool IsRender() const { return m_bRender; }
 		void SetRender(bool val) { m_bRender = val; }
-		int GetImageWidth() const { return m_ImageWidth; }
-		void SetImageWidth(int val) { m_ImageWidth = val; }
-		int GetImageHeight() const { return m_ImageHeight; }
-		void SetImageHeight(int val) { m_ImageHeight = val; }
 
 		CSpriterGM::CGMSpriteInfo::EType GetType() const { return m_Type; }
 		void SetType(CSpriterGM::CGMSpriteInfo::EType val) { m_Type = val; }
 
-		SpriterEngine::point CalculatePosition();
+		void CalculateShape(const CSprite &Sprite);
 	
 		float GetAlpha() const { return m_Alpha; }
 		void SetAlpha(float val) { m_Alpha = val; }
@@ -237,6 +471,11 @@ public:
 
 		int GetGMSpriteIndex() const { return m_GMSpriteIndex; }
 		void SetGMSpriteIndex(int val) { m_GMSpriteIndex = val; }
+
+		const CPoint &GetRenderPosition() const { return m_RenderPosition; }
+
+		double GetMeshX(bool bGetUV, int PointIndex) { return bGetUV ? m_Mesh.m_UV[PointIndex].x : m_Mesh.m_Points[PointIndex].x; }
+		double GetMeshY(bool bGetUV, int PointIndex) { return bGetUV ? m_Mesh.m_UV[PointIndex].y : m_Mesh.m_Points[PointIndex].y; }
 	};
 
 	class CSpriterGMInstance : public CGMGarbageCollector
@@ -341,7 +580,7 @@ public:
 	{
 		SpriterEngine::SpriterModel* m_pModel;
 		std::vector<CSpriterGMInstance> m_Instances;
-		std::map<std::string, int> m_MapSprites;
+		std::map<std::string, CSprite> m_MapSprites;
 		std::vector<std::string> m_Sprites;
 		bool m_bAtlas = false;
 
@@ -403,28 +642,51 @@ public:
 			m_Instances.push_back(Instance);
 		}
 
-		int FindLoadedSprite(const std::string &SpriteName)
+		CSprite *FindLoadedSprite(const std::string &SpriteName)
 		{
 			auto Iter = m_MapSprites.find(SpriteName);
 
 			if (Iter != m_MapSprites.end())
 			{
-				return Iter->second;
+				return &Iter->second;
 			}
 
-			return -1;
+			return NULL;
 		}
 
 		bool AddLoadedSprite(const std::string &SpriteName, int SpritePtr)
 		{
-			if (FindLoadedSprite(SpriteName) == -1)
+			if (!FindLoadedSprite(SpriteName))
 			{
-				m_MapSprites.insert(std::pair<std::string, int>(SpriteName, SpritePtr)); 
+				CSprite Sprite;
+				Sprite.SetFileName(SpriteName);
+				Sprite.SetPointer(SpritePtr);
+				m_MapSprites.insert(std::pair<std::string, CSprite>(SpriteName, Sprite));
 
 				return true;
 			}
 
 			return false;
+		}
+
+		void SetLoadedSpriteTexelSize(const std::string &SpriteName, double TexelWidth, double TexelHeight)
+		{
+			CSprite *pSprite = FindLoadedSprite(SpriteName);
+
+			if (pSprite)
+			{
+				pSprite->SetTexelSize(CPoint(TexelWidth, TexelHeight));
+			}
+		}
+
+		void SetLoadedSpriteSize(const std::string &SpriteName, double TextureWidth, double TextureHeight)
+		{
+			CSprite *pSprite = FindLoadedSprite(SpriteName);
+
+			if (pSprite)
+			{
+				pSprite->SetSize(CPoint(TextureWidth, TextureHeight));
+			}
 		}
 
 		void ClearSprites()

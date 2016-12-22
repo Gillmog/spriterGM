@@ -77,10 +77,6 @@ public class spriterGMNative {
 
     native public static double spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceIndex, String pAnimationName, double BlendTime);
 
-    native public static double spriter_SetSpriteInfoImageWidth(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageWidth);
-
-    native public static double spriter_SetSpriteInfoImageHeight(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageHeight);
-
     native public static double spriter_SetInstancePosition(double ModelIndex, double InstanceIndex, double px, double py);
 
     native public static double spriter_GetInstancePositionX(double ModelIndex, double InstanceIndex);
@@ -121,32 +117,6 @@ public class spriterGMNative {
 
     native public static double spriter_ForceGarbageCollection();
 
-	native public static double spriter_IsSpriteInfoAtlasFile(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFramePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFramePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_IsSpriteInfoAtlasFrameRotated(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_IsSpriteInfoAtlasFrameTrimmed(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFrameFrameSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFrameFrameSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFrameSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFrameSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
-	native public static double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
-
 	native public static double spriter_AddLoadedSprite(double ModelIndex, String pSpriteName, double SpritePtr);
 
 	native public static double spriter_FindLoadedSprite(double ModelIndex, String pSpriteName);
@@ -156,4 +126,14 @@ public class spriterGMNative {
 	native public static String spriter_GetSprite(double ModelIndex, double SpriteIndex);
 
 	native public static double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+
+	native public static double spriter_SetLoadedSpriteTexelSize(double ModelIndex, String pSpriteName, double TexelWidth, double TexelHeight);
+
+	native public static double spriter_SetLoadedSpriteSize(double ModelIndex, String pSpriteName, double TextureWidth, double TextureHeight);
+
+	native public static double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);
+	native public static double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);
+
+	native public static double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);
+	native public static double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);
 }

@@ -481,34 +481,6 @@
           </args>
         </function>
         <function>
-          <name>spriter_SetSpriteInfoImageWidth</name>
-          <externalName>spriter_SetSpriteInfoImageWidth</externalName>
-          <kind>12</kind>
-          <help>void spriter_SetSpriteInfoImageWidth(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageWidth)</help>
-          <returnType>2</returnType>
-          <argCount>4</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_SetSpriteInfoImageHeight</name>
-          <externalName>spriter_SetSpriteInfoImageHeight</externalName>
-          <kind>12</kind>
-          <help>void spriter_SetSpriteInfoImageHeight(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageHeight)</help>
-          <returnType>2</returnType>
-          <argCount>4</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
           <name>spriter_GetInstancePositionX</name>
           <externalName>spriter_GetInstancePositionX</externalName>
           <kind>12</kind>
@@ -762,175 +734,6 @@
           <args/>
         </function>
         <function>
-          <name>spriter_IsSpriteInfoAtlasFile</name>
-          <externalName>spriter_IsSpriteInfoAtlasFile</externalName>
-          <kind>12</kind>
-          <help>double spriter_IsSpriteInfoAtlasFile(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFramePositionX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFramePositionX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFramePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFramePositionY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFramePositionY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFramePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_IsSpriteInfoAtlasFrameRotated</name>
-          <externalName>spriter_IsSpriteInfoAtlasFrameRotated</externalName>
-          <kind>12</kind>
-          <help>double spriter_IsSpriteInfoAtlasFrameRotated(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_IsSpriteInfoAtlasFrameTrimmed</name>
-          <externalName>spriter_IsSpriteInfoAtlasFrameTrimmed</externalName>
-          <kind>12</kind>
-          <help>double spriter_IsSpriteInfoAtlasFrameTrimmed(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameFrameSizeX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameFrameSizeX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameFrameSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameFrameSizeY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameFrameSizeY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameFrameSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSourceSizeX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSourceSizeX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSourceSizeY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSourceSizeY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
           <name>spriter_AddLoadedSprite</name>
           <externalName>spriter_AddLoadedSprite</externalName>
           <kind>12</kind>
@@ -986,6 +789,90 @@
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetLoadedSpriteTexelSize</name>
+          <externalName>spriter_SetLoadedSpriteTexelSize</externalName>
+          <kind>11</kind>
+          <help>double spriter_SetLoadedSpriteTexelSize(double ModelIndex, const char *pSpriteName, double TexelWidth, double TexelHeight);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetLoadedSpriteSize</name>
+          <externalName>spriter_SetLoadedSpriteSize</externalName>
+          <kind>11</kind>
+          <help>double spriter_SetLoadedSpriteSize(double ModelIndex, const char *pSpriteName, double TextureWidth, double TextureHeight);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoMeshPointX</name>
+          <externalName>spriter_GetSpriteInfoMeshPointX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoMeshPointY</name>
+          <externalName>spriter_GetSpriteInfoMeshPointY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoMeshUVX</name>
+          <externalName>spriter_GetSpriteInfoMeshUVX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoMeshUVY</name>
+          <externalName>spriter_GetSpriteInfoMeshUVY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
             <arg>2</arg>
             <arg>2</arg>
             <arg>2</arg>
@@ -1292,34 +1179,6 @@
           </args>
         </function>
         <function>
-          <name>spriter_SetSpriteInfoImageWidth</name>
-          <externalName>spriter_SetSpriteInfoImageWidth</externalName>
-          <kind>12</kind>
-          <help>void spriter_SetSpriteInfoImageWidth(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageWidth)</help>
-          <returnType>2</returnType>
-          <argCount>4</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_SetSpriteInfoImageHeight</name>
-          <externalName>spriter_SetSpriteInfoImageHeight</externalName>
-          <kind>12</kind>
-          <help>void spriter_SetSpriteInfoImageHeight(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageHeight)</help>
-          <returnType>2</returnType>
-          <argCount>4</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
           <name>spriter_GetInstancePositionX</name>
           <externalName>spriter_GetInstancePositionX</externalName>
           <kind>12</kind>
@@ -1558,7 +1417,7 @@
           <name>spriter_GetLastError</name>
           <externalName>spriter_GetLastError</externalName>
           <kind>12</kind>
-          <help>onst char* spriter_GetLastError()</help>
+          <help>const char* spriter_GetLastError()</help>
           <returnType>1</returnType>
           <argCount>-1</argCount>
           <args/>
@@ -1571,175 +1430,6 @@
           <returnType>2</returnType>
           <argCount>-1</argCount>
           <args/>
-        </function>
-        <function>
-          <name>spriter_IsSpriteInfoAtlasFile</name>
-          <externalName>spriter_IsSpriteInfoAtlasFile</externalName>
-          <kind>12</kind>
-          <help>double spriter_IsSpriteInfoAtlasFile(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFramePositionX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFramePositionX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFramePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFramePositionY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFramePositionY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFramePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_IsSpriteInfoAtlasFrameRotated</name>
-          <externalName>spriter_IsSpriteInfoAtlasFrameRotated</externalName>
-          <kind>12</kind>
-          <help>double spriter_IsSpriteInfoAtlasFrameRotated(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_IsSpriteInfoAtlasFrameTrimmed</name>
-          <externalName>spriter_IsSpriteInfoAtlasFrameTrimmed</externalName>
-          <kind>12</kind>
-          <help>double spriter_IsSpriteInfoAtlasFrameTrimmed(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameFrameSizeX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameFrameSizeX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameFrameSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameFrameSizeY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameFrameSizeY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameFrameSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSourceSizeX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSourceSizeX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSourceSizeY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSourceSizeY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY</name>
-          <externalName>spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY</externalName>
-          <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
-          <returnType>2</returnType>
-          <argCount>3</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
-            <arg>2</arg>
-          </args>
         </function>
         <function>
           <name>spriter_AddLoadedSprite</name>
@@ -1797,6 +1487,90 @@
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetLoadedSpriteTexelSize</name>
+          <externalName>spriter_SetLoadedSpriteTexelSize</externalName>
+          <kind>11</kind>
+          <help>double spriter_SetLoadedSpriteTexelSize(double ModelIndex, const char *pSpriteName, double TexelWidth, double TexelHeight);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_SetLoadedSpriteSize</name>
+          <externalName>spriter_SetLoadedSpriteSize</externalName>
+          <kind>11</kind>
+          <help>double spriter_SetLoadedSpriteSize(double ModelIndex, const char *pSpriteName, double TextureWidth, double TextureHeight);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoMeshPointX</name>
+          <externalName>spriter_GetSpriteInfoMeshPointX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoMeshPointY</name>
+          <externalName>spriter_GetSpriteInfoMeshPointY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoMeshUVX</name>
+          <externalName>spriter_GetSpriteInfoMeshUVX</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_GetSpriteInfoMeshUVY</name>
+          <externalName>spriter_GetSpriteInfoMeshUVY</externalName>
+          <kind>12</kind>
+          <help>double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
             <arg>2</arg>
             <arg>2</arg>
             <arg>2</arg>

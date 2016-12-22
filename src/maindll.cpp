@@ -241,7 +241,7 @@ double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double Instance
 
 	CSpriterGM::CGMSpriteInfo &Info = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex);
 
-	return Info.CalculatePosition().x;
+	return Info.GetRenderPosition().x;
 }
 
 double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
@@ -251,7 +251,7 @@ double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double Instance
 
 	CSpriterGM::CGMSpriteInfo &Info = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex);
 
-	return Info.CalculatePosition().y;
+	return Info.GetRenderPosition().y;
 }
 
 double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
@@ -276,26 +276,6 @@ double spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceInd
 		return 0;
 
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetInstance()->setCurrentAnimation(pAnimationName, BlendTime);
-
-	return 0;
-}
-
-double spriter_SetSpriteInfoImageWidth(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageWidth)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).SetImageWidth(ImageWidth);
-
-	return 0;
-}
-
-double spriter_SetSpriteInfoImageHeight(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double ImageHeight)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).SetImageHeight(ImageHeight);
 
 	return 0;
 }
@@ -507,112 +487,6 @@ double spriter_ForceGarbageCollection()
 	return CSpriterGM::GetSingleton()->ForceGarbageCollection();
 }
 
-//atlas file
-
-double spriter_IsSpriteInfoAtlasFile(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).IsAtlasFile();
-}
-
-double spriter_GetSpriteInfoAtlasFramePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_FramePositionX;
-}
-
-double spriter_GetSpriteInfoAtlasFramePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_FramePositionY;
-}
-
-double spriter_IsSpriteInfoAtlasFrameRotated(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_bRotated;
-}
-
-double spriter_IsSpriteInfoAtlasFrameTrimmed(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_bTrimmed;
-}
-
-double spriter_GetSpriteInfoAtlasFrameFrameSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_FrameSizeX;
-}
-
-double spriter_GetSpriteInfoAtlasFrameFrameSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_FrameSizeY;
-}
-
-double spriter_GetSpriteInfoAtlasFrameSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_SourceSizeX;
-}
-
-double spriter_GetSpriteInfoAtlasFrameSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_SourceSizeY;
-}
-
-double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_SpriteSourcePositionX;
-}
-
-double spriter_GetSpriteInfoAtlasFrameSpriteSourcePositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_SpriteSourcePositionY;
-}
-
-double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_SpriteSourceSizeX;
-}
-
-double spriter_GetSpriteInfoAtlasFrameSpriteSourceSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoAtlasFileValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
-		return 0;
-
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAtlasFrame().m_SpriteSourceSizeY;
-}
-
 double spriter_AddLoadedSprite(double ModelIndex, const char *pSpriteName, double SpritePtr)
 {
 	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
@@ -626,7 +500,10 @@ double spriter_FindLoadedSprite(double ModelIndex, const char *pSpriteName)
 	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).FindLoadedSprite(pSpriteName);
+	if (!CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).FindLoadedSprite(pSpriteName))
+		return -1;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).FindLoadedSprite(pSpriteName)->GetPointer();
 }
 
 double spriter_GetNumSprites(double ModelIndex)
@@ -667,3 +544,54 @@ double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex,
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetGMSpriteIndex();
 }
 
+double spriter_SetLoadedSpriteTexelSize(double ModelIndex, const char *pSpriteName, double TexelWidth, double TexelHeight)
+{
+	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
+		return 0;
+
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).SetLoadedSpriteTexelSize(pSpriteName, TexelWidth, TexelHeight);
+
+	return 0;
+}
+
+double spriter_SetLoadedSpriteSize(double ModelIndex, const char *pSpriteName, double TextureWidth, double TextureHeight)
+{
+	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
+		return 0;
+
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).SetLoadedSpriteSize(pSpriteName, TextureWidth, TextureHeight);
+
+	return 0;
+}
+
+double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+{
+	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+		return 0;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetMeshX(false, PointIndex);
+}
+
+double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+{
+	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+		return 0;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetMeshY(false, PointIndex);
+}
+
+double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+{
+	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+		return 0;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetMeshX(true, PointIndex);
+}
+
+double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+{
+	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+		return 0;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetMeshY(true, PointIndex);
+}
