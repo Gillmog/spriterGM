@@ -1759,32 +1759,21 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="spriterGM">
-      <script>scripts\spriter_load_model.gml</script>
-      <script>scripts\spriter_update_instance.gml</script>
-      <script>scripts\spriter_delete_gm_instance.gml</script>
-      <script>scripts\spriter_render_instance.gml</script>
-      <script>scripts\spriter_set_instance_current_animation.gml</script>
-      <script>scripts\spriter_set_instance_position.gml</script>
-      <script>scripts\spriter_set_instance_scale.gml</script>
-      <script>scripts\spriter_set_instance_angle.gml</script>
-      <script>scripts\spriter_instance_apply_character_map.gml</script>
-      <script>scripts\spriter_instance_get_xposition.gml</script>
-      <script>scripts\spriter_instance_get_yposition.gml</script>
-      <script>scripts\spriter_instance_remove_character_map.gml</script>
-      <script>scripts\spriter_instance_remove_all_character_map.gml</script>
-      <script>scripts\spriter_instance_set_playback_speed_ratio.gml</script>
-      <script>scripts\spriter_instance_start_resume_playback.gml</script>
-      <script>scripts\spriter_instance_pause_playback.gml</script>
-      <script>scripts\spriter_instance_set_time_ratio.gml</script>
-      <script>scripts\spriter_instance_animation_just_finished.gml</script>
-      <script>scripts\spriter_instance_get_trigger_count.gml</script>
-      <script>scripts\spriter_instance_get_sound_count.gml</script>
-      <script>scripts\spriter_instance_get_trigger_name.gml</script>
-      <script>scripts\spriter_instance_get_sound_name.gml</script>
+      <script>scripts\spriter_load.gml</script>
+      <script>scripts\spriter_update.gml</script>
+      <script>scripts\spriter_render.gml</script>
+      <script>scripts\spriter_set_current_animation.gml</script>
+      <script>scripts\spriter_apply_character_map.gml</script>
+      <script>scripts\spriter_remove_character_map.gml</script>
+      <script>scripts\spriter_remove_all_character_map.gml</script>
+      <script>scripts\spriter_set_playback_speed_ratio.gml</script>
+      <script>scripts\spriter_start_resume_playback.gml</script>
+      <script>scripts\spriter_pause_playback.gml</script>
+      <script>scripts\spriter_set_time_ratio.gml</script>
+      <script>scripts\spriter_animation_just_finished.gml</script>
       <script>scripts\spriter_check_errors.gml</script>
+      <script>scripts\spriter_is_trigger.gml</script>
     </scripts>
-    <script>scripts\spriter_trigger_callback.gml</script>
-    <script>scripts\spriter_sound_callback.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\spriterPlayerModel1</object>

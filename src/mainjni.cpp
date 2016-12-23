@@ -361,7 +361,7 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetLoad
 {
 	std::string str;
 	GetJStringContent(env, spriteName, str);
-	return spriter_SetLoadedSpriteTexelSize(modelIndex, str, texelWidth, texelHeight);
+	return spriter_SetLoadedSpriteTexelSize(modelIndex, str.c_str(), texelWidth, texelHeight);
 }
 
 
@@ -370,7 +370,7 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetLoad
 {
 	std::string str;
 	GetJStringContent(env, spriteName, str);
-	return spriter_SetLoadedSpriteSize(modelIndex, str, spriteWidth, spriteHeight);
+	return spriter_SetLoadedSpriteSize(modelIndex, str.c_str(), spriteWidth, spriteHeight);
 }
 
 

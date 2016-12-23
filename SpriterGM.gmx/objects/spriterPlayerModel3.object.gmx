@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_load_model("moss_golem_atlas/moss_golem_atlas.scml", "moss_golem");
+            <string>spriter_load("moss_golem_atlas/moss_golem_atlas.scml", "moss_golem");
 </string>
           </argument>
         </arguments>
@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_update_instance();
+            <string>spriter_update(self);
 </string>
           </argument>
         </arguments>
@@ -71,7 +71,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_render_instance();
+            <string>spriter_render(self);
 </string>
           </argument>
         </arguments>

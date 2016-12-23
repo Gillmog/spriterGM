@@ -3,7 +3,7 @@
   <name>spriterGM</name>
   <version>1.0.0</version>
   <packageID>com.vitaliyzhygotsky.spritergm</packageID>
-  <ProductID></ProductID>
+  <ProductID>ACBD3CFF4E539AD869A0E8E3B4B022DD</ProductID>
   <date>10/11/16</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
@@ -29,158 +29,20 @@
     <Permission>android.permission.READ_EXTERNAL_STORAGE</Permission>
   </androidPermissions>
   <IncludedResources>
-    <Resource>Objects\spriterPlayerModel1</Resource>
-    <Resource>Objects\spriterPlayerModel2</Resource>
-    <Resource>Objects\spriterPlayerModel3</Resource>
-    <Resource>Objects\spriterModel_point</Resource>
-    <Resource>Objects\spriterModel_box</Resource>
-    <Resource>Objects\spriterModel_image</Resource>
-    <Resource>Sprites\debug</Resource>
-    <Resource>Scripts\spriterGM\spriter_load_model</Resource>
-    <Resource>Scripts\spriterGM\spriter_update_instance</Resource>
-    <Resource>Scripts\spriterGM\spriter_delete_gm_instance</Resource>
+    <Resource>Scripts\spriterGM\spriter_load</Resource>
+    <Resource>Scripts\spriterGM\spriter_update</Resource>
     <Resource>Scripts\spriterGM\spriter_render</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_count</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_name</Resource>
-    <Resource>Scripts\spriterGM\spriter_render_instance</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_string</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_xposition</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_yposition</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_xpivot</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_ypivot</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_xsize</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_ysize</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_xscale</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_yscale</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_angle</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_visible</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_render_xposition</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_render_yposition</Resource>
-    <Resource>Scripts\spriterGM\spriter_set_instance_current_animation</Resource>
-    <Resource>Scripts\spriterGM\spriter_set_instance_position</Resource>
-    <Resource>Scripts\spriterGM\spriter_set_instance_scale</Resource>
-    <Resource>Scripts\spriterGM\spriter_set_instance_angle</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_apply_character_map</Resource>
-    <Resource>Scripts\spriterGM\spriter_set_instance_sprite_width</Resource>
-    <Resource>Scripts\spriterGM\spriter_set_instance_sprite_height</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_get_xposition</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_get_yposition</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_remove_character_map</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_remove_all_character_map</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_set_playback_speed_ratio</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_start_resume_playback</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_pause_playback</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_set_time_ratio</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_animation_just_finished</Resource>
-    <Resource>Scripts\spriterGM\spriter_create_instance</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_get_trigger_count</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_get_sound_count</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_get_trigger_name</Resource>
-    <Resource>Scripts\spriterGM\spriter_instance_get_sound_name</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_alpha</Resource>
-    <Resource>Scripts\spriterGM\spriter_get_instance_sprite_type</Resource>
+    <Resource>Scripts\spriterGM\spriter_set_current_animation</Resource>
+    <Resource>Scripts\spriterGM\spriter_apply_character_map</Resource>
+    <Resource>Scripts\spriterGM\spriter_remove_character_map</Resource>
+    <Resource>Scripts\spriterGM\spriter_remove_all_character_map</Resource>
+    <Resource>Scripts\spriterGM\spriter_set_playback_speed_ratio</Resource>
+    <Resource>Scripts\spriterGM\spriter_start_resume_playback</Resource>
+    <Resource>Scripts\spriterGM\spriter_pause_playback</Resource>
+    <Resource>Scripts\spriterGM\spriter_set_time_ratio</Resource>
+    <Resource>Scripts\spriterGM\spriter_animation_just_finished</Resource>
     <Resource>Scripts\spriterGM\spriter_check_errors</Resource>
-    <Resource>Scripts\spriter_trigger_callback</Resource>
-    <Resource>Scripts\spriter_sound_callback</Resource>
-    <Resource>Rooms\room0</Resource>
-    <Resource>Sounds\walk</Resource>
-    <Resource>Included Files\player\human.scml</Resource>
-    <Resource>Included Files\player\human_rotten.scml</Resource>
-    <Resource>Included Files\player\zweihander_charmap.scms</Resource>
-    <Resource>Included Files\player\cheftain_set\cheftain_set_armor.png</Resource>
-    <Resource>Included Files\player\cheftain_set\cheftain_set_greatsword.png</Resource>
-    <Resource>Included Files\player\cheftain_set\cheftain_set_helm.png</Resource>
-    <Resource>Included Files\player\cheftain_set\cheftain_set_rapier.png</Resource>
-    <Resource>Included Files\player\cheftain_set\cheftain_set_shoulder1.png</Resource>
-    <Resource>Included Files\player\cheftain_set\cheftain_set_shoulder2.png</Resource>
-    <Resource>Included Files\player\cheftain_set\cheftain_set_zweisword.png</Resource>
-    <Resource>Included Files\player\cloacks\fur_cloack.png</Resource>
-    <Resource>Included Files\player\gargule_shield\gargule_shield_04.png</Resource>
-    <Resource>Included Files\player\gargule_shield\gargule_shield_05.png</Resource>
-    <Resource>Included Files\player\gargule_shield\gargule_shield_06.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_sett_shield1.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_armor.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_greatsword.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_hands1.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_hands2.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_hands3.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_hands4.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_helm.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_leg1.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_leg2.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_longsword.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_mace.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_panties.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_panties1.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_panties3.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_panties4.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_shield2.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_shield3.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_shoulder1.png</Resource>
-    <Resource>Included Files\player\golem_set\golem_set_shoulder2.png</Resource>
-    <Resource>Included Files\player\images\female_torso.png</Resource>
-    <Resource>Included Files\player\images\horse_tail.png</Resource>
-    <Resource>Included Files\player\images\male_03.png</Resource>
-    <Resource>Included Files\player\images\male_06.png</Resource>
-    <Resource>Included Files\player\images\male_06_1.png</Resource>
-    <Resource>Included Files\player\images\male_06_2.png</Resource>
-    <Resource>Included Files\player\images\male_08.png</Resource>
-    <Resource>Included Files\player\images\male_08_1.png</Resource>
-    <Resource>Included Files\player\images\male_08_2.png</Resource>
-    <Resource>Included Files\player\images\male_11.png</Resource>
-    <Resource>Included Files\player\images\male_14.png</Resource>
-    <Resource>Included Files\player\images\male_17.png</Resource>
-    <Resource>Included Files\player\images\male_19.png</Resource>
-    <Resource>Included Files\player\images\male_21.png</Resource>
-    <Resource>Included Files\player\images\male_31.png</Resource>
-    <Resource>Included Files\player\images\male_34.png</Resource>
-    <Resource>Included Files\player\images\male_36.png</Resource>
-    <Resource>Included Files\player\images\male_38.png</Resource>
-    <Resource>Included Files\player\images\male_41.png</Resource>
-    <Resource>Included Files\player\images\male_43.png</Resource>
-    <Resource>Included Files\player\images\male_45.png</Resource>
-    <Resource>Included Files\player\images\male_51.png</Resource>
-    <Resource>Included Files\player\images\player_head_06.png</Resource>
-    <Resource>Included Files\player\images\weapon.png</Resource>
-    <Resource>Included Files\player\rotten_set\rotten_set_spear.png</Resource>
-    <Resource>Included Files\player\waves\walk.wav</Resource>
-    <Resource>Included Files\player\wood_shield\wood_shield_01.png</Resource>
-    <Resource>Included Files\player\wood_shield\wood_shield_02.png</Resource>
-    <Resource>Included Files\player\wood_shield\wood_shield_03.png</Resource>
-    <Resource>Included Files\moss_golem\moss_golem_chieftain.autosave.scml</Resource>
-    <Resource>Included Files\moss_golem\moss_golem_chieftain.scml</Resource>
-    <Resource>Included Files\moss_golem\images\mg_01.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_01_8c.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_02.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_04.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_05.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_07.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_08.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_11.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_14.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_16.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_17.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_19.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_23.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_24.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_26.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_28.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_29.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_31.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_34.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_37.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_40.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_43.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_45.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_48.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_51.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_52.png</Resource>
-    <Resource>Included Files\moss_golem\images\mg_axe.png</Resource>
-    <Resource>Included Files\moss_golem\images\moss_golem_cut_01.png</Resource>
-    <Resource>Included Files\moss_golem\images\moss_golem_cut_24.png</Resource>
-    <Resource>Included Files\moss_golem\images\moss_golem_cut_29.png</Resource>
-    <Resource>Included Files\moss_golem\images\moss_golem_cut_45.png</Resource>
-    <Resource>Included Files\moss_golem\images\moss_golem_cut_51.png</Resource>
+    <Resource>Scripts\spriterGM\spriter_is_trigger</Resource>
   </IncludedResources>
   <files>
     <file>
