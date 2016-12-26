@@ -27,17 +27,33 @@
 namespace SpriterEngine
 {
 
-	GMBoneInstanceInfo::GMBoneInstanceInfo(point initialSize) :
-		BoneInstanceInfo(initialSize)
+	GMBoneInstanceInfo::GMBoneInstanceInfo(int objectID, std::string objectName, point initialSize) :
+		BoneInstanceInfo(initialSize), m_ObjectID(objectID), m_ObjectName(objectName)
 	{
 	
 	}
 
 	void GMBoneInstanceInfo::render()
 	{
-		if (Settings::renderDebugBones)
-		{
-			
-		}
+		
 	}
+
+	void GMBoneInstanceInfo::renderObject(CSpriterGM::CSpriterGMInstance &Instance)
+	{
+		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
+		GMSpriteInfo.SetSpriteName(m_ObjectName);
+		GMSpriteInfo.SetPosition(getPosition());
+		GMSpriteInfo.SetScale(getScale());
+		GMSpriteInfo.SetSize(CSpriterGM::CPoint(1.0, 1.0));
+		GMSpriteInfo.SetAngle(getAngle());
+		GMSpriteInfo.SetAlpha(getAlpha());
+		GMSpriteInfo.SetRender(true);
+		GMSpriteInfo.SetType(CSpriterGM::CGMSpriteInfo::BONE);
+		CSpriterGM::CSprite Sprite;
+		Sprite.SetSize(getSize());
+		GMSpriteInfo.CalculateShape(Sprite, false);
+		GMSpriteInfo.SetSize(getSize());
+		Instance.AddGMSpriteInfo(GMSpriteInfo);
+	}
+
 }

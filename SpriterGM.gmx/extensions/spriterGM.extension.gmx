@@ -3,7 +3,7 @@
   <name>spriterGM</name>
   <version>1.0.0</version>
   <packageID>com.vitaliyzhygotsky.spritergm</packageID>
-  <ProductID>ACBD3CFF4E539AD869A0E8E3B4B022DD</ProductID>
+  <ProductID></ProductID>
   <date>10/11/16</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
@@ -43,6 +43,16 @@
     <Resource>Scripts\spriterGM\spriter_animation_just_finished</Resource>
     <Resource>Scripts\spriterGM\spriter_check_errors</Resource>
     <Resource>Scripts\spriterGM\spriter_is_trigger</Resource>
+    <Resource>Scripts\spriterGM\point\spriter_find_point</Resource>
+    <Resource>Scripts\spriterGM\point\spriter_get_point_y1</Resource>
+    <Resource>Scripts\spriterGM\point\spriter_get_point_y2</Resource>
+    <Resource>Scripts\spriterGM\point\spriter_get_point_x1</Resource>
+    <Resource>Scripts\spriterGM\point\spriter_get_point_x2</Resource>
+    <Resource>Scripts\spriterGM\point\spriter_get_point_direction</Resource>
+    <Resource>Scripts\spriterGM\box\spriter_find_box</Resource>
+    <Resource>Scripts\spriterGM\box\spriter_get_box_point_x</Resource>
+    <Resource>Scripts\spriterGM\box\spriter_get_box_point_y</Resource>
+    <Resource>Scripts\spriterGM\box\spriter_get_box_collision_rectangle</Resource>
   </IncludedResources>
   <files>
     <file>
@@ -76,20 +86,22 @@
           <kind>12</kind>
           <help>double spriter_CreateInstance(double ModelIndex, const char *pInstanceName)</help>
           <returnType>2</returnType>
-          <argCount>2</argCount>
+          <argCount>3</argCount>
           <args>
             <arg>2</arg>
             <arg>1</arg>
+            <arg>2</arg>
           </args>
         </function>
         <function>
-          <name>spriter_Render</name>
-          <externalName>spriter_Render</externalName>
+          <name>spriter_SetModelEnableBones</name>
+          <externalName>spriter_SetModelEnableBones</externalName>
           <kind>12</kind>
-          <help>void spriter_Render(double TimeElapsed)</help>
+          <help>double spriter_SetModelEnableBones(double ModelIndex, double bEnable);</help>
           <returnType>2</returnType>
-          <argCount>1</argCount>
+          <argCount>2</argCount>
           <args>
+            <arg>2</arg>
             <arg>2</arg>
           </args>
         </function>
@@ -380,14 +392,13 @@
           </args>
         </function>
         <function>
-          <name>spriter_RenderInstance</name>
-          <externalName>spriter_RenderInstance</externalName>
+          <name>spriter_IsModelEnableBones</name>
+          <externalName>spriter_IsModelEnableBones</externalName>
           <kind>12</kind>
-          <help>void spriter_RenderInstance(double ModelIndex, double InstanceIndex)</help>
+          <help>double spriter_IsModelEnableBones(double ModelIndex);</help>
           <returnType>2</returnType>
-          <argCount>2</argCount>
+          <argCount>1</argCount>
           <args>
-            <arg>2</arg>
             <arg>2</arg>
           </args>
         </function>
@@ -774,20 +785,10 @@
           <kind>12</kind>
           <help>double spriter_CreateInstance(double ModelIndex, const char *pInstanceName)</help>
           <returnType>2</returnType>
-          <argCount>2</argCount>
+          <argCount>3</argCount>
           <args>
             <arg>2</arg>
             <arg>1</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_Render</name>
-          <externalName>spriter_Render</externalName>
-          <kind>12</kind>
-          <help>void spriter_Render(double TimeElapsed)</help>
-          <returnType>2</returnType>
-          <argCount>1</argCount>
-          <args>
             <arg>2</arg>
           </args>
         </function>
@@ -1075,18 +1076,6 @@
             <arg>2</arg>
             <arg>2</arg>
             <arg>1</arg>
-          </args>
-        </function>
-        <function>
-          <name>spriter_RenderInstance</name>
-          <externalName>spriter_RenderInstance</externalName>
-          <kind>12</kind>
-          <help>void spriter_RenderInstance(double ModelIndex, double InstanceIndex)</help>
-          <returnType>2</returnType>
-          <argCount>2</argCount>
-          <args>
-            <arg>2</arg>
-            <arg>2</arg>
           </args>
         </function>
         <function>

@@ -35,19 +35,19 @@ namespace SpriterEngine
 	{
 	}
 
-	PointInstanceInfo * GMObjectFactory::newPointInstanceInfo()
+	PointInstanceInfo * GMObjectFactory::newPointInstanceInfo(int objectID, std::string objectName)
 	{
-		return new GMPointInstanceInfo();
+		return new GMPointInstanceInfo(objectID, objectName);
 	}
 
-	BoxInstanceInfo * GMObjectFactory::newBoxInstanceInfo(point size)
+	BoxInstanceInfo * GMObjectFactory::newBoxInstanceInfo(int objectID, std::string objectName, point size)
 	{
-		return new GMBoxInstanceInfo(size);
+		return new GMBoxInstanceInfo(objectID, objectName, size);
 	}
 
-	BoneInstanceInfo * GMObjectFactory::newBoneInstanceInfo(point size)
+	BoneInstanceInfo * GMObjectFactory::newBoneInstanceInfo(int objectID, std::string objectName, point size)
 	{
-		return new GMBoneInstanceInfo(size);
+		return new GMBoneInstanceInfo(objectID, objectName, size);
 	}
 
 	SpriterEngine::TriggerObjectInfo *GMObjectFactory::newTriggerObjectInfo(std::string triggerName)

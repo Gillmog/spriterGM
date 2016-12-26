@@ -32,26 +32,9 @@ double spriter_LoadModel(const char *pFile)
 	return modelIndex;
 }
 
-double spriter_CreateInstance(double ModelIndex, const char *pInstanceName)
+double spriter_CreateInstance(double ModelIndex, const char *pInstanceName, double bEnableBones)
 {
-	return CSpriterGM::GetSingleton()->CreateInstance(ModelIndex, pInstanceName);
-}
-
-double spriter_Render(double TimeElapsed)
-{
-	CSpriterGM::GetSingleton()->Render(TimeElapsed);
-
-	return 0;
-}
-
-double spriter_RenderInstance(double ModelIndex, double InstanceIndex)
-{
-	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
-		return 0;
-
-	CSpriterGM::GetSingleton()->RenderInstance(ModelIndex, InstanceIndex);
-
-	return 0;
+	return CSpriterGM::GetSingleton()->CreateInstance(ModelIndex, pInstanceName, bEnableBones);
 }
 
 double spriter_UpdateInstance(double ModelIndex, double InstanceIndex, double TimeElapsed)

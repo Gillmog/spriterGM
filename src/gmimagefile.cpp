@@ -90,7 +90,7 @@ namespace SpriterEngine
 		if (pSprite)
 		{
 			GMSpriteInfo.SetGMSpriteIndex(pSprite->GetPointer());
-			GMSpriteInfo.CalculateShape(*pSprite);
+			GMSpriteInfo.CalculateShape(*pSprite, true);
 		}
 
 

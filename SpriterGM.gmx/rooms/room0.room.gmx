@@ -13,10 +13,12 @@
   <code>show_debug_overlay(true);
 
 var inst1 = instance_create(100, 768 / 2, spriterPlayerModel1);
-var inst2 = instance_create(300, 768 / 2, spriterPlayerModel2);
-var inst3 = instance_create(600, 768 / 2, spriterPlayerModel3);
 spriter_set_current_animation(inst1, "walk", 0.0);
 spriter_apply_character_map(inst1, "hair1");
+
+var inst2 = instance_create(300, 768 / 2, spriterPlayerModel2);
+var inst3 = instance_create(600, 768 / 2, spriterPlayerModel3);
+
 
 return 0;
 //for stress test only
@@ -26,8 +28,8 @@ var gy = 32;
 var dx = 4;
 var dy = 4;
 
-var mx = 1024 / dx / gx;
-var my = 768 / dy / gy;
+var mx = 8;
+var my = 8;
 
 for (var i = 0; i &lt; my; i++)
 {

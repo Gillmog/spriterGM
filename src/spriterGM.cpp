@@ -73,14 +73,16 @@ int CSpriterGM::LoadModel(const char *pFile)
 	return m_Models.size() - 1;
 }
 
-int CSpriterGM::CreateInstance(int ModelIndex, const std::string &InstanceName)
+int CSpriterGM::CreateInstance(int ModelIndex, const std::string &InstanceName, bool bEnableBones)
 {
 	CSpriterGMModel &Model = m_Models[ModelIndex];
 
 	SpriterEngine::SpriterModel *pScmlModel = Model.GetModel();
 
+	bool bSaveEnableDebugBones = SpriterEngine::Settings::enableDebugBones;
+	SpriterEngine::Settings::enableDebugBones = bEnableBones;
 	SpriterEngine::EntityInstance* pInstance = pScmlModel->getNewEntityInstance(InstanceName);
-
+	SpriterEngine::Settings::enableDebugBones = bSaveEnableDebugBones;
 	if (pInstance)
 	{
 		Model.AddInstance(CSpriterGMInstance(pInstance));
@@ -93,53 +95,34 @@ int CSpriterGM::CreateInstance(int ModelIndex, const std::string &InstanceName)
 	return Model.GetNumInstances() - 1;
 }
 
-void CSpriterGM::Render(double timeElapsed)
+void CSpriterGM::UpdateInstance(int ModelIndex, int InstanceIndex, double TimeElapsed)
 {
-	std::vector<CSpriterGMModel>::iterator it = m_Models.begin();
-
-	while (it != m_Models.end())
-	{
-		if (it->GetModel())
-		{
-			for (int i = 0; i < it->GetNumInstances(); i++)
-			{
-				it->GetInstance(i).GetInstance()->setTimeElapsed(timeElapsed);
-
-				it->GetInstance(i).GMSpriteInfoReset();
-
-				if (it->GetInstance(i).GetInstance()->getZOrder())
-				{
-					for (auto& _it : *it->GetInstance(i).GetInstance()->getZOrder())
-					{
-						SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
-
-						pImage->renderSprite(*it, it->GetInstance(i), _it);
-					}
-				}
-			}
-		}
-
-		++it;
-	}
-}
-
-void CSpriterGM::RenderInstance(int ModelIndex, int InstanceIndex)
-{
-	
 	SpriterEngine::EntityInstance* pInstance = GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetInstance();
-	
+
 	if (pInstance)
 	{
+		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).RemoveGarbage();
+		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMTriggerInfoReset();
+		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMSoundInfoReset();
+
+		CSpriterGM::GetSingleton()->SetCurrentUpdatedModelIndex(ModelIndex);
+		CSpriterGM::GetSingleton()->SetCurrentUpdatedInstanceIndex(InstanceIndex);
+		pInstance->setTimeElapsed(TimeElapsed);
+		pInstance->playEventTriggers();
+		pInstance->playSoundTriggers();
+		CSpriterGM::GetSingleton()->SetCurrentUpdatedModelIndex(-1);
+		CSpriterGM::GetSingleton()->SetCurrentUpdatedInstanceIndex(-1);
+
 		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMSpriteInfoReset();
-	
+
 		if (pInstance->getZOrder())
 		{
 			for (auto& _it : *pInstance->getZOrder())
 			{
-				if (dynamic_cast<SpriterEngine::BoneInstanceInfo *>(_it))
+				if (dynamic_cast<SpriterEngine::GMBoneInstanceInfo *>(_it))
 				{
-					SpriterEngine::BoneInstanceInfo *pBoneInstance = (SpriterEngine::BoneInstanceInfo *)_it;
-					pBoneInstance->render();
+					SpriterEngine::GMBoneInstanceInfo *pBoneInstance = (SpriterEngine::GMBoneInstanceInfo *)_it;
+					pBoneInstance->renderObject(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex));
 				}
 				else
 				if (dynamic_cast<SpriterEngine::GMPointInstanceInfo *>(_it))
@@ -168,26 +151,6 @@ void CSpriterGM::RenderInstance(int ModelIndex, int InstanceIndex)
 				}
 			}
 		}
-	}
-}
-
-void CSpriterGM::UpdateInstance(int ModelIndex, int InstanceIndex, double TimeElapsed)
-{
-	SpriterEngine::EntityInstance* pInstance = GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetInstance();
-
-	if (pInstance)
-	{
-		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).RemoveGarbage();
-		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMTriggerInfoReset();
-		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMSoundInfoReset();
-
-		CSpriterGM::GetSingleton()->SetCurrentUpdatedModelIndex(ModelIndex);
-		CSpriterGM::GetSingleton()->SetCurrentUpdatedInstanceIndex(InstanceIndex);
-		pInstance->setTimeElapsed(TimeElapsed);
-		pInstance->playEventTriggers();
-		pInstance->playSoundTriggers();
-		CSpriterGM::GetSingleton()->SetCurrentUpdatedModelIndex(-1);
-		CSpriterGM::GetSingleton()->SetCurrentUpdatedInstanceIndex(-1);
 	}
 }
 
@@ -361,7 +324,7 @@ CSpriterGM::CPoint CSpriterGM::CGMSpriteInfo::CalculatePosition(const CSprite &S
 	return CPoint(_x, _y);
 }
 
-void CSpriterGM::CGMSpriteInfo::CalculateShape(const CSpriterGM::CSprite &Sprite)
+void CSpriterGM::CGMSpriteInfo::CalculateShape(const CSpriterGM::CSprite &Sprite, bool bHasTexture)
 {
 	m_RenderPosition = CalculatePosition(Sprite);
 
@@ -419,6 +382,9 @@ void CSpriterGM::CGMSpriteInfo::CalculateShape(const CSpriterGM::CSprite &Sprite
 		std::swap(m_Mesh.m_Points[0], m_Mesh.m_Points[3]);
 		std::swap(m_Mesh.m_Points[1], m_Mesh.m_Points[2]);
 	}
+
+	if (!bHasTexture)
+		return;
 
 	double FramePositionX = 0.0;
 	double FramePositionY = 0.0;

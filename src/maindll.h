@@ -56,11 +56,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 
 DLLEXPORT double spriter_LoadModel(const char *pFile);
 
-DLLEXPORT double spriter_CreateInstance(double ModelIndex, const char *pInstanceName);
-
-DLLEXPORT double spriter_Render(double TimeElapsed);
-
-DLLEXPORT double spriter_RenderInstance(double ModelIndex, double InstanceIndex);
+DLLEXPORT double spriter_CreateInstance(double ModelIndex, const char *pInstanceName, double bEnableBones);
 
 DLLEXPORT double spriter_UpdateInstance(double ModelIndex, double InstanceIndex, double TimeElapsed);
 

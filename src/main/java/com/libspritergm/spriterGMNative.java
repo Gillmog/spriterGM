@@ -33,11 +33,7 @@ public class spriterGMNative {
 
     native public static double spriter_LoadModel(String file);
 
-    native public static double spriter_CreateInstance(double ModelIndex, String pInstanceName);
-
-    native public static double spriter_Render(double TimeElapsed);
-
-    native public static double spriter_RenderInstance(double ModelIndex, double InstanceIndex);
+    native public static double spriter_CreateInstance(double ModelIndex, String pInstanceName, double bEnableBones);
 
     native public static double spriter_UpdateInstance(double ModelIndex, double InstanceIndex, double TimeElapsed);
 

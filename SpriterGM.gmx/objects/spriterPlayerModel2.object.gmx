@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_load("player/human.scml", "human");
+            <string>spriter_load("player/human.scml", "human", false);
 </string>
           </argument>
         </arguments>
@@ -72,7 +72,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_render(self);
+            <string>spriter_render(self, false);
 </string>
           </argument>
         </arguments>

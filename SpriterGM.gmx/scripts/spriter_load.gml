@@ -1,4 +1,5 @@
-///spriter_load(file, instance_name)
+///spriter_load(file, instance_name, enable_bones)
+var enableBones = argument2;
 instanceName = argument1;
 spriterFile = argument0;
 modelIndex = spriter_LoadModel(spriterFile);
@@ -28,7 +29,7 @@ for (var i = 0; i < spritesCount; i++)
     }
 }
 
-instanceIndex = spriter_CreateInstance(modelIndex, instanceName);
+instanceIndex = spriter_CreateInstance(modelIndex, instanceName, enableBones);
 
 spriter_SetInstancePosition(modelIndex, instanceIndex, x + sprite_width * 0.5, y + sprite_height * 0.5);
 spriter_SetInstanceScale(modelIndex, instanceIndex, image_xscale, image_yscale);

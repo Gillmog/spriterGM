@@ -52,26 +52,10 @@ extern "C" {
 	/*
 	* Class:     com_libspritergm_spriterGMNative
 	* Method:    spriter_CreateInstance
-	* Signature: (DLjava/lang/String;)D
+	* Signature: (DLjava/lang/String/;)D
 	*/
 	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1CreateInstance
-	(JNIEnv *, jclass, jdouble, jstring);
-
-	/*
-	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_Render
-	* Signature: (D)D
-	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1Render
-	(JNIEnv *, jclass, jdouble);
-
-	/*
-	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_RenderInstance
-	* Signature: (DD)D
-	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1RenderInstance
-	(JNIEnv *, jclass, jdouble, jdouble);
+	(JNIEnv *, jclass, jdouble, jstring, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative

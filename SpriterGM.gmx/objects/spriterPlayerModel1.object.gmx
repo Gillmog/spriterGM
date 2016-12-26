@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_load("player/human.scml", "human");
+            <string>spriter_load("player/human.scml", "human", false);
 spriter_apply_character_map(self, "male");
 </string>
           </argument>
@@ -77,7 +77,7 @@ if spriter_animation_just_finished(self, 1) == true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_render(self);
+            <string>spriter_render(self, false);
 </string>
           </argument>
         </arguments>

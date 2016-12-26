@@ -1773,6 +1773,20 @@
       <script>scripts\spriter_animation_just_finished.gml</script>
       <script>scripts\spriter_check_errors.gml</script>
       <script>scripts\spriter_is_trigger.gml</script>
+      <scripts name="point">
+        <script>scripts\spriter_find_point.gml</script>
+        <script>scripts\spriter_get_point_y1.gml</script>
+        <script>scripts\spriter_get_point_y2.gml</script>
+        <script>scripts\spriter_get_point_x1.gml</script>
+        <script>scripts\spriter_get_point_x2.gml</script>
+        <script>scripts\spriter_get_point_direction.gml</script>
+      </scripts>
+      <scripts name="box">
+        <script>scripts\spriter_find_box.gml</script>
+        <script>scripts\spriter_get_box_point_x.gml</script>
+        <script>scripts\spriter_get_box_point_y.gml</script>
+        <script>scripts\spriter_get_box_collision_rectangle.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">

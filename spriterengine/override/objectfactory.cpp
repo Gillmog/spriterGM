@@ -13,17 +13,17 @@ namespace SpriterEngine
 	{
 	}
 
-	PointInstanceInfo * ObjectFactory::newPointInstanceInfo()
+	PointInstanceInfo * ObjectFactory::newPointInstanceInfo(int objectID, std::string objectName)
 	{
 		return new PointInstanceInfo();
 	}
 
-	BoneInstanceInfo * ObjectFactory::newBoneInstanceInfo(point size)
+	BoneInstanceInfo * ObjectFactory::newBoneInstanceInfo(int objectID, std::string objectName, point size)
 	{
 		return new BoneInstanceInfo(size);
 	}
 
-	BoxInstanceInfo * ObjectFactory::newBoxInstanceInfo(point size)
+	BoxInstanceInfo * ObjectFactory::newBoxInstanceInfo(int objectID, std::string objectName, point size)
 	{
 		return new BoxInstanceInfo(size);
 	}

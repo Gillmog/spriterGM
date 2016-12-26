@@ -58,16 +58,8 @@ public class spriterGM {
         return spriterGMNative.spriter_LoadModel(file);
     }
 
-    public double spriter_CreateInstance(double ModelIndex, String pInstanceName) {
-        return spriterGMNative.spriter_CreateInstance(ModelIndex, pInstanceName);
-    }
-
-    public double spriter_Render(double TimeElapsed) {
-        return spriterGMNative.spriter_Render(TimeElapsed);
-    }
-
-    public double spriter_RenderInstance(double ModelIndex, double InstanceIndex) {
-        return spriterGMNative.spriter_RenderInstance(ModelIndex, InstanceIndex);
+    public double spriter_CreateInstance(double ModelIndex, String pInstanceName, double bEnableBones) {
+        return spriterGMNative.spriter_CreateInstance(ModelIndex, pInstanceName, bEnableBones);
     }
 
     public double spriter_UpdateInstance(double ModelIndex, double InstanceIndex, double TimeElapsed) {

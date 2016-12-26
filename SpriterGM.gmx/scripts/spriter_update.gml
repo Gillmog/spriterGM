@@ -22,6 +22,5 @@ for (i = nSoundCount - 1; i >= 0; i--)
 }
 
 object.startTime = current_time;
-
 spriter_check_errors();
 

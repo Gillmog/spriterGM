@@ -459,7 +459,7 @@ public:
 		CSpriterGM::CGMSpriteInfo::EType GetType() const { return m_Type; }
 		void SetType(CSpriterGM::CGMSpriteInfo::EType val) { m_Type = val; }
 
-		void CalculateShape(const CSprite &Sprite);
+		void CalculateShape(const CSprite &Sprite, bool bHasTexture);
 	
 		float GetAlpha() const { return m_Alpha; }
 		void SetAlpha(float val) { m_Alpha = val; }
@@ -750,11 +750,7 @@ public:
 
 	int LoadModel(const char *pFile);
 
-	int CreateInstance(int ModelIndex, const std::string &InstanceName);
-
-	void Render(double timeElapsed);
-
-	void RenderInstance(int ModelIndex, int InstanceIndex);
+	int CreateInstance(int ModelIndex, const std::string &InstanceName, bool bEnableBones);
 
 	void UpdateInstance(int ModelIndex, int InstanceIndex, double TimeElapsed);
 

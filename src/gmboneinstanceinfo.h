@@ -24,16 +24,21 @@
 #define GMBONEINSTANCEINFO_H
 
 #include "../spriterengine/objectinfo/boneinstanceinfo.h"
+#include "spriterGM.h"
 
 namespace SpriterEngine
 {
 
 	class GMBoneInstanceInfo : public BoneInstanceInfo
 	{
+		int m_ObjectID = -1;
+		std::string m_ObjectName;
 	public:
-		GMBoneInstanceInfo(point initialSize);
+		GMBoneInstanceInfo(int objectID, std::string objectName, point initialSize);
 
 		void render() override;
+
+		void renderObject(CSpriterGM::CSpriterGMInstance &Instance);
 	};
 
 }

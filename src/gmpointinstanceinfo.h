@@ -32,8 +32,11 @@ namespace SpriterEngine
 
 	class GMPointInstanceInfo : public PointInstanceInfo
 	{
+		int m_ObjectID = -1;
+		std::string m_ObjectName;
+
 	public:
-		GMPointInstanceInfo();
+		GMPointInstanceInfo(int objectID, std::string objectName);
 
 		void render() override;
 

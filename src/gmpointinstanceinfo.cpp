@@ -27,7 +27,7 @@
 namespace SpriterEngine
 {
 
-	GMPointInstanceInfo::GMPointInstanceInfo()
+	GMPointInstanceInfo::GMPointInstanceInfo(int objectID, std::string objectName) : m_ObjectID(objectID), m_ObjectName(objectName)
 	{
 	
 	}
@@ -40,13 +40,18 @@ namespace SpriterEngine
 
 	void GMPointInstanceInfo::renderObject(CSpriterGM::CSpriterGMInstance &Instance)
 	{
+		
 		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
+		GMSpriteInfo.SetSpriteName(m_ObjectName);
 		GMSpriteInfo.SetPosition(getPosition());
 		GMSpriteInfo.SetScale(getScale());
 		GMSpriteInfo.SetAngle(getAngle());
 		GMSpriteInfo.SetAlpha(getAlpha());
 		GMSpriteInfo.SetRender(true);
 		GMSpriteInfo.SetType(CSpriterGM::CGMSpriteInfo::POINT);
+		CSpriterGM::CSprite Sprite;
+		Sprite.SetSize(CSpriterGM::CPoint(1.0, 1.0));
+		GMSpriteInfo.CalculateShape(Sprite, false);
 		Instance.AddGMSpriteInfo(GMSpriteInfo);
 
 	}

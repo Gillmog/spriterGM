@@ -34,11 +34,11 @@ namespace SpriterEngine
 
 		GMObjectFactory();
 		
-		PointInstanceInfo *newPointInstanceInfo() override;
+		PointInstanceInfo *newPointInstanceInfo(int objectID, std::string objectName) override;
 
-		BoxInstanceInfo *newBoxInstanceInfo(point size) override;
+		BoxInstanceInfo *newBoxInstanceInfo(int objectID, std::string objectName, point size) override;
 
-		BoneInstanceInfo *newBoneInstanceInfo(point size) override;
+		BoneInstanceInfo *newBoneInstanceInfo(int objectID, std::string objectName, point size) override;
 
 		SpriterEngine::TriggerObjectInfo *newTriggerObjectInfo(std::string triggerName) override;
 	};

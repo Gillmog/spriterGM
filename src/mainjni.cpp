@@ -59,23 +59,11 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1LoadMod
 }
 
 JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1CreateInstance
-        (JNIEnv *env, jclass object, jdouble modelIndex, jstring instanceName)
+        (JNIEnv *env, jclass object, jdouble modelIndex, jstring instanceName, jdouble bEnableBones)
 {
     std::string str;
     GetJStringContent(env, instanceName, str);
-    return spriter_CreateInstance(modelIndex, str.c_str());
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1Render
-        (JNIEnv *env, jclass object, jdouble timeElapsed)
-{
-    return spriter_Render(timeElapsed);
-}
-
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1RenderInstance
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex)
-{
-    return spriter_RenderInstance(modelIndex, instanceIndex);
+    return spriter_CreateInstance(modelIndex, str.c_str(), bEnableBones);
 }
 
 JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1UpdateInstance
@@ -400,8 +388,5 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpri
 {
 	return spriter_GetSpriteInfoMeshUVY(modelIndex, instanceIndex, spriteInfoIndex, pointIndex);
 }
-
-
-
 
 
