@@ -27,7 +27,7 @@
 namespace SpriterEngine
 {
 
-	GMAtlasFile::GMAtlasFile(std::string initialFilePath) :
+	GMAtlasFile::GMAtlasFile(const std::string &initialFilePath) :
 		AtlasFile(initialFilePath), m_loaded(false)
 	{
 		initializeFile();
@@ -35,7 +35,19 @@ namespace SpriterEngine
 
 	void GMAtlasFile::initializeFile()
 	{
-		
+		FILE * pFile;
+		pFile = fopen(path().c_str(), "r");
+
+		if (pFile)
+		{
+			m_loaded = true;
+			fclose(pFile);
+		}
+		else
+		{
+			m_loaded = false;
+			Settings::Settings::error("SfmlAtlasFile::initializeFile - sfml texture unable to load file from path \"" + path() + "\"");
+		}
 	}
 
 	void GMAtlasFile::renderSprite(UniversalObjectInterface *spriteInfo, const atlasframedata data)

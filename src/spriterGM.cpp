@@ -62,21 +62,27 @@ int CSpriterGM::LoadModel(const char *pFile)
 	
 	SpriterEngine::SpriterModel *pScmlModel = new SpriterEngine::SpriterModel(ModelFile, new SpriterEngine::GMFileFactory, new SpriterEngine::GMObjectFactory);
 
-	m_Models.push_back(CSpriterGMModel(pScmlModel));
+	m_LastLoadedModel.SetModel(pScmlModel);
+
+	m_Models.push_back(CSpriterGMModel(m_LastLoadedModel));
 
 	m_LoadedModels.insert(std::make_pair(ModelFile, m_Models.size() - 1));
+
+	m_LastLoadedModel.Reset();
 
 	return m_Models.size() - 1;
 }
 
-int CSpriterGM::CreateInstance(int ModelIndex, const std::string &InstanceName)
+int CSpriterGM::CreateInstance(int ModelIndex, const std::string &InstanceName, bool bEnableBones)
 {
 	CSpriterGMModel &Model = m_Models[ModelIndex];
 
 	SpriterEngine::SpriterModel *pScmlModel = Model.GetModel();
 
+	bool bSaveEnableDebugBones = SpriterEngine::Settings::enableDebugBones;
+	SpriterEngine::Settings::enableDebugBones = bEnableBones;
 	SpriterEngine::EntityInstance* pInstance = pScmlModel->getNewEntityInstance(InstanceName);
-
+	SpriterEngine::Settings::enableDebugBones = bSaveEnableDebugBones;
 	if (pInstance)
 	{
 		Model.AddInstance(CSpriterGMInstance(pInstance));
@@ -89,53 +95,34 @@ int CSpriterGM::CreateInstance(int ModelIndex, const std::string &InstanceName)
 	return Model.GetNumInstances() - 1;
 }
 
-void CSpriterGM::Render(double timeElapsed)
+void CSpriterGM::UpdateInstance(int ModelIndex, int InstanceIndex, double TimeElapsed)
 {
-	std::vector<CSpriterGMModel>::iterator it = m_Models.begin();
-
-	while (it != m_Models.end())
-	{
-		if (it->GetModel())
-		{
-			for (int i = 0; i < it->GetNumInstances(); i++)
-			{
-				it->GetInstance(i).GetInstance()->setTimeElapsed(timeElapsed);
-
-				it->GetInstance(i).GMSpriteInfoReset();
-
-				if (it->GetInstance(i).GetInstance()->getZOrder())
-				{
-					for (auto& _it : *it->GetInstance(i).GetInstance()->getZOrder())
-					{
-						SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
-
-						pImage->renderSprite(it->GetInstance(i), _it);
-					}
-				}
-			}
-		}
-
-		++it;
-	}
-}
-
-void CSpriterGM::RenderInstance(int ModelIndex, int InstanceIndex)
-{
-	
 	SpriterEngine::EntityInstance* pInstance = GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetInstance();
-	
+
 	if (pInstance)
 	{
+		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).RemoveGarbage();
+		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMTriggerInfoReset();
+		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMSoundInfoReset();
+
+		CSpriterGM::GetSingleton()->SetCurrentUpdatedModelIndex(ModelIndex);
+		CSpriterGM::GetSingleton()->SetCurrentUpdatedInstanceIndex(InstanceIndex);
+		pInstance->setTimeElapsed(TimeElapsed);
+		pInstance->playEventTriggers();
+		pInstance->playSoundTriggers();
+		CSpriterGM::GetSingleton()->SetCurrentUpdatedModelIndex(-1);
+		CSpriterGM::GetSingleton()->SetCurrentUpdatedInstanceIndex(-1);
+
 		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMSpriteInfoReset();
-	
+
 		if (pInstance->getZOrder())
 		{
 			for (auto& _it : *pInstance->getZOrder())
 			{
-				if (dynamic_cast<SpriterEngine::BoneInstanceInfo *>(_it))
+				if (dynamic_cast<SpriterEngine::GMBoneInstanceInfo *>(_it))
 				{
-					SpriterEngine::BoneInstanceInfo *pBoneInstance = (SpriterEngine::BoneInstanceInfo *)_it;
-					pBoneInstance->render();
+					SpriterEngine::GMBoneInstanceInfo *pBoneInstance = (SpriterEngine::GMBoneInstanceInfo *)_it;
+					pBoneInstance->renderObject(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex));
 				}
 				else
 				if (dynamic_cast<SpriterEngine::GMPointInstanceInfo *>(_it))
@@ -156,7 +143,7 @@ void CSpriterGM::RenderInstance(int ModelIndex, int InstanceIndex)
 				{
 					SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
 
-					pImage->renderSprite(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex), _it);
+					pImage->renderSprite(GetSpriterGMModel(ModelIndex), GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex), _it);
 				}
 				else
 				{
@@ -164,26 +151,6 @@ void CSpriterGM::RenderInstance(int ModelIndex, int InstanceIndex)
 				}
 			}
 		}
-	}
-}
-
-void CSpriterGM::UpdateInstance(int ModelIndex, int InstanceIndex, double TimeElapsed)
-{
-	SpriterEngine::EntityInstance* pInstance = GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetInstance();
-
-	if (pInstance)
-	{
-		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).RemoveGarbage();
-		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMTriggerInfoReset();
-		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMSoundInfoReset();
-
-		CSpriterGM::GetSingleton()->SetCurrentUpdatedModelIndex(ModelIndex);
-		CSpriterGM::GetSingleton()->SetCurrentUpdatedInstanceIndex(InstanceIndex);
-		pInstance->setTimeElapsed(TimeElapsed);
-		pInstance->playEventTriggers();
-		pInstance->playSoundTriggers();
-		CSpriterGM::GetSingleton()->SetCurrentUpdatedModelIndex(-1);
-		CSpriterGM::GetSingleton()->SetCurrentUpdatedInstanceIndex(-1);
 	}
 }
 
@@ -304,4 +271,154 @@ bool CSpriterGM::IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundIn
 	}
 
 	return true;
+}
+
+bool CSpriterGM::IsSpriteInfoAtlasFileValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex)
+{
+	if (!IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+		return false;
+
+	if (!m_Models[ModelIndex].GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).IsAtlasFile())
+	{
+		Error("ImageFile not atlas file!");
+		return false;
+	}
+
+	return true;
+}
+
+CSpriterGM::CPoint CSpriterGM::CGMSpriteInfo::CalculatePosition(const CSprite &Sprite)
+{
+	double _sprite_width = 0.0;
+	double _sprite_height = 0.0;
+
+	if (IsAtlasFile())
+	{
+		_sprite_width = m_AtlasFrame.m_FrameSizeX * GetScale().x;
+		_sprite_height = m_AtlasFrame.m_FrameSizeY * GetScale().y;
+	}
+	else
+	{
+		_sprite_width = Sprite.GetSize().x * GetScale().x;
+		_sprite_height = Sprite.GetSize().y * GetScale().y;
+	}
+
+	double bitmap_center_x = _sprite_width * 0.5;
+	double bitmap_center_y = _sprite_height * 0.5;
+
+	double pivotOffset_x = (_sprite_width * GetPivot().x) - bitmap_center_x;
+	double pivotOffset_y = (_sprite_height * GetPivot().y) - bitmap_center_y;
+
+	double rad = GetAngle();
+	double _cos = cos(rad);
+	double _sin = sin(rad);
+	double _x = pivotOffset_x;
+	double _y = pivotOffset_y;
+
+	double pivotOffsetAdjustment_x = (_x - ((_x * _cos) - (_y * _sin)));
+	double pivotOffsetAdjustment_y = (_y - ((_y * _cos) + (_x * _sin)));
+
+	_x = (GetPosition().x - pivotOffset_x + pivotOffsetAdjustment_x);
+	_y = (GetPosition().y - pivotOffset_y + pivotOffsetAdjustment_y) * -1.0;
+
+	return CPoint(_x, _y);
+}
+
+void CSpriterGM::CGMSpriteInfo::CalculateShape(const CSpriterGM::CSprite &Sprite, bool bHasTexture)
+{
+	m_RenderPosition = CalculatePosition(Sprite);
+
+	CPoint SpriteSize;
+
+	if (IsAtlasFile())
+	{
+		SpriteSize.x = m_AtlasFrame.m_FrameSizeX;
+		SpriteSize.y = m_AtlasFrame.m_FrameSizeY;
+	}
+	else
+	{
+		SpriteSize.x = Sprite.GetSize().x;
+		SpriteSize.y = Sprite.GetSize().y;
+	}
+
+
+	CPoint PivotOffset;
+	CPoint Size;
+	
+	Size.x = SpriteSize.x * abs(GetScale().x);
+	Size.y = SpriteSize.y * abs(GetScale().y);
+
+	PivotOffset.x = -Size.x * 0.5;
+	PivotOffset.y = -Size.y * 0.5;
+
+	double angle = -GetAngle();
+
+	CMatrix m;
+
+	m.Identity();
+
+	m.Orientate(angle);
+
+	m_Mesh.Reset();
+
+	m_Mesh.m_Points.resize(4);
+
+	m_Mesh.m_Points[0] = m * PivotOffset + m_RenderPosition;
+
+	m_Mesh.m_Points[1] = m * CPoint(PivotOffset.x + Size.x, PivotOffset.y) + m_RenderPosition;
+
+	m_Mesh.m_Points[2] = m * (PivotOffset + Size) + m_RenderPosition;
+
+	m_Mesh.m_Points[3] = m * CPoint(PivotOffset.x, PivotOffset.y + Size.y) + m_RenderPosition;
+
+	if (GetScale().x < 0.0)
+	{
+		std::swap(m_Mesh.m_Points[0], m_Mesh.m_Points[1]);
+		std::swap(m_Mesh.m_Points[2], m_Mesh.m_Points[3]);
+	}
+
+	if (GetScale().y < 0.0)
+	{
+		std::swap(m_Mesh.m_Points[0], m_Mesh.m_Points[3]);
+		std::swap(m_Mesh.m_Points[1], m_Mesh.m_Points[2]);
+	}
+
+	if (!bHasTexture)
+		return;
+
+	double FramePositionX = 0.0;
+	double FramePositionY = 0.0;
+
+	if (IsAtlasFile())
+	{
+		FramePositionX = m_AtlasFrame.m_FramePositionX;
+		FramePositionY = m_AtlasFrame.m_FramePositionY;
+	}
+	CPoint TexLeftTop;
+	CPoint TexRightBottom;
+	TexLeftTop.x = FramePositionX * Sprite.GetTexelSize().x - 0.001,
+	TexLeftTop.y = FramePositionY * Sprite.GetTexelSize().y;
+
+	TexRightBottom.x = (FramePositionX + SpriteSize.x) * Sprite.GetTexelSize().x;
+	TexRightBottom.y = (FramePositionY + SpriteSize.y) * Sprite.GetTexelSize().y - 0.001;
+
+	m.Identity();
+
+	if (m_AtlasFrame.m_bRotated)
+	{
+		double sy = SpriteSize.y * Sprite.GetTexelSize().y;
+		m.Translate(TexLeftTop);
+		m.Rotate((90 * M_PI) / 180);
+		m.PreTranslate(TexLeftTop.x, TexLeftTop.y + sy);
+	}
+
+	m_Mesh.m_UV.resize(4);
+
+	m_Mesh.m_UV[0] = m * TexLeftTop;
+
+	m_Mesh.m_UV[1] = m * CPoint(TexRightBottom.x, TexLeftTop.y);
+
+	m_Mesh.m_UV[2] = m * TexRightBottom;
+
+	m_Mesh.m_UV[3] = m * CPoint(TexLeftTop.x, TexRightBottom.y);
 }

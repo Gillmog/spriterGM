@@ -38,6 +38,7 @@ namespace SpriterEngine
 		if (Error == tinyxml2::XMLError::XML_ERROR_FILE_NOT_FOUND)
 		{
 			std::string Message = "File not founded " + fileName;
+			SpriterEngine::Settings::error(Message);
 		}
 		else
 		if (Error > 0)

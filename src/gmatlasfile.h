@@ -30,7 +30,7 @@ namespace SpriterEngine
 	class GMAtlasFile : public AtlasFile
 	{
 	public:
-		GMAtlasFile(std::string initialFilePath);
+		GMAtlasFile(const std::string &initialFilePath);
 
 		bool loaded() {return m_loaded;}
 

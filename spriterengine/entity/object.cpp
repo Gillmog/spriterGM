@@ -113,7 +113,7 @@ namespace SpriterEngine
 		case OBJECTTYPE_POINT:
 			if (objectFactory)
 			{
-				entityInstanceData->setObjectInstance(objectId, name, objectFactory->newPointInstanceInfo());
+				entityInstanceData->setObjectInstance(objectId, name, objectFactory->newPointInstanceInfo(objectId, name));
 			}
 			else
 			{
@@ -124,7 +124,7 @@ namespace SpriterEngine
 		case OBJECTTYPE_BONE:
 			if (objectFactory)
 			{
-				entityInstanceData->setObjectInstance(objectId, name, objectFactory->newBoneInstanceInfo(size));
+				entityInstanceData->setObjectInstance(objectId, name, objectFactory->newBoneInstanceInfo(objectId, name, size));
 			}
 			else
 			{
@@ -135,7 +135,7 @@ namespace SpriterEngine
 		case OBJECTTYPE_BOX:
 			if (objectFactory)
 			{
-				entityInstanceData->setObjectInstance(objectId, name, objectFactory->newBoxInstanceInfo(size));
+				entityInstanceData->setObjectInstance(objectId, name, objectFactory->newBoxInstanceInfo(objectId, name, size));
 			}
 			else
 			{

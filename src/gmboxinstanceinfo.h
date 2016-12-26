@@ -32,8 +32,10 @@ namespace SpriterEngine
 
 	class GMBoxInstanceInfo : public BoxInstanceInfo
 	{
+		int m_ObjectID = -1;
+		std::string m_ObjectName;
 	public:
-		GMBoxInstanceInfo(point initialSize);
+		GMBoxInstanceInfo(int objectID, std::string objectName, point initialSize);
 
 		void render() override;
 

@@ -6,11 +6,39 @@
   <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
-  <speed>30</speed>
+  <speed>60</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>show_debug_overlay(true);
+
+var inst1 = instance_create(100, 768 / 2, spriterPlayerModel1);
+spriter_set_current_animation(inst1, "walk", 0.0);
+spriter_apply_character_map(inst1, "hair1");
+
+var inst2 = instance_create(300, 768 / 2, spriterPlayerModel2);
+var inst3 = instance_create(600, 768 / 2, spriterPlayerModel3);
+
+
+return 0;
+//for stress test only
+var gx = 32;
+var gy = 32;
+
+var dx = 4;
+var dy = 4;
+
+var mx = 8;
+var my = 8;
+
+for (var i = 0; i &lt; my; i++)
+{
+    for (var j = 0; j &lt; mx; j++)
+    {
+        instance_create(j * gx * dx, i * gy * dy, spriterPlayerModel3);
+    }
+    
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -50,11 +78,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
-  <instances>
-    <instance objName="spriterPlayerModel1" x="512" y="512" name="inst_A874FC4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="spriterPlayerModel2" x="224" y="512" name="inst_F687A1D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="spriterPlayerModel3" x="704" y="512" name="inst_6E834489" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-  </instances>
+  <instances/>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

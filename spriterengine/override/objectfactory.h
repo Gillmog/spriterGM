@@ -20,13 +20,13 @@ namespace SpriterEngine
 		virtual ~ObjectFactory() {}
 		
 		// TODO: Override along with PointObjectInfo::render() to allow debug display of point objects;
-		virtual PointInstanceInfo *newPointInstanceInfo();
+		virtual PointInstanceInfo *newPointInstanceInfo(int objectID, std::string objectName);
 
 		// TODO: Override along with BoneObjectInfo::render() to allow debug display of bone objects;
-		virtual BoneInstanceInfo *newBoneInstanceInfo(point size);
+		virtual BoneInstanceInfo *newBoneInstanceInfo(int objectID, std::string objectName, point size);
 
 		// TODO: Override along with BoxObjectInfo::render() to allow debug display of box objects;
-		virtual BoxInstanceInfo *newBoxInstanceInfo(point size);
+		virtual BoxInstanceInfo *newBoxInstanceInfo(int objectID, std::string objectName, point size);
 
 		// TODO: Override along with TriggerObjectInfo::playTrigger() to allow for triggering actions;
 		virtual TriggerObjectInfo *newTriggerObjectInfo(std::string triggerName);

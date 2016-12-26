@@ -27,8 +27,8 @@
 namespace SpriterEngine
 {
 
-	GMBoxInstanceInfo::GMBoxInstanceInfo(point initialSize) :
-		BoxInstanceInfo(initialSize)
+	GMBoxInstanceInfo::GMBoxInstanceInfo(int objectID, std::string objectName, point initialSize) :
+		BoxInstanceInfo(initialSize), m_ObjectID(objectID), m_ObjectName(objectName)
 	{
 	}
 
@@ -44,6 +44,7 @@ namespace SpriterEngine
 	void GMBoxInstanceInfo::renderObject(CSpriterGM::CSpriterGMInstance &Instance)
 	{
 		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
+		GMSpriteInfo.SetSpriteName(m_ObjectName);
 		GMSpriteInfo.SetPosition(getPosition());
 		GMSpriteInfo.SetPivot(getPivot());
 		GMSpriteInfo.SetScale(getScale());
@@ -52,6 +53,9 @@ namespace SpriterEngine
 		GMSpriteInfo.SetAlpha(getAlpha());
 		GMSpriteInfo.SetRender(true);
 		GMSpriteInfo.SetType(CSpriterGM::CGMSpriteInfo::BOX);
+		CSpriterGM::CSprite Sprite;
+		Sprite.SetSize(getSize());
+		GMSpriteInfo.CalculateShape(Sprite, false);
 		Instance.AddGMSpriteInfo(GMSpriteInfo);
 	}
 

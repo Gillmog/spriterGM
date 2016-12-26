@@ -2,7 +2,17 @@ cmake_minimum_required( VERSION 3.4.0 )
 
 project( spriterGM CXX )
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+  # using Clang or AppleClang
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wno-sign-compare -Wno-reorder -Wno-unused-variable")
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  # using GCC
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wno-sign-compare -Wno-reorder -Wno-unused-variable")
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
+  # using Intel C++
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+  # using Visual Studio C++
+endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/nlohmann-json)
 add_subdirectory(${CMAKE_SOURCE_DIR}/tinyxml2)
@@ -25,6 +35,7 @@ set( SOURCE_LIB
 	src/pugixmlspriterfileattributewrapper.h
 	src/pugixmlspriterfileattributewrapper.cpp
 	src/maindll.cpp
+	src/maindll.h
 	src/jsonspriterfileelementwrapper.h
 	src/jsonspriterfileelementwrapper.cpp
 	src/jsonspriterfiledocumentwrapper.h

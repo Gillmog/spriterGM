@@ -37,7 +37,7 @@ namespace SpriterEngine
 
 		void renderSprite(UniversalObjectInterface *spriteInfo) override;
 
-		void renderSprite(CSpriterGM::CSpriterGMInstance &Instance, UniversalObjectInterface *spriteInfo);
+		void renderSprite(CSpriterGM::CSpriterGMModel &Model, CSpriterGM::CSpriterGMInstance &Instance, UniversalObjectInterface *spriteInfo);
 
 		void setAtlasFile(AtlasFile *initialAtlasFile, atlasframedata initialAtlasFrameData) override;
 
