@@ -1,4 +1,0 @@
-///spriter_instance_animation_just_finished(looped)
-var spriter_insatance_animation_just_finished = spriter_InstanceAnimationJustFinished(modelIndex, instanceIndex, argument0);
-spriter_check_errors();
-return spriter_insatance_animation_just_finished;
