@@ -67,138 +67,138 @@ extern "C" {
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoCount
+	* Method:    spriter_GetObjectInfoCount
 	* Signature: (DD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoCount
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoCount
 	(JNIEnv *, jclass, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoFileName
+	* Method:    spriter_GetObjectInfoFileName
 	* Signature: (DDD)Ljava/lang/String;
 	*/
-	JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoFileName
+	JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoFileName
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoString
+	* Method:    spriter_GetObjectInfoString
 	* Signature: (DDD)Ljava/lang/String;
 	*/
-	JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoString
+	JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoString
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoPositionX
+	* Method:    spriter_GetObjectInfoPositionX
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoPositionX
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoPositionX
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoPositionY
+	* Method:    spriter_GetObjectInfoPositionY
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoPositionY
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoPositionY
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoPivotX
+	* Method:    spriter_GetObjectInfoPivotX
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoPivotX
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoPivotX
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoPivotY
+	* Method:    spriter_GetObjectInfoPivotY
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoPivotY
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoPivotY
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoSizeX
+	* Method:    spriter_GetObjectInfoSizeX
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoSizeX
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoSizeX
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoSizeY
+	* Method:    spriter_GetObjectInfoSizeY
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoSizeY
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoSizeY
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoScaleX
+	* Method:    spriter_GetObjectInfoScaleX
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoScaleX
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoScaleX
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoScaleY
+	* Method:    spriter_GetObjectInfoScaleY
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoScaleY
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoScaleY
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoAngle
+	* Method:    spriter_GetObjectInfoAngle
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAngle
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoAngle
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_IsGetSpriteInfoRender
+	* Method:    spriter_IsGetObjectInfoRender
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsGetSpriteInfoRender
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsGetObjectInfoRender
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoGMRenderPositionX
+	* Method:    spriter_GetObjectInfoGMRenderPositionX
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoGMRenderPositionX
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoGMRenderPositionX
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoGMRenderPositionY
+	* Method:    spriter_GetObjectInfoGMRenderPositionY
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoGMRenderPositionY
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoGMRenderPositionY
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoAlpha
+	* Method:    spriter_GetObjectInfoAlpha
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAlpha
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoAlpha
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoType
+	* Method:    spriter_GetObjectInfoType
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoType
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoType
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
@@ -403,10 +403,10 @@ extern "C" {
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoSpriteIndex
+	* Method:    spriter_GetObjectInfoSpriteIndex
 	* Signature: (DDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoSpriteIndex
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoSpriteIndex
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 	/*
@@ -427,35 +427,67 @@ extern "C" {
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoMeshPointX
+	* Method:    spriter_GetObjectInfoMeshPointX
 	* Signature: (DDDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshPointX
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoMeshPointX
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoMeshPointY
+	* Method:    spriter_GetObjectInfoMeshPointY
 	* Signature: (DDDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshPointY
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoMeshPointY
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoMeshUVX
+	* Method:    spriter_GetObjectInfoMeshUVX
 	* Signature: (DDDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshUVX
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoMeshUVX
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble, jdouble);
 
 	/*
 	* Class:     com_libspritergm_spriterGMNative
-	* Method:    spriter_GetSpriteInfoMeshUVY
+	* Method:    spriter_GetObjectInfoMeshUVY
 	* Signature: (DDDD)D
 	*/
-	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshUVY
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoMeshUVY
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble, jdouble);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_DestroyInstance
+	* Signature: (DD)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1DestroyInstance
+	(JNIEnv *, jclass, jdouble, jdouble);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_DestroyModel
+	* Signature: (D)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1DestroyModel
+	(JNIEnv *, jclass, jdouble);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_DestroyAllModels
+	* Signature: ()D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1DestroyAllModels
+	(JNIEnv *, jclass);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_GetObjectInfoName
+	* Signature: (DDD)Ljava/lang/String;
+	*/
+	JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoName
+	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
 #ifdef __cplusplus
 }

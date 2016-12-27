@@ -1,6 +1,6 @@
 //spriter_get_point_direction(object, point_name)
 
-var point_index = spriter_find_point(argument0, argument1);
+var point_index = spriter_find_object(argument0, argument1);
 
 if point_index != -1
 {

@@ -72,106 +72,106 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1UpdateI
     return spriter_UpdateInstance(modelIndex, instanceIndex, timeElapsed);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoCount
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoCount
         (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex)
 {
-    return spriter_GetSpriteInfoCount(modelIndex, instanceIndex);
+    return spriter_GetObjectInfoCount(modelIndex, instanceIndex);
 }
 
-JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoFileName
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoFileName
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return GetJStringContent(env, spriter_GetSpriteInfoFileName(modelIndex, instanceIndex, spriteInfoIndex));
+    return GetJStringContent(env, spriter_GetObjectInfoFileName(modelIndex, instanceIndex, ObjectInfoIndex));
 }
 
-JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoString
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoString
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return GetJStringContent(env, spriter_GetSpriteInfoFileName(modelIndex, instanceIndex, spriteInfoIndex));
+    return GetJStringContent(env, spriter_GetObjectInfoFileName(modelIndex, instanceIndex, ObjectInfoIndex));
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoPositionX
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoPositionX
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoPositionX(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoPositionX(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoPositionY
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoPositionY
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoPositionY(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoPositionY(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoPivotX
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoPivotX
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoPivotX(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoPivotX(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoPivotY
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoPivotY
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoPivotY(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoPivotY(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoSizeX
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoSizeX
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoSizeX(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoSizeX(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoSizeY
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoSizeY
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoSizeY(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoSizeY(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoScaleX
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoScaleX
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoScaleX(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoScaleX(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoScaleY
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoScaleY
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoScaleY(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoScaleY(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAngle
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoAngle
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoAngle(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoAngle(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsGetSpriteInfoRender
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsGetObjectInfoRender
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_IsGetSpriteInfoRender(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_IsGetObjectInfoRender(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoGMRenderPositionX
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoGMRenderPositionX
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoGMRenderPositionX(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoGMRenderPositionX(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoGMRenderPositionY
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoGMRenderPositionY
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoGMRenderPositionY(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoGMRenderPositionY(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoAlpha
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoAlpha
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoAlpha(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoAlpha(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoType
-        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoType
+        (JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-    return spriter_GetSpriteInfoType(modelIndex, instanceIndex, spriteInfoIndex);
+    return spriter_GetObjectInfoType(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
 JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetInstanceCurrentAnimation
@@ -338,10 +338,10 @@ JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpri
 	return GetJStringContent(env, spriter_GetSprite(modelIndex, spriteIndex));
 }
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoSpriteIndex
-(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoSpriteIndex
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex)
 {
-	return spriter_GetSpriteInfoSpriteIndex(modelIndex, instanceIndex, spriteInfoIndex);
+	return spriter_GetObjectInfoSpriteIndex(modelIndex, instanceIndex, ObjectInfoIndex);
 }
 
 JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetLoadedSpriteTexelSize
@@ -362,31 +362,54 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetLoad
 }
 
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshPointX
-(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble pointIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoMeshPointX
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex, jdouble pointIndex)
 {
-	return spriter_GetSpriteInfoMeshPointX(modelIndex, instanceIndex, spriteInfoIndex, pointIndex);
+	return spriter_GetObjectInfoMeshPointX(modelIndex, instanceIndex, ObjectInfoIndex, pointIndex);
 }
 
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshPointY
-(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble pointIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoMeshPointY
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex, jdouble pointIndex)
 {
-	return spriter_GetSpriteInfoMeshPointY(modelIndex, instanceIndex, spriteInfoIndex, pointIndex);
+	return spriter_GetObjectInfoMeshPointY(modelIndex, instanceIndex, ObjectInfoIndex, pointIndex);
 }
 
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshUVX
-(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble pointIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoMeshUVX
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex, jdouble pointIndex)
 {
-	return spriter_GetSpriteInfoMeshUVX(modelIndex, instanceIndex, spriteInfoIndex, pointIndex);
+	return spriter_GetObjectInfoMeshUVX(modelIndex, instanceIndex, ObjectInfoIndex, pointIndex);
 }
 
 
-JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetSpriteInfoMeshUVY
-(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble spriteInfoIndex, jdouble pointIndex)
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoMeshUVY
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble ObjectInfoIndex, jdouble pointIndex)
 {
-	return spriter_GetSpriteInfoMeshUVY(modelIndex, instanceIndex, spriteInfoIndex, pointIndex);
+	return spriter_GetObjectInfoMeshUVY(modelIndex, instanceIndex, ObjectInfoIndex, pointIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1DestroyInstance
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex)
+{
+	return spriter_DestroyInstance(modelIndex, instanceIndex);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1DestroyModel
+(JNIEnv *env, jclass object, jdouble modelIndex)
+{
+	return spriter_DestroyModel(modelIndex);
 }
 
 
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1DestroyAllModels
+(JNIEnv *env, jclass object)
+{
+	return spriter_DestroyAllModels();
+}
+
+JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoName
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble objectInfoIndex)
+{
+	return GetJStringContent(env, spriter_GetObjectInfoName(modelIndex, instanceIndex, objectInfoIndex));
+}

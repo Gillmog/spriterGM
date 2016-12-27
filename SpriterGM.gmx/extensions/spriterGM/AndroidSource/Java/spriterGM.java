@@ -40,17 +40,9 @@ import ${YYAndroidPackageName}.RunnerActivity;
 
 public class spriterGM {
 
-    
     static
     {
         AssetManager manager = RunnerActivity.CurrentActivity.getApplicationContext().getAssets();
-        spriterGMNative.spriter_SetAssetManager(manager);
-    }
-
-    //For test only
-    public void init(Activity activity)
-    {
-        AssetManager manager = activity.getApplicationContext().getAssets();
         spriterGMNative.spriter_SetAssetManager(manager);
     }
 
@@ -66,72 +58,72 @@ public class spriterGM {
         return spriterGMNative.spriter_UpdateInstance(ModelIndex, InstanceIndex, TimeElapsed);
     }
 
-    public double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoCount(ModelIndex, InstanceIndex);
+    public double spriter_GetObjectInfoCount(double ModelIndex, double InstanceIndex) {
+        return spriterGMNative.spriter_GetObjectInfoCount(ModelIndex, InstanceIndex);
     }
 
-    public String spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoFileName(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public String spriter_GetObjectInfoFileName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoFileName(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public String spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoString(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public String spriter_GetObjectInfoString(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoString(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoPositionX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoPositionX(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoPositionY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoPositionY(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoPivotX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoPivotX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoPivotX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoPivotX(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoPivotY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoPivotY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoPivotY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoPivotY(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoSizeX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoSizeX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoSizeX(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoSizeY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoSizeY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoSizeY(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoScaleX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoScaleX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoScaleX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoScaleX(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoScaleY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoScaleY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoScaleY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoScaleY(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoAngle(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAngle(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoAngle(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoAngle(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_IsGetSpriteInfoRender(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_IsGetSpriteInfoRender(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_IsGetObjectInfoRender(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_IsGetObjectInfoRender(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoGMRenderPositionX(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoGMRenderPositionX(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoGMRenderPositionY(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoGMRenderPositionY(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoAlpha(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoAlpha(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoAlpha(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-    public double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex) {
-        return spriterGMNative.spriter_GetSpriteInfoType(ModelIndex, InstanceIndex, SpriteInfoIndex);
+    public double spriter_GetObjectInfoType(double ModelIndex, double InstanceIndex, double ObjectInfoIndex) {
+        return spriterGMNative.spriter_GetObjectInfoType(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
     public double spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceIndex, String pAnimationName, double BlendTime) {
@@ -236,38 +228,58 @@ public class spriterGM {
         return spriterGMNative.spriter_GetSprite(ModelIndex, SpriteIndex);
     }
 
-    public double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+    public double spriter_GetObjectInfoSpriteIndex(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
     {
-        return spriterGMNative.spriter_GetSpriteInfoSpriteIndex(ModelIndex, InstanceIndex, SpriteInfoIndex);
+        return spriterGMNative.spriter_GetObjectInfoSpriteIndex(ModelIndex, InstanceIndex, ObjectInfoIndex);
     }
 
-	public static double spriter_SetLoadedSpriteTexelSize(double ModelIndex, String pSpriteName, double TexelWidth, double TexelHeight)
+	public double spriter_SetLoadedSpriteTexelSize(double ModelIndex, String pSpriteName, double TexelWidth, double TexelHeight)
 	{
 		return spriterGMNative.spriter_SetLoadedSpriteTexelSize(ModelIndex, pSpriteName, TexelWidth, TexelHeight);
 	}
 
-	public static double spriter_SetLoadedSpriteSize(double ModelIndex, String pSpriteName, double TextureWidth, double TextureHeight)
+	public double spriter_SetLoadedSpriteSize(double ModelIndex, String pSpriteName, double TextureWidth, double TextureHeight)
 	{
 		return spriterGMNative.spriter_SetLoadedSpriteSize(ModelIndex, pSpriteName, TextureWidth, TextureHeight);
 	}
 
-	public static double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+	public double spriter_GetObjectInfoMeshPointX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex)
 	{
-		return spriterGMNative.spriter_GetSpriteInfoMeshPointX(ModelIndex, InstanceIndex, SpriteInfoIndex, PointIndex);
+		return spriterGMNative.spriter_GetObjectInfoMeshPointX(ModelIndex, InstanceIndex, ObjectInfoIndex, PointIndex);
 	}
 
-	public static double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+	public double spriter_GetObjectInfoMeshPointY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex)
 	{
-		return spriterGMNative.spriter_GetSpriteInfoMeshPointY(ModelIndex, InstanceIndex, SpriteInfoIndex, PointIndex);
+		return spriterGMNative.spriter_GetObjectInfoMeshPointY(ModelIndex, InstanceIndex, ObjectInfoIndex, PointIndex);
 	}
 
-	public static double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+	public double spriter_GetObjectInfoMeshUVX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex)
 	{
-		return spriterGMNative.spriter_GetSpriteInfoMeshUVX(ModelIndex, InstanceIndex, SpriteInfoIndex, PointIndex);
+		return spriterGMNative.spriter_GetObjectInfoMeshUVX(ModelIndex, InstanceIndex, ObjectInfoIndex, PointIndex);
 	}
 
-	public static double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+	public double spriter_GetObjectInfoMeshUVY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex)
 	{
-		return spriterGMNative.spriter_GetSpriteInfoMeshUVY(ModelIndex, InstanceIndex, SpriteInfoIndex, PointIndex);
+		return spriterGMNative.spriter_GetObjectInfoMeshUVY(ModelIndex, InstanceIndex, ObjectInfoIndex, PointIndex);
+	}
+
+	public double spriter_DestroyInstance(double ModelIndex, double InstanceIndex)
+	{
+		return spriterGMNative.spriter_DestroyInstance(ModelIndex, InstanceIndex);
+	}
+
+	public double spriter_DestroyModel(double ModelIndex)
+	{
+		return spriterGMNative.spriter_DestroyModel(ModelIndex);
+	}
+
+	public double spriter_DestroyAllModels()
+	{
+		return spriterGMNative.spriter_DestroyAllModels();
+	}
+
+	public String spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
+	{
+		return spriterGMNative.spriter_GetObjectInfoName(ModelIndex, InstanceIndex, ObjectInfoIndex);
 	}
 }

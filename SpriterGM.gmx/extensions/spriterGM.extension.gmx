@@ -3,7 +3,7 @@
   <name>spriterGM</name>
   <version>1.0.0</version>
   <packageID>com.vitaliyzhygotsky.spritergm</packageID>
-  <ProductID></ProductID>
+  <ProductID>ACBD3CFF4E539AD869A0E8E3B4B022DD</ProductID>
   <date>10/11/16</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
@@ -43,16 +43,16 @@
     <Resource>Scripts\spriterGM\spriter_animation_just_finished</Resource>
     <Resource>Scripts\spriterGM\spriter_check_errors</Resource>
     <Resource>Scripts\spriterGM\spriter_is_trigger</Resource>
-    <Resource>Scripts\spriterGM\point\spriter_find_point</Resource>
     <Resource>Scripts\spriterGM\point\spriter_get_point_y1</Resource>
     <Resource>Scripts\spriterGM\point\spriter_get_point_y2</Resource>
     <Resource>Scripts\spriterGM\point\spriter_get_point_x1</Resource>
     <Resource>Scripts\spriterGM\point\spriter_get_point_x2</Resource>
     <Resource>Scripts\spriterGM\point\spriter_get_point_direction</Resource>
-    <Resource>Scripts\spriterGM\box\spriter_find_box</Resource>
     <Resource>Scripts\spriterGM\box\spriter_get_box_point_x</Resource>
     <Resource>Scripts\spriterGM\box\spriter_get_box_point_y</Resource>
     <Resource>Scripts\spriterGM\box\spriter_get_box_collision_rectangle</Resource>
+    <Resource>Scripts\spriterGM\spriter_destroy_instance</Resource>
+    <Resource>Scripts\spriterGM\spriter_find_object</Resource>
   </IncludedResources>
   <files>
     <file>
@@ -106,10 +106,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoCount</name>
-          <externalName>spriter_GetSpriteInfoCount</externalName>
+          <name>spriter_GetObjectInfoCount</name>
+          <externalName>spriter_GetObjectInfoCount</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIndex)</help>
+          <help>double spriter_GetObjectInfoCount(double ModelIndex, double InstanceIndex)</help>
           <returnType>2</returnType>
           <argCount>2</argCount>
           <args>
@@ -118,10 +118,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoFileName</name>
-          <externalName>spriter_GetSpriteInfoFileName</externalName>
+          <name>spriter_GetObjectInfoFileName</name>
+          <externalName>spriter_GetObjectInfoFileName</externalName>
           <kind>12</kind>
-          <help>const char *spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>const char *spriter_GetObjectInfoFileName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>1</returnType>
           <argCount>3</argCount>
           <args>
@@ -131,10 +131,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoString</name>
-          <externalName>spriter_GetSpriteInfoString</externalName>
+          <name>spriter_GetObjectInfoString</name>
+          <externalName>spriter_GetObjectInfoString</externalName>
           <kind>12</kind>
-          <help>const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>const char *spriter_GetObjectInfoString(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>1</returnType>
           <argCount>3</argCount>
           <args>
@@ -144,10 +144,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoPositionX</name>
-          <externalName>spriter_GetSpriteInfoPositionX</externalName>
+          <name>spriter_GetObjectInfoPositionX</name>
+          <externalName>spriter_GetObjectInfoPositionX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -157,10 +157,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoPositionY</name>
-          <externalName>spriter_GetSpriteInfoPositionY</externalName>
+          <name>spriter_GetObjectInfoPositionY</name>
+          <externalName>spriter_GetObjectInfoPositionY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -170,10 +170,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoPivotX</name>
-          <externalName>spriter_GetSpriteInfoPivotX</externalName>
+          <name>spriter_GetObjectInfoPivotX</name>
+          <externalName>spriter_GetObjectInfoPivotX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoPivotX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoPivotX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -183,10 +183,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoPivotY</name>
-          <externalName>spriter_GetSpriteInfoPivotY</externalName>
+          <name>spriter_GetObjectInfoPivotY</name>
+          <externalName>spriter_GetObjectInfoPivotY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoPivotY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoPivotY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -196,10 +196,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoSizeX</name>
-          <externalName>spriter_GetSpriteInfoSizeX</externalName>
+          <name>spriter_GetObjectInfoSizeX</name>
+          <externalName>spriter_GetObjectInfoSizeX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoSizeX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -209,10 +209,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoSizeY</name>
-          <externalName>spriter_GetSpriteInfoSizeY</externalName>
+          <name>spriter_GetObjectInfoSizeY</name>
+          <externalName>spriter_GetObjectInfoSizeY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoSizeY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -222,10 +222,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoScaleX</name>
-          <externalName>spriter_GetSpriteInfoScaleX</externalName>
+          <name>spriter_GetObjectInfoScaleX</name>
+          <externalName>spriter_GetObjectInfoScaleX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoScaleX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoScaleX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -235,10 +235,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoScaleY</name>
-          <externalName>spriter_GetSpriteInfoScaleY</externalName>
+          <name>spriter_GetObjectInfoScaleY</name>
+          <externalName>spriter_GetObjectInfoScaleY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoScaleY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoScaleY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -248,10 +248,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoAngle</name>
-          <externalName>spriter_GetSpriteInfoAngle</externalName>
+          <name>spriter_GetObjectInfoAngle</name>
+          <externalName>spriter_GetObjectInfoAngle</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAngle(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoAngle(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -261,10 +261,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_IsGetSpriteInfoRender</name>
-          <externalName>spriter_IsGetSpriteInfoRender</externalName>
+          <name>spriter_IsGetObjectInfoRender</name>
+          <externalName>spriter_IsGetObjectInfoRender</externalName>
           <kind>12</kind>
-          <help>double spriter_IsGetSpriteInfoRender(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_IsGetObjectInfoRender(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -274,10 +274,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoGMRenderPositionX</name>
-          <externalName>spriter_GetSpriteInfoGMRenderPositionX</externalName>
+          <name>spriter_GetObjectInfoGMRenderPositionX</name>
+          <externalName>spriter_GetObjectInfoGMRenderPositionX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -287,10 +287,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoGMRenderPositionY</name>
-          <externalName>spriter_GetSpriteInfoGMRenderPositionY</externalName>
+          <name>spriter_GetObjectInfoGMRenderPositionY</name>
+          <externalName>spriter_GetObjectInfoGMRenderPositionY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -554,10 +554,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoAlpha</name>
-          <externalName>spriter_GetSpriteInfoAlpha</externalName>
+          <name>spriter_GetObjectInfoAlpha</name>
+          <externalName>spriter_GetObjectInfoAlpha</externalName>
           <kind>11</kind>
-          <help>double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoAlpha(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -567,10 +567,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoType</name>
-          <externalName>spriter_GetSpriteInfoType</externalName>
+          <name>spriter_GetObjectInfoType</name>
+          <externalName>spriter_GetObjectInfoType</externalName>
           <kind>11</kind>
-          <help>double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoType(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -655,10 +655,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoSpriteIndex</name>
-          <externalName>spriter_GetSpriteInfoSpriteIndex</externalName>
+          <name>spriter_GetObjectInfoSpriteIndex</name>
+          <externalName>spriter_GetObjectInfoSpriteIndex</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
+          <help>double spriter_GetObjectInfoSpriteIndex(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -696,10 +696,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoMeshPointX</name>
-          <externalName>spriter_GetSpriteInfoMeshPointX</externalName>
+          <name>spriter_GetObjectInfoMeshPointX</name>
+          <externalName>spriter_GetObjectInfoMeshPointX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <help>double spriter_GetObjectInfoMeshPointX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);</help>
           <returnType>2</returnType>
           <argCount>4</argCount>
           <args>
@@ -710,10 +710,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoMeshPointY</name>
-          <externalName>spriter_GetSpriteInfoMeshPointY</externalName>
+          <name>spriter_GetObjectInfoMeshPointY</name>
+          <externalName>spriter_GetObjectInfoMeshPointY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <help>double spriter_GetObjectInfoMeshPointY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);</help>
           <returnType>2</returnType>
           <argCount>4</argCount>
           <args>
@@ -724,10 +724,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoMeshUVX</name>
-          <externalName>spriter_GetSpriteInfoMeshUVX</externalName>
+          <name>spriter_GetObjectInfoMeshUVX</name>
+          <externalName>spriter_GetObjectInfoMeshUVX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <help>double spriter_GetObjectInfoMeshUVX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);</help>
           <returnType>2</returnType>
           <argCount>4</argCount>
           <args>
@@ -738,14 +738,59 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoMeshUVY</name>
-          <externalName>spriter_GetSpriteInfoMeshUVY</externalName>
+          <name>spriter_GetObjectInfoMeshUVY</name>
+          <externalName>spriter_GetObjectInfoMeshUVY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <help>double spriter_GetObjectInfoMeshUVY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);</help>
           <returnType>2</returnType>
           <argCount>4</argCount>
           <args>
             <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_DestroyInstance</name>
+          <externalName>spriter_DestroyInstance</externalName>
+          <kind>12</kind>
+          <help>double spriter_DestroyInstance(double ModelIndex, double InstanceIndex);</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_DestroyModel</name>
+          <externalName>spriter_DestroyModel</externalName>
+          <kind>12</kind>
+          <help>double spriter_DestroyModel(double ModelIndex);</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_DestroyAllModels</name>
+          <externalName>spriter_DestroyAllModels</externalName>
+          <kind>12</kind>
+          <help>double spriter_DestroyAllModels();</help>
+          <returnType>2</returnType>
+          <argCount>0</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>spriter_GetObjectInfoName</name>
+          <externalName>spriter_GetObjectInfoName</externalName>
+          <kind>12</kind>
+          <help>spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);</help>
+          <returnType>1</returnType>
+          <argCount>3</argCount>
+          <args>
             <arg>2</arg>
             <arg>2</arg>
             <arg>2</arg>
@@ -793,10 +838,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoCount</name>
-          <externalName>spriter_GetSpriteInfoCount</externalName>
+          <name>spriter_GetObjectInfoCount</name>
+          <externalName>spriter_GetObjectInfoCount</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIndex)</help>
+          <help>double spriter_GetObjectInfoCount(double ModelIndex, double InstanceIndex)</help>
           <returnType>2</returnType>
           <argCount>2</argCount>
           <args>
@@ -805,10 +850,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoFileName</name>
-          <externalName>spriter_GetSpriteInfoFileName</externalName>
+          <name>spriter_GetObjectInfoFileName</name>
+          <externalName>spriter_GetObjectInfoFileName</externalName>
           <kind>12</kind>
-          <help>const char *spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>const char *spriter_GetObjectInfoFileName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>1</returnType>
           <argCount>3</argCount>
           <args>
@@ -818,10 +863,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoString</name>
-          <externalName>spriter_GetSpriteInfoString</externalName>
+          <name>spriter_GetObjectInfoString</name>
+          <externalName>spriter_GetObjectInfoString</externalName>
           <kind>12</kind>
-          <help>const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>const char *spriter_GetObjectInfoString(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>1</returnType>
           <argCount>3</argCount>
           <args>
@@ -831,10 +876,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoPositionX</name>
-          <externalName>spriter_GetSpriteInfoPositionX</externalName>
+          <name>spriter_GetObjectInfoPositionX</name>
+          <externalName>spriter_GetObjectInfoPositionX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -844,10 +889,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoPositionY</name>
-          <externalName>spriter_GetSpriteInfoPositionY</externalName>
+          <name>spriter_GetObjectInfoPositionY</name>
+          <externalName>spriter_GetObjectInfoPositionY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -857,10 +902,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoPivotX</name>
-          <externalName>spriter_GetSpriteInfoPivotX</externalName>
+          <name>spriter_GetObjectInfoPivotX</name>
+          <externalName>spriter_GetObjectInfoPivotX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoPivotX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoPivotX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -870,10 +915,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoPivotY</name>
-          <externalName>spriter_GetSpriteInfoPivotY</externalName>
+          <name>spriter_GetObjectInfoPivotY</name>
+          <externalName>spriter_GetObjectInfoPivotY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoPivotY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoPivotY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -883,10 +928,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoSizeX</name>
-          <externalName>spriter_GetSpriteInfoSizeX</externalName>
+          <name>spriter_GetObjectInfoSizeX</name>
+          <externalName>spriter_GetObjectInfoSizeX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoSizeX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -896,10 +941,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoSizeY</name>
-          <externalName>spriter_GetSpriteInfoSizeY</externalName>
+          <name>spriter_GetObjectInfoSizeY</name>
+          <externalName>spriter_GetObjectInfoSizeY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoSizeY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -909,10 +954,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoScaleX</name>
-          <externalName>spriter_GetSpriteInfoScaleX</externalName>
+          <name>spriter_GetObjectInfoScaleX</name>
+          <externalName>spriter_GetObjectInfoScaleX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoScaleX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoScaleX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -922,10 +967,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoScaleY</name>
-          <externalName>spriter_GetSpriteInfoScaleY</externalName>
+          <name>spriter_GetObjectInfoScaleY</name>
+          <externalName>spriter_GetObjectInfoScaleY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoScaleY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoScaleY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -935,10 +980,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoAngle</name>
-          <externalName>spriter_GetSpriteInfoAngle</externalName>
+          <name>spriter_GetObjectInfoAngle</name>
+          <externalName>spriter_GetObjectInfoAngle</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoAngle(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoAngle(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -948,10 +993,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_IsGetSpriteInfoRender</name>
-          <externalName>spriter_IsGetSpriteInfoRender</externalName>
+          <name>spriter_IsGetObjectInfoRender</name>
+          <externalName>spriter_IsGetObjectInfoRender</externalName>
           <kind>12</kind>
-          <help>double spriter_IsGetSpriteInfoRender(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_IsGetObjectInfoRender(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -961,10 +1006,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoGMRenderPositionX</name>
-          <externalName>spriter_GetSpriteInfoGMRenderPositionX</externalName>
+          <name>spriter_GetObjectInfoGMRenderPositionX</name>
+          <externalName>spriter_GetObjectInfoGMRenderPositionX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -974,10 +1019,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoGMRenderPositionY</name>
-          <externalName>spriter_GetSpriteInfoGMRenderPositionY</externalName>
+          <name>spriter_GetObjectInfoGMRenderPositionY</name>
+          <externalName>spriter_GetObjectInfoGMRenderPositionY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -1230,10 +1275,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoAlpha</name>
-          <externalName>spriter_GetSpriteInfoAlpha</externalName>
+          <name>spriter_GetObjectInfoAlpha</name>
+          <externalName>spriter_GetObjectInfoAlpha</externalName>
           <kind>11</kind>
-          <help>double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoAlpha(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -1243,10 +1288,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoType</name>
-          <externalName>spriter_GetSpriteInfoType</externalName>
+          <name>spriter_GetObjectInfoType</name>
+          <externalName>spriter_GetObjectInfoType</externalName>
           <kind>11</kind>
-          <help>double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)</help>
+          <help>double spriter_GetObjectInfoType(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -1331,10 +1376,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoSpriteIndex</name>
-          <externalName>spriter_GetSpriteInfoSpriteIndex</externalName>
+          <name>spriter_GetObjectInfoSpriteIndex</name>
+          <externalName>spriter_GetObjectInfoSpriteIndex</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);</help>
+          <help>double spriter_GetObjectInfoSpriteIndex(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);</help>
           <returnType>2</returnType>
           <argCount>3</argCount>
           <args>
@@ -1372,10 +1417,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoMeshPointX</name>
-          <externalName>spriter_GetSpriteInfoMeshPointX</externalName>
+          <name>spriter_GetObjectInfoMeshPointX</name>
+          <externalName>spriter_GetObjectInfoMeshPointX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <help>double spriter_GetObjectInfoMeshPointX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);</help>
           <returnType>2</returnType>
           <argCount>4</argCount>
           <args>
@@ -1386,10 +1431,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoMeshPointY</name>
-          <externalName>spriter_GetSpriteInfoMeshPointY</externalName>
+          <name>spriter_GetObjectInfoMeshPointY</name>
+          <externalName>spriter_GetObjectInfoMeshPointY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <help>double spriter_GetObjectInfoMeshPointY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);</help>
           <returnType>2</returnType>
           <argCount>4</argCount>
           <args>
@@ -1400,10 +1445,10 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoMeshUVX</name>
-          <externalName>spriter_GetSpriteInfoMeshUVX</externalName>
+          <name>spriter_GetObjectInfoMeshUVX</name>
+          <externalName>spriter_GetObjectInfoMeshUVX</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <help>double spriter_GetObjectInfoMeshUVX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);</help>
           <returnType>2</returnType>
           <argCount>4</argCount>
           <args>
@@ -1414,14 +1459,59 @@
           </args>
         </function>
         <function>
-          <name>spriter_GetSpriteInfoMeshUVY</name>
-          <externalName>spriter_GetSpriteInfoMeshUVY</externalName>
+          <name>spriter_GetObjectInfoMeshUVY</name>
+          <externalName>spriter_GetObjectInfoMeshUVY</externalName>
           <kind>12</kind>
-          <help>double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);</help>
+          <help>double spriter_GetObjectInfoMeshUVY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);</help>
           <returnType>2</returnType>
           <argCount>4</argCount>
           <args>
             <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_DestroyInstance</name>
+          <externalName>spriter_DestroyInstance</externalName>
+          <kind>12</kind>
+          <help>double spriter_DestroyInstance(double ModelIndex, double InstanceIndex);</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_DestroyModel</name>
+          <externalName>spriter_DestroyModel</externalName>
+          <kind>12</kind>
+          <help>double spriter_DestroyModel(double ModelIndex);</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>spriter_DestroyAllModels</name>
+          <externalName>spriter_DestroyAllModels</externalName>
+          <kind>12</kind>
+          <help>double spriter_DestroyAllModels();</help>
+          <returnType>2</returnType>
+          <argCount>0</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>spriter_GetObjectInfoName</name>
+          <externalName>spriter_GetObjectInfoName</externalName>
+          <kind>12</kind>
+          <help>spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);</help>
+          <returnType>1</returnType>
+          <argCount>3</argCount>
+          <args>
             <arg>2</arg>
             <arg>2</arg>
             <arg>2</arg>

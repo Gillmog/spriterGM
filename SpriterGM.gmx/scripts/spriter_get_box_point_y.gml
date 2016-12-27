@@ -18,6 +18,6 @@ switch(argument2)
     default:
     return undefined;
 }
-var py = spriter_GetSpriteInfoMeshPointY(argument0.modelIndex, argument0.instanceIndex, argument1, mesh_index);
+var py = spriter_GetObjectInfoMeshPointY(argument0.modelIndex, argument0.instanceIndex, argument1, mesh_index);
 spriter_check_errors();
 return py;

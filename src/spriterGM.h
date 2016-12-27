@@ -328,7 +328,7 @@ public:
 		std::string GetSoundFileName() const { return m_SoundFileName; }
 	};
 
-	class CGMSpriteInfo : public CGMGarbageCollector
+	class CGMObjectInfo : public CGMGarbageCollector
 	{
 		std::string m_SpriteName;
 		CPoint m_Position;
@@ -401,44 +401,43 @@ public:
 
 		CMesh m_Mesh;
 		CPoint m_RenderPosition;
+		int m_ObjectID;
+		std::string m_ObjectName;
 
 		CPoint CalculatePosition(const CSprite &Sprite);
 
 	public:
 
-		CGMSpriteInfo() :
+		CGMObjectInfo() :
 			m_Angle(0.0f),
 			m_bRender(false),
 			m_Alpha(1.0f),
 			m_Type(UNKNOWN),
 			m_bAtlasFile(false),
-			m_GMSpriteIndex(-1)
+			m_GMSpriteIndex(-1),
+			m_ObjectID(-1)
 		{
 
 		}
 
-		CGMSpriteInfo(const CGMSpriteInfo &Spriteinfo) :
-			m_SpriteName(std::move(Spriteinfo.m_SpriteName)),
-			m_Position(Spriteinfo.m_Position),
-			m_Pivot(Spriteinfo.m_Pivot),
-			m_Size(Spriteinfo.m_Size),
-			m_Scale(Spriteinfo.m_Scale),
-			m_Angle(Spriteinfo.m_Angle),
-			m_bRender(Spriteinfo.m_bRender),
-			m_Alpha(Spriteinfo.m_Alpha),
-			m_Type(Spriteinfo.m_Type),
-			m_bAtlasFile(Spriteinfo.m_bAtlasFile),
-			m_AtlasFrame(Spriteinfo.m_AtlasFrame),
-			m_GMSpriteIndex(Spriteinfo.m_GMSpriteIndex),
-			m_Mesh(Spriteinfo.m_Mesh),
-			m_RenderPosition(Spriteinfo.m_RenderPosition)
+		CGMObjectInfo(const CGMObjectInfo &ObjectInfo) :
+			m_SpriteName(std::move(ObjectInfo.m_SpriteName)),
+			m_Position(ObjectInfo.m_Position),
+			m_Pivot(ObjectInfo.m_Pivot),
+			m_Size(ObjectInfo.m_Size),
+			m_Scale(ObjectInfo.m_Scale),
+			m_Angle(ObjectInfo.m_Angle),
+			m_bRender(ObjectInfo.m_bRender),
+			m_Alpha(ObjectInfo.m_Alpha),
+			m_Type(ObjectInfo.m_Type),
+			m_bAtlasFile(ObjectInfo.m_bAtlasFile),
+			m_AtlasFrame(ObjectInfo.m_AtlasFrame),
+			m_GMSpriteIndex(ObjectInfo.m_GMSpriteIndex),
+			m_Mesh(ObjectInfo.m_Mesh),
+			m_RenderPosition(ObjectInfo.m_RenderPosition),
+			m_ObjectName(std::move(ObjectInfo.m_ObjectName))
 		{
 
-		}
-
-		~CGMSpriteInfo()
-		{
-			RemoveGarbage();
 		}
 
 		std::string GetSpriteName() const { return m_SpriteName; }
@@ -456,8 +455,8 @@ public:
 		bool IsRender() const { return m_bRender; }
 		void SetRender(bool val) { m_bRender = val; }
 
-		CSpriterGM::CGMSpriteInfo::EType GetType() const { return m_Type; }
-		void SetType(CSpriterGM::CGMSpriteInfo::EType val) { m_Type = val; }
+		CSpriterGM::CGMObjectInfo::EType GetType() const { return m_Type; }
+		void SetType(CSpriterGM::CGMObjectInfo::EType val) { m_Type = val; }
 
 		void CalculateShape(const CSprite &Sprite, bool bHasTexture);
 	
@@ -476,16 +475,27 @@ public:
 
 		double GetMeshX(bool bGetUV, int PointIndex) { return bGetUV ? m_Mesh.m_UV[PointIndex].x : m_Mesh.m_Points[PointIndex].x; }
 		double GetMeshY(bool bGetUV, int PointIndex) { return bGetUV ? m_Mesh.m_UV[PointIndex].y : m_Mesh.m_Points[PointIndex].y; }
+
+		int GetObjectID() const { return m_ObjectID; }
+		void SetObjectID(int val) { m_ObjectID = val; }
+
+		std::string GetObjectName() const { return m_ObjectName; }
+		void SetObjectName(std::string val) { m_ObjectName = val; }
 	};
 
 	class CSpriterGMInstance : public CGMGarbageCollector
 	{
 		SpriterEngine::EntityInstance* m_pInstance;
-		std::vector<CGMSpriteInfo> m_Sprites;
+		std::vector<CGMObjectInfo> m_Objects;
 		std::vector<CGMTriggerInfo> m_Triggers;
 		std::vector<CGMSoundInfo> m_Sounds;
 
 	public:
+
+		CSpriterGMInstance() : m_pInstance(NULL)
+		{
+
+		}
 
 		CSpriterGMInstance(SpriterEngine::EntityInstance* pInstance) : 
 			m_pInstance(pInstance)
@@ -495,7 +505,7 @@ public:
 
 		CSpriterGMInstance(const CSpriterGMInstance &Instance) :
 			m_pInstance(Instance.m_pInstance),
-			m_Sprites(std::move(Instance.m_Sprites)),
+			m_Objects(std::move(Instance.m_Objects)),
 			m_Triggers(std::move(Instance.m_Triggers)),
 			m_Sounds(std::move(Instance.m_Sounds))
 		{
@@ -504,30 +514,35 @@ public:
 
 		~CSpriterGMInstance()
 		{
-			m_Sprites.clear();
-			m_pInstance = NULL;
-			GMSoundInfoReset();
-			GMTriggerInfoReset();
-			RemoveGarbage();
+			Destroy();
 		}
 
-		int GetNumGMSpriteInfo() const { return m_Sprites.size(); }
+		void Destroy()
+		{
+			m_pInstance = NULL;
+			RemoveGarbage();
+			GMSoundInfoReset();
+			GMTriggerInfoReset();
+			GMObjectInfoReset();
+		}
+
+		int GetNumGMObjectInfo() const { return m_Objects.size(); }
 		int GetNumGMTriggerInfo() const { return m_Triggers.size(); }
 		int GetNumGMSoundInfo() const { return m_Sounds.size(); }
 
-		CGMSpriteInfo &GetGMSpriteInfo(int Index)
+		CGMObjectInfo &GetGMObjectInfo(int Index)
 		{
-			return m_Sprites[Index];
+			return m_Objects[Index];
 		}
 
-		void AddGMSpriteInfo(const CGMSpriteInfo &SpriteInfo)
+		void AddGMObjectInfo(const CGMObjectInfo &ObjectInfo)
 		{
-			m_Sprites.push_back(SpriteInfo);
+			m_Objects.push_back(ObjectInfo);
 		}
 
-		void GMSpriteInfoReset()
+		void GMObjectInfoReset()
 		{
-			m_Sprites.clear();
+			m_Objects.clear();
 		}
 
 		CGMTriggerInfo &GetGMTriggerInfo(int Index)
@@ -542,11 +557,6 @@ public:
 
 		void GMTriggerInfoReset()
 		{
-			for (size_t nTrigger = 0; nTrigger < m_Triggers.size(); nTrigger++)
-			{
-				m_Triggers[nTrigger].RemoveGarbage();
-			}
-
 			m_Triggers.clear();
 		}
 
@@ -562,11 +572,6 @@ public:
 
 		void GMSoundInfoReset()
 		{
-			for (size_t nSound = 0; nSound < m_Sounds.size(); nSound++)
-			{
-				m_Sounds[nSound].RemoveGarbage();
-			}
-
 			m_Sounds.clear();
 		}
 
@@ -579,6 +584,7 @@ public:
 	class CSpriterGMModel : public CGMGarbageCollector
 	{
 		SpriterEngine::SpriterModel* m_pModel;
+		std::string m_FileName;
 		std::vector<CSpriterGMInstance> m_Instances;
 		std::map<std::string, CSprite> m_MapSprites;
 		std::vector<std::string> m_Sprites;
@@ -601,7 +607,8 @@ public:
 			m_Instances(std::move(Model.m_Instances)),
 			m_MapSprites(std::move(Model.m_MapSprites)),
 			m_Sprites(std::move(Model.m_Sprites)),
-			m_bAtlas(Model.m_bAtlas)
+			m_bAtlas(Model.m_bAtlas),
+			m_FileName(std::move(Model.m_FileName))
 		{
 
 		}
@@ -637,9 +644,27 @@ public:
 			return m_Instances[Index];
 		}
 
-		void AddInstance(const CSpriterGMInstance &Instance)
+		int AddInstance(const CSpriterGMInstance &Instance)
 		{
-			m_Instances.push_back(Instance);
+			int nInstanceIndex = -1;
+
+			for (int nInstance = 0; nInstance < m_Instances.size(); nInstance++)
+			{
+				if (m_Instances[nInstance].GetInstance() == NULL)
+				{
+					m_Instances[nInstance] = Instance;
+					nInstanceIndex = nInstance;
+					break;
+				}
+			}
+
+			if (nInstanceIndex == -1)
+			{
+				m_Instances.push_back(Instance);
+				nInstanceIndex = m_Instances.size() - 1;
+			}
+
+			return nInstanceIndex;
 		}
 
 		CSprite *FindLoadedSprite(const std::string &SpriteName)
@@ -713,6 +738,52 @@ public:
 		std::string GetSprite(int Index) const { return m_Sprites[Index]; }
 		bool IsAtlas() const { return m_bAtlas; }
 		void SetAtlas(bool val) { m_bAtlas = val; }
+
+		void DestroyAllInstances()
+		{
+			for (int nInstance = 0; nInstance < GetNumInstances(); nInstance++)
+			{
+				SpriterEngine::EntityInstance* pInstance = GetInstance(nInstance).GetInstance();
+
+				if (pInstance)
+					delete pInstance;
+			}
+
+			m_Instances.clear();
+		}
+
+		bool DestroyInstance(int InstanceIndex)
+		{
+			SpriterEngine::EntityInstance* pInstance = GetInstance(InstanceIndex).GetInstance();
+
+			if (pInstance)
+				delete pInstance;
+
+			m_Instances[InstanceIndex].Destroy();
+
+			m_Instances[InstanceIndex] = CSpriterGMInstance();
+
+			int nEmptyCount = 0;
+
+			for (int nInstance = 0; nInstance < GetNumInstances(); nInstance++)
+			{
+				SpriterEngine::EntityInstance* pInstance = GetInstance(nInstance).GetInstance();
+
+				if (!pInstance)
+					nEmptyCount++;
+			}
+
+			if (nEmptyCount == GetNumInstances())
+			{
+				m_Instances.clear();
+				return true;
+			}
+
+			return false;
+		}
+
+		std::string GetFileName() const { return m_FileName; }
+		void SetFileName(std::string val) { m_FileName = val; }
 	};
 
 private:
@@ -736,8 +807,9 @@ public:
 
 	~CSpriterGM()
 	{
-		m_ErrorsList.clear();
 		RemoveGarbage();
+		m_ErrorsList.clear();
+		DestroyAllModels();
 		m_pInstance = nullptr;
 	}
 
@@ -746,6 +818,57 @@ public:
 	CSpriterGMModel &GetSpriterGMModel(int Index)
 	{
 		return m_Models[Index];
+	}
+
+	void DestroyAllModels()
+	{
+		m_LoadedModels.clear();
+
+		for (int nModel = 0; nModel < m_Models.size(); nModel++)
+		{
+			m_Models[nModel].DestroyAllInstances();
+
+			SpriterEngine::SpriterModel *pModel = m_Models[nModel].GetModel();
+
+			if (pModel)
+				delete pModel;
+		}
+
+		m_Models.clear();
+	}
+
+	void DestroyModel(int ModelIndex)
+	{
+		std::map<std::string, int>::iterator it = m_LoadedModels.find(m_Models[ModelIndex].GetFileName());
+
+		if (it != m_LoadedModels.end())
+		{
+			m_LoadedModels.erase(it);
+		}
+
+		m_Models[ModelIndex].DestroyAllInstances();
+
+		SpriterEngine::SpriterModel *pModel = m_Models[ModelIndex].GetModel();
+
+		if (pModel)
+			delete pModel;
+
+		m_Models[ModelIndex] = CSpriterGMModel();
+
+		int nEmptyCount = 0;
+
+		for (int nModel = 0; nModel < m_Models.size(); nModel++)
+		{
+			SpriterEngine::SpriterModel *pModel = m_Models[nModel].GetModel();
+
+			if (!pModel)
+				nEmptyCount++;
+		}
+
+		if (nEmptyCount == m_Models.size())
+		{
+			m_Models.clear();
+		}
 	}
 
 	int LoadModel(const char *pFile);
@@ -832,13 +955,13 @@ public:
 
 	bool IsInstanceValid(int ModelIndex, int InstanceIndex);
 
-	bool IsSpriteInfoValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex);
+	bool IsObjectInfoValid(int ModelIndex, int InstanceIndex, int ObjectInfoIndex);
 
 	bool IsTriggerInfoValid(int ModelIndex, int InstanceIndex, int TriggerInfoIndex);
 
 	bool IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundInfoIndex);
 
-	bool IsSpriteInfoAtlasFileValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex);
+	bool IsObjectInfoAtlasFileValid(int ModelIndex, int InstanceIndex, int ObjectInfoIndex);
 
 	CSpriterGMModel &GetLastLoadedModel() { return m_LastLoadedModel; }
 };

@@ -40,20 +40,21 @@ namespace SpriterEngine
 
 	void GMBoneInstanceInfo::renderObject(CSpriterGM::CSpriterGMInstance &Instance)
 	{
-		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
-		GMSpriteInfo.SetSpriteName(m_ObjectName);
-		GMSpriteInfo.SetPosition(getPosition());
-		GMSpriteInfo.SetScale(getScale());
-		GMSpriteInfo.SetSize(CSpriterGM::CPoint(1.0, 1.0));
-		GMSpriteInfo.SetAngle(getAngle());
-		GMSpriteInfo.SetAlpha(getAlpha());
-		GMSpriteInfo.SetRender(true);
-		GMSpriteInfo.SetType(CSpriterGM::CGMSpriteInfo::BONE);
+		CSpriterGM::CGMObjectInfo GMObjectInfo;
+		GMObjectInfo.SetObjectName(m_ObjectName);
+		GMObjectInfo.SetObjectID(m_ObjectID);
+		GMObjectInfo.SetPosition(getPosition());
+		GMObjectInfo.SetScale(getScale());
+		GMObjectInfo.SetSize(CSpriterGM::CPoint(1.0, 1.0));
+		GMObjectInfo.SetAngle(getAngle());
+		GMObjectInfo.SetAlpha(getAlpha());
+		GMObjectInfo.SetRender(true);
+		GMObjectInfo.SetType(CSpriterGM::CGMObjectInfo::BONE);
 		CSpriterGM::CSprite Sprite;
 		Sprite.SetSize(getSize());
-		GMSpriteInfo.CalculateShape(Sprite, false);
-		GMSpriteInfo.SetSize(getSize());
-		Instance.AddGMSpriteInfo(GMSpriteInfo);
+		GMObjectInfo.CalculateShape(Sprite, false);
+		GMObjectInfo.SetSize(getSize());
+		Instance.AddGMObjectInfo(GMObjectInfo);
 	}
 
 }

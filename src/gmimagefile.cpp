@@ -49,26 +49,26 @@ namespace SpriterEngine
 
 	void GMImageFile::renderSprite(CSpriterGM::CSpriterGMModel &Model, CSpriterGM::CSpriterGMInstance &Instance, UniversalObjectInterface *spriteInfo)
 	{
-		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
+		CSpriterGM::CGMObjectInfo GMObjectInfo;
 
 		CSpriterGM::CSprite *pSprite = NULL;
 		
 		if (atlasFile)
 		{
-			GMSpriteInfo.SetSpriteName(atlasFile->path());
-			GMSpriteInfo.SetAtlasFile(true);
-			GMSpriteInfo.GetAtlasFrame().m_bRotated = atlasFrameData.rotated;
-			GMSpriteInfo.GetAtlasFrame().m_bTrimmed = atlasFrameData.trimmed;
-			GMSpriteInfo.GetAtlasFrame().m_FramePositionX = atlasFrameData.framePosition.x;
-			GMSpriteInfo.GetAtlasFrame().m_FramePositionY = atlasFrameData.framePosition.y;
-			GMSpriteInfo.GetAtlasFrame().m_FrameSizeX = atlasFrameData.frameSize.x;
-			GMSpriteInfo.GetAtlasFrame().m_FrameSizeY = atlasFrameData.frameSize.y;
-			GMSpriteInfo.GetAtlasFrame().m_SourceSizeX = atlasFrameData.sourceSize.x;
-			GMSpriteInfo.GetAtlasFrame().m_SourceSizeY = atlasFrameData.sourceSize.y;
-			GMSpriteInfo.GetAtlasFrame().m_SpriteSourcePositionX = atlasFrameData.spriteSourcePosition.x;
-			GMSpriteInfo.GetAtlasFrame().m_SpriteSourcePositionY = atlasFrameData.spriteSourcePosition.y;
-			GMSpriteInfo.GetAtlasFrame().m_SpriteSourceSizeX = atlasFrameData.spriteSourceSize.x;
-			GMSpriteInfo.GetAtlasFrame().m_SpriteSourceSizeY = atlasFrameData.spriteSourceSize.y;
+			GMObjectInfo.SetSpriteName(atlasFile->path());
+			GMObjectInfo.SetAtlasFile(true);
+			GMObjectInfo.GetAtlasFrame().m_bRotated = atlasFrameData.rotated;
+			GMObjectInfo.GetAtlasFrame().m_bTrimmed = atlasFrameData.trimmed;
+			GMObjectInfo.GetAtlasFrame().m_FramePositionX = atlasFrameData.framePosition.x;
+			GMObjectInfo.GetAtlasFrame().m_FramePositionY = atlasFrameData.framePosition.y;
+			GMObjectInfo.GetAtlasFrame().m_FrameSizeX = atlasFrameData.frameSize.x;
+			GMObjectInfo.GetAtlasFrame().m_FrameSizeY = atlasFrameData.frameSize.y;
+			GMObjectInfo.GetAtlasFrame().m_SourceSizeX = atlasFrameData.sourceSize.x;
+			GMObjectInfo.GetAtlasFrame().m_SourceSizeY = atlasFrameData.sourceSize.y;
+			GMObjectInfo.GetAtlasFrame().m_SpriteSourcePositionX = atlasFrameData.spriteSourcePosition.x;
+			GMObjectInfo.GetAtlasFrame().m_SpriteSourcePositionY = atlasFrameData.spriteSourcePosition.y;
+			GMObjectInfo.GetAtlasFrame().m_SpriteSourceSizeX = atlasFrameData.spriteSourceSize.x;
+			GMObjectInfo.GetAtlasFrame().m_SpriteSourceSizeY = atlasFrameData.spriteSourceSize.y;
 
 			pSprite = Model.FindLoadedSprite(atlasFile->path());
 			
@@ -78,23 +78,23 @@ namespace SpriterEngine
 			pSprite = Model.FindLoadedSprite(spriteInfo->getImage()->path());
 		}
 
-		GMSpriteInfo.SetSpriteName(spriteInfo->getImage()->path());
-		GMSpriteInfo.SetPosition(spriteInfo->getPosition());
-		GMSpriteInfo.SetPivot(spriteInfo->getPivot());
-		GMSpriteInfo.SetScale(spriteInfo->getScale());
-		GMSpriteInfo.SetAngle(spriteInfo->getAngle());
-		GMSpriteInfo.SetAlpha(spriteInfo->getAlpha());
-		GMSpriteInfo.SetRender(true);
-		GMSpriteInfo.SetType(CSpriterGM::CGMSpriteInfo::IMAGE);
+		GMObjectInfo.SetSpriteName(spriteInfo->getImage()->path());
+		GMObjectInfo.SetPosition(spriteInfo->getPosition());
+		GMObjectInfo.SetPivot(spriteInfo->getPivot());
+		GMObjectInfo.SetScale(spriteInfo->getScale());
+		GMObjectInfo.SetAngle(spriteInfo->getAngle());
+		GMObjectInfo.SetAlpha(spriteInfo->getAlpha());
+		GMObjectInfo.SetRender(true);
+		GMObjectInfo.SetType(CSpriterGM::CGMObjectInfo::IMAGE);
 
 		if (pSprite)
 		{
-			GMSpriteInfo.SetGMSpriteIndex(pSprite->GetPointer());
-			GMSpriteInfo.CalculateShape(*pSprite, true);
+			GMObjectInfo.SetGMSpriteIndex(pSprite->GetPointer());
+			GMObjectInfo.CalculateShape(*pSprite, true);
 		}
 
 
-		Instance.AddGMSpriteInfo(GMSpriteInfo);
+		Instance.AddGMObjectInfo(GMObjectInfo);
 
 	}
 

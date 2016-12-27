@@ -60,45 +60,45 @@ DLLEXPORT double spriter_CreateInstance(double ModelIndex, const char *pInstance
 
 DLLEXPORT double spriter_UpdateInstance(double ModelIndex, double InstanceIndex, double TimeElapsed);
 
-DLLEXPORT double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIndex);
+DLLEXPORT double spriter_GetObjectInfoCount(double ModelIndex, double InstanceIndex);
 
 #if defined(ANDROID)
-DLLEXPORT std::string spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT std::string spriter_GetObjectInfoFileName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT std::string spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT std::string spriter_GetObjectInfoString(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 #else
-DLLEXPORT const char *spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT const char *spriter_GetObjectInfoFileName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT const char *spriter_GetObjectInfoString(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 #endif
 
-DLLEXPORT double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoPivotX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoPivotX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoPivotY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoPivotY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoSizeX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoSizeY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoScaleX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoScaleX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoScaleY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoScaleY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoAngle(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoAngle(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_IsGetSpriteInfoRender(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_IsGetObjectInfoRender(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoAlpha(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoType(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
 DLLEXPORT double spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceIndex, const char *pAnimationName, double BlendTime);
 
@@ -166,15 +166,27 @@ DLLEXPORT std::string spriter_GetSprite(double ModelIndex, double SpriteIndex);
 DLLEXPORT const char* spriter_GetSprite(double ModelIndex, double SpriteIndex);
 #endif
 
-DLLEXPORT double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex);
+DLLEXPORT double spriter_GetObjectInfoSpriteIndex(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 
 DLLEXPORT double spriter_SetLoadedSpriteTexelSize(double ModelIndex, const char *pSpriteName, double TexelWidth, double TexelHeight);
 
 DLLEXPORT double spriter_SetLoadedSpriteSize(double ModelIndex, const char *pSpriteName, double TextureWidth, double TextureHeight);
 
-DLLEXPORT double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);
-DLLEXPORT double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);
+DLLEXPORT double spriter_GetObjectInfoMeshPointX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);
+DLLEXPORT double spriter_GetObjectInfoMeshPointY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);
 
-DLLEXPORT double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);
-DLLEXPORT double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex);
+DLLEXPORT double spriter_GetObjectInfoMeshUVX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);
+DLLEXPORT double spriter_GetObjectInfoMeshUVY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex);
+
+DLLEXPORT double spriter_DestroyInstance(double ModelIndex, double InstanceIndex);
+
+DLLEXPORT double spriter_DestroyModel(double ModelIndex);
+
+DLLEXPORT double spriter_DestroyAllModels();
+
+#if defined(ANDROID)
+DLLEXPORT std::string spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
+#else
+DLLEXPORT const char* spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
+#endif
 

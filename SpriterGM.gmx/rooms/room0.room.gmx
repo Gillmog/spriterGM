@@ -12,16 +12,6 @@
   <showcolour>-1</showcolour>
   <code>show_debug_overlay(true);
 
-var inst1 = instance_create(100, 768 / 2, spriterPlayerModel1);
-spriter_set_current_animation(inst1, "walk", 0.0);
-spriter_apply_character_map(inst1, "hair1");
-
-var inst2 = instance_create(300, 768 / 2, spriterPlayerModel2);
-var inst3 = instance_create(600, 768 / 2, spriterPlayerModel3);
-
-
-return 0;
-//for stress test only
 var gx = 32;
 var gy = 32;
 
@@ -35,7 +25,7 @@ for (var i = 0; i &lt; my; i++)
 {
     for (var j = 0; j &lt; mx; j++)
     {
-        instance_create(j * gx * dx, i * gy * dy, spriterPlayerModel3);
+        instance_create(j * gx * dx, i * gy * dy, spriterPlayerModel2);
     }
     
 }</code>

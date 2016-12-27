@@ -47,210 +47,207 @@ double spriter_UpdateInstance(double ModelIndex, double InstanceIndex, double Ti
 	return 0;
 }
 
-double spriter_GetSpriteInfoCount(double ModelIndex, double InstanceIndex)
+double spriter_GetObjectInfoCount(double ModelIndex, double InstanceIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
-		return -1;
-
-	if (CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetNumInstances() == 0)
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 	{
 		return -1;
 	}
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetNumGMSpriteInfo();
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetNumGMObjectInfo();
 }
 
 #if defined(ANDROID)
-std::string spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+std::string spriter_GetObjectInfoFileName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetSpriteName();
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetSpriteName();
 }
 #else
-const char *spriter_GetSpriteInfoFileName(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+const char *spriter_GetObjectInfoFileName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	std::string ImageName = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetSpriteName();
+	std::string ImageName = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetSpriteName();
 
 	char *pCopyStr = new char[ImageName.length() + 1];
 	strcpy(pCopyStr, ImageName.c_str());
 
-	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).AddToGarbage(pCopyStr);
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).AddToGarbage(pCopyStr);
 
 	return pCopyStr;
 }
 #endif
 
 #if defined(ANDROID)
-std::string spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+std::string spriter_GetObjectInfoString(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	CSpriterGM::CGMSpriteInfo &SpriteInfo = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex);
+	CSpriterGM::CGMObjectInfo &ObjectInfo = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex);
 
-	std::string SpriteInfoModel = SpriteInfo.GetSpriteName() + " " +
-		" " + std::to_string(SpriteInfo.GetPosition().x) +
-		" " + std::to_string(SpriteInfo.GetPosition().y) +
-		" " + std::to_string(SpriteInfo.GetPivot().x) +
-		" " + std::to_string(SpriteInfo.GetPivot().y) +
-		" " + std::to_string(SpriteInfo.GetSize().x) +
-		" " + std::to_string(SpriteInfo.GetSize().y) +
-		" " + std::to_string(SpriteInfo.GetScale().x) +
-		" " + std::to_string(SpriteInfo.GetScale().y) +
-		" " + std::to_string(SpriteInfo.GetAngle()) +
-		" " + std::to_string(SpriteInfo.IsRender());
+	std::string ObjectInfoModel = ObjectInfo.GetSpriteName() + " " +
+		" " + std::to_string(ObjectInfo.GetPosition().x) +
+		" " + std::to_string(ObjectInfo.GetPosition().y) +
+		" " + std::to_string(ObjectInfo.GetPivot().x) +
+		" " + std::to_string(ObjectInfo.GetPivot().y) +
+		" " + std::to_string(ObjectInfo.GetSize().x) +
+		" " + std::to_string(ObjectInfo.GetSize().y) +
+		" " + std::to_string(ObjectInfo.GetScale().x) +
+		" " + std::to_string(ObjectInfo.GetScale().y) +
+		" " + std::to_string(ObjectInfo.GetAngle()) +
+		" " + std::to_string(ObjectInfo.IsRender());
 
-	return SpriteInfoModel;
+	return ObjectInfoModel;
 }
 #else
-const char *spriter_GetSpriteInfoString(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+const char *spriter_GetObjectInfoString(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	CSpriterGM::CGMSpriteInfo &SpriteInfo = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex);
+	CSpriterGM::CGMObjectInfo &ObjectInfo = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex);
 
-	std::string SpriteInfoModel = SpriteInfo.GetSpriteName() + " " +
-		" " + std::to_string(SpriteInfo.GetPosition().x) +
-		" " + std::to_string(SpriteInfo.GetPosition().y) +
-		" " + std::to_string(SpriteInfo.GetPivot().x) +
-		" " + std::to_string(SpriteInfo.GetPivot().y) +
-		" " + std::to_string(SpriteInfo.GetSize().x) +
-		" " + std::to_string(SpriteInfo.GetSize().y) +
-		" " + std::to_string(SpriteInfo.GetScale().x) +
-		" " + std::to_string(SpriteInfo.GetScale().y) +
-		" " + std::to_string(SpriteInfo.GetAngle()) +
-		" " + std::to_string(SpriteInfo.IsRender());
+	std::string ObjectInfoModel = ObjectInfo.GetSpriteName() + " " +
+		" " + std::to_string(ObjectInfo.GetPosition().x) +
+		" " + std::to_string(ObjectInfo.GetPosition().y) +
+		" " + std::to_string(ObjectInfo.GetPivot().x) +
+		" " + std::to_string(ObjectInfo.GetPivot().y) +
+		" " + std::to_string(ObjectInfo.GetSize().x) +
+		" " + std::to_string(ObjectInfo.GetSize().y) +
+		" " + std::to_string(ObjectInfo.GetScale().x) +
+		" " + std::to_string(ObjectInfo.GetScale().y) +
+		" " + std::to_string(ObjectInfo.GetAngle()) +
+		" " + std::to_string(ObjectInfo.IsRender());
 
-	char *pCopyStr = new char[SpriteInfoModel.length() + 1];
-	strcpy(pCopyStr, SpriteInfoModel.c_str());
+	char *pCopyStr = new char[ObjectInfoModel.length() + 1];
+	strcpy(pCopyStr, ObjectInfoModel.c_str());
 
-	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).AddToGarbage(pCopyStr);
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).AddToGarbage(pCopyStr);
 
 	return pCopyStr;
 }
 #endif
 
-double spriter_GetSpriteInfoPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetPosition().x;
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetPosition().x;
 }
 
-double spriter_GetSpriteInfoPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetPosition().y;
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetPosition().y;
 }
 
-double spriter_GetSpriteInfoPivotX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoPivotX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetPivot().x;
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetPivot().x;
 }
 
-double spriter_GetSpriteInfoPivotY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoPivotY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetPivot().y;
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetPivot().y;
 }
 
-double spriter_GetSpriteInfoSizeX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoSizeX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetSize().x;
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetSize().x;
 }
 
-double spriter_GetSpriteInfoSizeY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoSizeY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetSize().y;
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetSize().y;
 }
 
-double spriter_GetSpriteInfoScaleX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoScaleX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetScale().x;
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetScale().x;
 }
 
 
-double spriter_GetSpriteInfoScaleY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoScaleY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetScale().y;
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetScale().y;
 }
 
-double spriter_GetSpriteInfoAngle(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoAngle(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAngle();
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetAngle();
 }
 
-double spriter_IsGetSpriteInfoRender(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_IsGetObjectInfoRender(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).IsRender();
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).IsRender();
 }
 
-double spriter_GetSpriteInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoGMRenderPositionX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	CSpriterGM::CGMSpriteInfo &Info = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex);
+	CSpriterGM::CGMObjectInfo &Info = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex);
 
 	return Info.GetRenderPosition().x;
 }
 
-double spriter_GetSpriteInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoGMRenderPositionY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	CSpriterGM::CGMSpriteInfo &Info = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex);
+	CSpriterGM::CGMObjectInfo &Info = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex);
 
 	return Info.GetRenderPosition().y;
 }
 
-double spriter_GetSpriteInfoAlpha(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoAlpha(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetAlpha();
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetAlpha();
 }
 
-double spriter_GetSpriteInfoType(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoType(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetType();
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetType();
 }
 
 double spriter_SetInstanceCurrentAnimation(double ModelIndex, double InstanceIndex, const char *pAnimationName, double BlendTime)
@@ -519,12 +516,12 @@ const char* spriter_GetSprite(double ModelIndex, double SpriteIndex)
 }
 #endif
 
-double spriter_GetSpriteInfoSpriteIndex(double ModelIndex, double InstanceIndex, double SpriteInfoIndex)
+double spriter_GetObjectInfoSpriteIndex(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetGMSpriteIndex();
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetGMSpriteIndex();
 }
 
 double spriter_SetLoadedSpriteTexelSize(double ModelIndex, const char *pSpriteName, double TexelWidth, double TexelHeight)
@@ -547,34 +544,85 @@ double spriter_SetLoadedSpriteSize(double ModelIndex, const char *pSpriteName, d
 	return 0;
 }
 
-double spriter_GetSpriteInfoMeshPointX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+double spriter_GetObjectInfoMeshPointX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetMeshX(false, PointIndex);
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetMeshX(false, PointIndex);
 }
 
-double spriter_GetSpriteInfoMeshPointY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+double spriter_GetObjectInfoMeshPointY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetMeshY(false, PointIndex);
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetMeshY(false, PointIndex);
 }
 
-double spriter_GetSpriteInfoMeshUVX(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+double spriter_GetObjectInfoMeshUVX(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetMeshX(true, PointIndex);
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetMeshX(true, PointIndex);
 }
 
-double spriter_GetSpriteInfoMeshUVY(double ModelIndex, double InstanceIndex, double SpriteInfoIndex, double PointIndex)
+double spriter_GetObjectInfoMeshUVY(double ModelIndex, double InstanceIndex, double ObjectInfoIndex, double PointIndex)
 {
-	if (!CSpriterGM::GetSingleton()->IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).GetMeshY(true, PointIndex);
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetMeshY(true, PointIndex);
 }
+
+double spriter_DestroyInstance(double ModelIndex, double InstanceIndex)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return 0;
+
+	if (CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).DestroyInstance(InstanceIndex))
+	{
+		CSpriterGM::GetSingleton()->DestroyModel(ModelIndex);
+	}
+
+	return 0;
+}
+
+double spriter_DestroyModel(double ModelIndex)
+{
+	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
+		return 0;
+
+	CSpriterGM::GetSingleton()->DestroyModel(ModelIndex);
+
+	return 0;
+}
+
+double spriter_DestroyAllModels()
+{
+	CSpriterGM::GetSingleton()->DestroyAllModels();
+	return 0;
+}
+
+#if defined(ANDROID)
+std::string spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
+{
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
+		return 0;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetObjectName();
+}
+#else
+const char* spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex)
+{
+	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
+		return 0;
+
+	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetObjectName();
+	char *pCopyStr = new char[TmpStr.length() + 1];
+	strcpy(pCopyStr, TmpStr.c_str());
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).AddToGarbage(pCopyStr);
+	return pCopyStr;
+}
+#endif

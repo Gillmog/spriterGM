@@ -63,14 +63,31 @@ int CSpriterGM::LoadModel(const char *pFile)
 	SpriterEngine::SpriterModel *pScmlModel = new SpriterEngine::SpriterModel(ModelFile, new SpriterEngine::GMFileFactory, new SpriterEngine::GMObjectFactory);
 
 	m_LastLoadedModel.SetModel(pScmlModel);
+	m_LastLoadedModel.SetFileName(ModelFile);
 
-	m_Models.push_back(CSpriterGMModel(m_LastLoadedModel));
+	int nModelIndex = -1;
+
+	for (int nModel = 0; nModel < m_Models.size(); nModel++)
+	{
+		if (m_Models[nModel].GetModel() == NULL)
+		{
+			m_Models[nModel] = CSpriterGMModel(m_LastLoadedModel);
+			nModelIndex = nModel;
+			break;
+		}
+	}
+
+	if (nModelIndex == -1)
+	{
+		m_Models.push_back(CSpriterGMModel(m_LastLoadedModel));
+		nModelIndex = m_Models.size() - 1;
+	}
 
 	m_LoadedModels.insert(std::make_pair(ModelFile, m_Models.size() - 1));
 
 	m_LastLoadedModel.Reset();
 
-	return m_Models.size() - 1;
+	return nModelIndex;
 }
 
 int CSpriterGM::CreateInstance(int ModelIndex, const std::string &InstanceName, bool bEnableBones)
@@ -83,16 +100,19 @@ int CSpriterGM::CreateInstance(int ModelIndex, const std::string &InstanceName, 
 	SpriterEngine::Settings::enableDebugBones = bEnableBones;
 	SpriterEngine::EntityInstance* pInstance = pScmlModel->getNewEntityInstance(InstanceName);
 	SpriterEngine::Settings::enableDebugBones = bSaveEnableDebugBones;
+
+	int Index = -1;
+
 	if (pInstance)
 	{
-		Model.AddInstance(CSpriterGMInstance(pInstance));
+		Index = Model.AddInstance(CSpriterGMInstance(pInstance));
 	}
 	else
 	{
 		return -1;
 	}
 
-	return Model.GetNumInstances() - 1;
+	return Index;
 }
 
 void CSpriterGM::UpdateInstance(int ModelIndex, int InstanceIndex, double TimeElapsed)
@@ -113,7 +133,7 @@ void CSpriterGM::UpdateInstance(int ModelIndex, int InstanceIndex, double TimeEl
 		CSpriterGM::GetSingleton()->SetCurrentUpdatedModelIndex(-1);
 		CSpriterGM::GetSingleton()->SetCurrentUpdatedInstanceIndex(-1);
 
-		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMSpriteInfoReset();
+		GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GMObjectInfoReset();
 
 		if (pInstance->getZOrder())
 		{
@@ -177,9 +197,9 @@ int CSpriterGM::ForceGarbageCollection()
 		{
 			nCount += m_Models[nModel].GetInstance(nInstance).RemoveGarbage();
 
-			for (size_t nImage = 0; nImage < m_Models[nModel].GetInstance(nInstance).GetNumGMSpriteInfo(); nImage++)
+			for (size_t nImage = 0; nImage < m_Models[nModel].GetInstance(nInstance).GetNumGMObjectInfo(); nImage++)
 			{
-				nCount += m_Models[nModel].GetInstance(nInstance).GetGMSpriteInfo(nImage).RemoveGarbage();
+				nCount += m_Models[nModel].GetInstance(nInstance).GetGMObjectInfo(nImage).RemoveGarbage();
 			}
 
 			for (size_t nTrigger = 0; nTrigger < m_Models[nModel].GetInstance(nInstance).GetNumGMTriggerInfo(); nTrigger++)
@@ -222,7 +242,7 @@ bool CSpriterGM::IsInstanceValid(int ModelIndex, int InstanceIndex)
 	return true;
 }
 
-bool CSpriterGM::IsSpriteInfoValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex)
+bool CSpriterGM::IsObjectInfoValid(int ModelIndex, int InstanceIndex, int ObjectInfoIndex)
 {
 	if (!IsModelValid(ModelIndex))
 		return false;
@@ -230,7 +250,7 @@ bool CSpriterGM::IsSpriteInfoValid(int ModelIndex, int InstanceIndex, int Sprite
 	if (!IsInstanceValid(ModelIndex, InstanceIndex))
 		return false;
 
-	if (SpriteInfoIndex >= m_Models[ModelIndex].GetInstance(InstanceIndex).GetNumGMSpriteInfo())
+	if (ObjectInfoIndex >= m_Models[ModelIndex].GetInstance(InstanceIndex).GetNumGMObjectInfo())
 	{
 		Error("ImageFile not valid!");
 		return false;
@@ -273,12 +293,12 @@ bool CSpriterGM::IsSoundInfoValid(int ModelIndex, int InstanceIndex, int SoundIn
 	return true;
 }
 
-bool CSpriterGM::IsSpriteInfoAtlasFileValid(int ModelIndex, int InstanceIndex, int SpriteInfoIndex)
+bool CSpriterGM::IsObjectInfoAtlasFileValid(int ModelIndex, int InstanceIndex, int ObjectInfoIndex)
 {
-	if (!IsSpriteInfoValid(ModelIndex, InstanceIndex, SpriteInfoIndex))
+	if (!IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return false;
 
-	if (!m_Models[ModelIndex].GetInstance(InstanceIndex).GetGMSpriteInfo(SpriteInfoIndex).IsAtlasFile())
+	if (!m_Models[ModelIndex].GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).IsAtlasFile())
 	{
 		Error("ImageFile not atlas file!");
 		return false;
@@ -287,7 +307,7 @@ bool CSpriterGM::IsSpriteInfoAtlasFileValid(int ModelIndex, int InstanceIndex, i
 	return true;
 }
 
-CSpriterGM::CPoint CSpriterGM::CGMSpriteInfo::CalculatePosition(const CSprite &Sprite)
+CSpriterGM::CPoint CSpriterGM::CGMObjectInfo::CalculatePosition(const CSprite &Sprite)
 {
 	double _sprite_width = 0.0;
 	double _sprite_height = 0.0;
@@ -324,7 +344,7 @@ CSpriterGM::CPoint CSpriterGM::CGMSpriteInfo::CalculatePosition(const CSprite &S
 	return CPoint(_x, _y);
 }
 
-void CSpriterGM::CGMSpriteInfo::CalculateShape(const CSpriterGM::CSprite &Sprite, bool bHasTexture)
+void CSpriterGM::CGMObjectInfo::CalculateShape(const CSpriterGM::CSprite &Sprite, bool bHasTexture)
 {
 	m_RenderPosition = CalculatePosition(Sprite);
 

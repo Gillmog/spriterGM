@@ -1,5 +1,5 @@
 //spriter_get_box_collision_rectangle(object, object_check, box_name)
-var box_index = spriter_find_box(argument0, argument2);
+var box_index = spriter_find_object(argument0, argument2);
 
 if box_index != -1
 {

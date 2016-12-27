@@ -43,20 +43,21 @@ namespace SpriterEngine
 
 	void GMBoxInstanceInfo::renderObject(CSpriterGM::CSpriterGMInstance &Instance)
 	{
-		CSpriterGM::CGMSpriteInfo GMSpriteInfo;
-		GMSpriteInfo.SetSpriteName(m_ObjectName);
-		GMSpriteInfo.SetPosition(getPosition());
-		GMSpriteInfo.SetPivot(getPivot());
-		GMSpriteInfo.SetScale(getScale());
-		GMSpriteInfo.SetSize(getSize());
-		GMSpriteInfo.SetAngle(getAngle());
-		GMSpriteInfo.SetAlpha(getAlpha());
-		GMSpriteInfo.SetRender(true);
-		GMSpriteInfo.SetType(CSpriterGM::CGMSpriteInfo::BOX);
+		CSpriterGM::CGMObjectInfo GMObjectInfo;
+		GMObjectInfo.SetObjectName(m_ObjectName);
+		GMObjectInfo.SetObjectID(m_ObjectID);
+		GMObjectInfo.SetPosition(getPosition());
+		GMObjectInfo.SetPivot(getPivot());
+		GMObjectInfo.SetScale(getScale());
+		GMObjectInfo.SetSize(getSize());
+		GMObjectInfo.SetAngle(getAngle());
+		GMObjectInfo.SetAlpha(getAlpha());
+		GMObjectInfo.SetRender(true);
+		GMObjectInfo.SetType(CSpriterGM::CGMObjectInfo::BOX);
 		CSpriterGM::CSprite Sprite;
 		Sprite.SetSize(getSize());
-		GMSpriteInfo.CalculateShape(Sprite, false);
-		Instance.AddGMSpriteInfo(GMSpriteInfo);
+		GMObjectInfo.CalculateShape(Sprite, false);
+		Instance.AddGMObjectInfo(GMObjectInfo);
 	}
 
 }
