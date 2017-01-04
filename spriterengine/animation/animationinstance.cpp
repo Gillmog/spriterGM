@@ -226,7 +226,8 @@ namespace SpriterEngine
 		}
 		else
 		{
-			Settings::error("findMainlineKeyTimeForward - could not find key at time " + std::to_string(newTime) + " : falling back on first key");
+			//FIXME unknown reason
+			Settings::simpleError("findMainlineKeyTimeForward - could not find key at time " + std::to_string(newTime) + " : falling back on first key");
 			mainlineKeyIterator = mainlineKeys.begin();
 			return;
 		}

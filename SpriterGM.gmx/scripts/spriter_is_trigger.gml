@@ -3,7 +3,7 @@ for (var i = 0; i < spriter_InstanceGetTriggerInfoCount(argument0.modelIndex, ar
 {
     var name = spriter_InstanceGetTriggerInfoName(argument0.modelIndex, argument0.instanceIndex, i);
     
-    if trigger_name == name
+    if argument1 == name
     {
         return true;
     }
