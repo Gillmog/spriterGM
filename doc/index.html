@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header {
+    padding: 1em;
+    color: white;
+    background-color: rgb(25, 0, 56);
+    clear: left;
+    text-align: center;
+}
+
+footer {
+    padding: 1em;
+    color: white;
+    background-color: rgb(60, 113, 113);
+    clear: left;
+    text-align: center;
+}
+
+article {
+    padding: 1em;
+    overflow: hidden;
+}
+
+p {
+    margin: 1% 5% 1% 20%;
+}
+
+div
+{
+     
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+   <h1>Spriter 2D integration for Game Maker 1.4+</h1>
+</header>
+  
+<footer><h1>Installation</h1></footer>
+
+<article>
+  <div>
+    <p>&bull; Import extension. Choose folder "Extensions" and open the context menu. Choose "Import Extension" in the context menu or "Import Extension From Library".</p>
+    <p><img src="images/image01.png" height="##" width="##" border="1px"></p>
+  </div>
+  <div>
+    <p>&bull; Then choose  "Extensions/spriterGM", call the context menu and choose "Properties".</p>
+    <p><img src="images/image02.png" height="##" width="##" border="1px"></p>
+  </div>
+  <div>
+    <p>&bull; Select in "Edit Extension Package Properties" the tab "Import Resources", select "Scripts" in the right and click  "← " then click OK.</p>
+    <p><img src="images/image06.png" height="##" width="##" border="1px"></p>
+  </div>
+  <div>
+    <p>&bull; In order to use the "Spriter 2D" project, simply drag and drop a folder to the "GameMaker" project. The folder should appear in the project in "Included Files".</p>
+  </div>
+  <div>
+    <p>&bull; In the project tree, select the folder "Objects", call the context menu and choose "Create Object".</p>
+    <p><img src="images/image00.png" height="##" width="##" border="1px"></p>
+  </div>
+  <div>
+    <p>&bull; Then choose "Objects/name of object", call the context menu and choose "Properties".</p>
+    <p><img src="images/image09.png" height="##" width="##" border="1px"></p>
+  </div>
+   <div>
+    <p>&bull; Now you need to create 3 events: "Create", "Step", "Draw". Each event must have the script code. For this you need to drag and drop  "Execute Code" from tab "Control" from the group "Code" to the "Actions:" list for each events.</p>
+    <p><img src="images/image04.png" height="##" width="##" border="1px"></p>
+  </div>
+  <div>
+    <p>&bull; In order to load the model and create instance  you need to  select the event "Create" and choose "Execute a piece of code". In the script editor you need to write following: <font color="brown">spriter_load(File, Instance Name, Debug Bones);</font></p>
+    <p><img src="images/image08.png" height="##" width="##" border="1px"></p>
+    <p>File name you can choose from "Include Files/folder with project Spriter 2D/project file". In this case "PlatformerPack/player.scml". Instance name you can see in the "Spriter 2D". In this case"Player".</p>
+    <p><img src="images/image07.png" height="##" width="##" border="1px"></p>
+  </div>
+  <div>
+    <p>&bull; Select event "Step" and choose "Execute a piece of code". In the script editor, you need to write the following: <font color="brown">spriter_update(self);</font> It is necessary to update our animation.</p>
+    <p><img src="images/image05.png" height="##" width="##" border="1px"></p>
+  </div>
+  <div>
+    <p>&bull; Select event "Draw" and choose "Execute a piece of code". In the script editor, you need to write the following: <font color="brown">spriter_render(self, false);</font></p>
+    <p><img src="images/image10.png" height="##" width="##" border="1px"></p>
+  </div>
+  <div>
+    <p>&bull; If you want to change the animation you need to call in script following: <font color="brown">spriter_set_current_animation(object, animation name, blend time);</font> for example: <font color="brown">spriter_set_current_animation(self, "walk", 0.1);</font> </p>
+  </div>
+  <div>
+    <p>&bull; If you want to change the skin you need to call in script following: <font color="brown">spriter_apply_character_map(object, charmap name);</font> for example: <font color="brown">spriter_apply_character_map(self, "axe");</font></p>
+    <p><img src="images/image03.png" height="##" width="##" border="1px"></p>
+  </div>
+  <div>
+    <p>&bull; If you want to delete skin you need to call in script following: <font color="brown">spriter_remove_character_map(object, charmap name);</font> for example: <font color="brown">spriter_remove_character_map(self, "axe");</font></p>
+    <p>&bull; If you want to move, rotate, scale you need to use standard object properties: <font color="brown">x, y, image_angle, image_xscale, image_yscale</font></p>
+    <p>&bull; If you want to delete object you need to call in script following: <font color="brown">spriter_destroy_instance(object);</font> for example: <font color="brown">spriter_destroy_instance(player);</font></p>
+  </div>
+</article>
+
+<footer><h1>Android build</h1></footer>
+
+<article>
+  <div>
+    <p>&bull; Download android sdk <a href="https://developer.android.com/studio/index.html">https://developer.android.com/studio/index.html</a>.</p>
+    <p>&bull; Execute SDK Manager and install <font color=rgb(100,100,100)>Extras/NDK Bundle</font></p>
+    <p>&bull; Configure android sdk <a href=" http://help.yoyogames.com/hc/en-us/articles/216753498-GameMaker-Studio-Android-SDK-and-NDK-setup-">http://help.yoyogames.com/hc/en-us/articles/216753498-GameMaker-Studio-Android-SDK-and-NDK-setup-</a></p>
+    <p>&bull; Open Global Game Settings in the tab <font color=rgb(100,100,100)>Android/Fire</font> write Min SDK <font color="brown">15</font></p>
+    <p>&bull; Change in the file 
+<font color=rgb(100,100,100)>/GameMaker-Studio/Android/runner/gradle/gradle/wrapper/gradle-wrapper.properties</font>
+<font color="brown">distributionUrl=https\://services.gradle.org/distributions/gradle-2.10-bin.zip</font> to <font color="brown">distributionUrl=https\://services.gradle.org/distributions/gradle-3.2.1-bin.zip</font></p>
+    <p>&bull; Change in the file <font color=rgb(100,100,100)>/GameMaker-Studio/Android/runner/RootFiles/build.gradle</font>
+        <font color="brown">classpath 'com.android.tools.build:gradle:2.1.0'</font> to <font color="brown">classpath 'com.android.tools.build:gradle:2.2.2'</font></p>
+    <p>&bull; Change in the file <font color=rgb(100,100,100)>/GameMaker-Studio/Android/runner/RootFiles/settings.gradle</font> <font color="brown">include ':${YYAndroidPackageName}'</font> to <font color="brown">include ':${YYAndroidPackageName}', ':libspritergm'</font></p>
+    <p>&bull; Copy file  from  <a href="https://github.com/Gillmog/spriterGM/blob/master/GameMaker-Studio/Android/runner/RootFiles/local.properties">https://github.com/Gillmog/spriterGM/blob/master/GameMaker-Studio/Android/runner/RootFiles/local.properties</a> to  <font color=rgb(100,100,100)>/GameMaker-Studio/Android/runner/RootFiles/</font>
+Change the path to sdk and ndk in local.properties 
+<font color="brown">ndk.dir=C\:\\Android\\sdk\\ndk-bundle</font> and <font color="brown">sdk.dir=C\:\\Android\\sdk</font> to your path</p>
+    <p>&bull; Create symbolic link from <font color=rgb(100,100,100)>GameMaker-Studio/Android/runner/RootFiles/</font> to root folder of the git clone, for example on Windows that to be 
+<font color="brown">mklink /D c:\Users\user-name\AppData\Roaming\GameMaker-Studio\Android\runner\RootFiles\libspritergm git-folder\SpriterGM\</font></p>
+    <p>&bull; File example for GameMaker are in the: <a href="https://github.com/Gillmog/spriterGM/tree/master/GameMaker-Studio">https://github.com/Gillmog/spriterGM/tree/master/GameMaker-Studio</a></p>
+    <p>&bull; When the plugin update be sure to remove Cache, if there are any errors.</p>
+  </div>
+</article>
+</body>
+</html>
