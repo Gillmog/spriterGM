@@ -17,3 +17,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #Video Tutorial
 [https://www.youtube.com/watch?v=fS0mw6-K78w](https://www.youtube.com/watch?v=fS0mw6-K78w)
 
+#Marketplace
+[https://marketplace.yoyogames.com/assets/4827/spriter-for-game-maker](https://marketplace.yoyogames.com/assets/4827/spriter-for-game-maker)
+
