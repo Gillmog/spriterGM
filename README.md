@@ -14,3 +14,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #Documentation
 [https://github.com/Gillmog/spriterGM/tree/master/doc](http://htmlpreview.github.io/?https://github.com/Gillmog/spriterGM/blob/master/doc/index.html)
 
+#Video Tutorial
+[https://www.youtube.com/watch?v=fS0mw6-K78w](https://www.youtube.com/watch?v=fS0mw6-K78w)
+
