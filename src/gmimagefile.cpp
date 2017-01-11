@@ -47,8 +47,11 @@ namespace SpriterEngine
 		
 	}
 
-	void GMImageFile::renderSprite(CSpriterGM::CSpriterGMModel &Model, CSpriterGM::CSpriterGMInstance &Instance, UniversalObjectInterface *spriteInfo)
+	void GMImageFile::renderObject(int ModelIndex, int InstanceIndex, UniversalObjectInterface *spriteInfo)
 	{
+		CSpriterGM::CSpriterGMModel &Model = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex);
+		CSpriterGM::CSpriterGMInstance &Instance = Model.GetInstance(InstanceIndex);
+
 		CSpriterGM::CGMObjectInfo GMObjectInfo;
 
 		CSpriterGM::CSprite *pSprite = NULL;

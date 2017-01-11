@@ -71,7 +71,7 @@ const char *spriter_GetObjectInfoFileName(double ModelIndex, double InstanceInde
 	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	std::string ImageName = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetSpriteName();
+	const std::string &ImageName = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetSpriteName();
 
 	char *pCopyStr = new char[ImageName.length() + 1];
 	strcpy(pCopyStr, ImageName.c_str());
@@ -407,7 +407,7 @@ const char* spriter_InstanceGetTriggerInfoName(double ModelIndex, double Instanc
 	if (!CSpriterGM::GetSingleton()->IsTriggerInfoValid(ModelIndex, InstanceIndex, TriggerIndex))
 		return 0;
 
-	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMTriggerInfo(TriggerIndex).GetTriggerName();
+	const std::string &TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMTriggerInfo(TriggerIndex).GetTriggerName();
 	char *pCopyStr = new char[TmpStr.length() + 1];
 	strcpy(pCopyStr, TmpStr.c_str());
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMTriggerInfo(TriggerIndex).AddToGarbage(pCopyStr);
@@ -437,7 +437,7 @@ const char* spriter_InstanceGetSoundInfoName(double ModelIndex, double InstanceI
 	if (!CSpriterGM::GetSingleton()->IsSoundInfoValid(ModelIndex, InstanceIndex, SoundIndex))
 		return 0;
 
-	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSoundInfo(SoundIndex).GetSoundFileName();
+	const std::string &TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSoundInfo(SoundIndex).GetSoundFileName();
 	char *pCopyStr = new char[TmpStr.length() + 1];
 	strcpy(pCopyStr, TmpStr.c_str());
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMSoundInfo(SoundIndex).AddToGarbage(pCopyStr);
@@ -508,7 +508,7 @@ const char* spriter_GetSprite(double ModelIndex, double SpriteIndex)
 	if (!CSpriterGM::GetSingleton()->IsModelValid(ModelIndex))
 		return "";
 
-	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetSprite(SpriteIndex);
+	const std::string &TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetSprite(SpriteIndex);
 	char *pCopyStr = new char[TmpStr.length() + 1];
 	strcpy(pCopyStr, TmpStr.c_str());
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).AddToGarbage(pCopyStr);
@@ -619,7 +619,7 @@ const char* spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, d
 	if (!CSpriterGM::GetSingleton()->IsObjectInfoValid(ModelIndex, InstanceIndex, ObjectInfoIndex))
 		return 0;
 
-	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetObjectName();
+	const std::string &TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).GetObjectName();
 	char *pCopyStr = new char[TmpStr.length() + 1];
 	strcpy(pCopyStr, TmpStr.c_str());
 	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetGMObjectInfo(ObjectInfoIndex).AddToGarbage(pCopyStr);

@@ -139,36 +139,10 @@ void CSpriterGM::UpdateInstance(int ModelIndex, int InstanceIndex, double TimeEl
 		{
 			for (auto& _it : *pInstance->getZOrder())
 			{
-				if (dynamic_cast<SpriterEngine::GMBoneInstanceInfo *>(_it))
-				{
-					SpriterEngine::GMBoneInstanceInfo *pBoneInstance = (SpriterEngine::GMBoneInstanceInfo *)_it;
-					pBoneInstance->renderObject(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex));
-				}
+				if (_it->getImage())
+					_it->getImage()->renderObject(ModelIndex, InstanceIndex, _it);
 				else
-				if (dynamic_cast<SpriterEngine::GMPointInstanceInfo *>(_it))
-				{
-					SpriterEngine::GMPointInstanceInfo *pPointInstance = (SpriterEngine::GMPointInstanceInfo *)_it;
-
-					pPointInstance->renderObject(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex));
-				}
-				else
-				if (dynamic_cast<SpriterEngine::GMBoxInstanceInfo *>(_it))
-				{
-					SpriterEngine::GMBoxInstanceInfo *pBoxInstance = (SpriterEngine::GMBoxInstanceInfo *)_it;
-
-					pBoxInstance->renderObject(GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex));
-				}
-				else
-				if (dynamic_cast<SpriterEngine::GMImageFile *>(_it->getImage()))
-				{
-					SpriterEngine::GMImageFile *pImage = (SpriterEngine::GMImageFile *)_it->getImage();
-
-					pImage->renderSprite(GetSpriterGMModel(ModelIndex), GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex), _it);
-				}
-				else
-				{
-					_it->render();
-				}
+					_it->renderObject(ModelIndex, InstanceIndex, _it);
 			}
 		}
 	}

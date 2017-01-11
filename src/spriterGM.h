@@ -301,12 +301,7 @@ public:
 
 		}
 
-		CGMTriggerInfo(const CGMTriggerInfo &GMTriggerInfo) : m_TriggerName(std::move(GMTriggerInfo.m_TriggerName))
-		{
-
-		}
-
-		std::string GetTriggerName() const { return m_TriggerName; }
+		const std::string &GetTriggerName() const { return m_TriggerName; }
 	};
 
 	class CGMSoundInfo : public CGMGarbageCollector
@@ -320,12 +315,7 @@ public:
 
 		}
 
-		CGMSoundInfo(const CGMSoundInfo &GMSoundInfo) : m_SoundFileName(std::move(GMSoundInfo.m_SoundFileName))
-		{
-
-		}
-
-		std::string GetSoundFileName() const { return m_SoundFileName; }
+		const std::string &GetSoundFileName() const { return m_SoundFileName; }
 	};
 
 	class CGMObjectInfo : public CGMGarbageCollector
@@ -420,27 +410,7 @@ public:
 
 		}
 
-		CGMObjectInfo(const CGMObjectInfo &ObjectInfo) :
-			m_SpriteName(std::move(ObjectInfo.m_SpriteName)),
-			m_Position(ObjectInfo.m_Position),
-			m_Pivot(ObjectInfo.m_Pivot),
-			m_Size(ObjectInfo.m_Size),
-			m_Scale(ObjectInfo.m_Scale),
-			m_Angle(ObjectInfo.m_Angle),
-			m_bRender(ObjectInfo.m_bRender),
-			m_Alpha(ObjectInfo.m_Alpha),
-			m_Type(ObjectInfo.m_Type),
-			m_bAtlasFile(ObjectInfo.m_bAtlasFile),
-			m_AtlasFrame(ObjectInfo.m_AtlasFrame),
-			m_GMSpriteIndex(ObjectInfo.m_GMSpriteIndex),
-			m_Mesh(ObjectInfo.m_Mesh),
-			m_RenderPosition(ObjectInfo.m_RenderPosition),
-			m_ObjectName(std::move(ObjectInfo.m_ObjectName))
-		{
-
-		}
-
-		std::string GetSpriteName() const { return m_SpriteName; }
+		const std::string &GetSpriteName() const { return m_SpriteName; }
 		void SetSpriteName(const std::string &val) { m_SpriteName = val; }
 		CPoint GetPosition() const { return m_Position; }
 		void SetPosition(const CPoint &val) { m_Position = val; }
@@ -479,8 +449,8 @@ public:
 		int GetObjectID() const { return m_ObjectID; }
 		void SetObjectID(int val) { m_ObjectID = val; }
 
-		std::string GetObjectName() const { return m_ObjectName; }
-		void SetObjectName(std::string val) { m_ObjectName = val; }
+		const std::string &GetObjectName() const { return m_ObjectName; }
+		void SetObjectName(const std::string &val) { m_ObjectName = val; }
 	};
 
 	class CSpriterGMInstance : public CGMGarbageCollector
@@ -499,15 +469,6 @@ public:
 
 		CSpriterGMInstance(SpriterEngine::EntityInstance* pInstance) : 
 			m_pInstance(pInstance)
-		{
-
-		}
-
-		CSpriterGMInstance(const CSpriterGMInstance &Instance) :
-			m_pInstance(Instance.m_pInstance),
-			m_Objects(std::move(Instance.m_Objects)),
-			m_Triggers(std::move(Instance.m_Triggers)),
-			m_Sounds(std::move(Instance.m_Sounds))
 		{
 
 		}
@@ -598,17 +559,6 @@ public:
 		}
 
 		CSpriterGMModel(SpriterEngine::SpriterModel* pModel) : m_pModel(pModel)
-		{
-
-		}
-
-		CSpriterGMModel(const CSpriterGMModel &Model) :
-			m_pModel(Model.m_pModel),
-			m_Instances(std::move(Model.m_Instances)),
-			m_MapSprites(std::move(Model.m_MapSprites)),
-			m_Sprites(std::move(Model.m_Sprites)),
-			m_bAtlas(Model.m_bAtlas),
-			m_FileName(std::move(Model.m_FileName))
 		{
 
 		}
@@ -735,7 +685,7 @@ public:
 
 		int GetNumSprites() const { return (int)m_Sprites.size(); }
 
-		std::string GetSprite(int Index) const { return m_Sprites[Index]; }
+		const std::string &GetSprite(int Index) const { return m_Sprites[Index]; }
 		bool IsAtlas() const { return m_bAtlas; }
 		void SetAtlas(bool val) { m_bAtlas = val; }
 
@@ -782,8 +732,8 @@ public:
 			return false;
 		}
 
-		std::string GetFileName() const { return m_FileName; }
-		void SetFileName(std::string val) { m_FileName = val; }
+		const std::string &GetFileName() const { return m_FileName; }
+		void SetFileName(const std::string &val) { m_FileName = val; }
 	};
 
 private:
@@ -907,7 +857,7 @@ public:
 #else
 	const char *GetLastError()
 	{
-		std::string Error = m_ErrorsList.back();
+		const std::string &Error = m_ErrorsList.back();
 
 		char *pCopyStr = new char[Error.length() + 1];
 		strcpy(pCopyStr, Error.c_str());

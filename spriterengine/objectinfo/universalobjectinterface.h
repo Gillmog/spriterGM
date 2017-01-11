@@ -94,6 +94,8 @@ namespace SpriterEngine
 
 		virtual void render();
 
+		virtual void renderObject(int modelIndex, int instanceIndex, UniversalObjectInterface *opbject);
+
 		virtual void playTrigger();
 	};
 

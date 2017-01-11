@@ -38,7 +38,9 @@ namespace SpriterEngine
 
 		void render() override;
 
-		void renderObject(CSpriterGM::CSpriterGMInstance &Instance);
+		void renderObject(int ModelIndex, int InstanceIndex, UniversalObjectInterface *spriteInfo) override;
+
+		ImageFile *getImage() override { return NULL; }
 	};
 
 }
