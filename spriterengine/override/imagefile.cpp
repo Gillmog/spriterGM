@@ -38,4 +38,9 @@ namespace SpriterEngine
 		// spriteInfo->getPivot()
 	}
 
+	void ImageFile::renderObject(int modelIndex, int instanceIndex, UniversalObjectInterface *opbject)
+	{
+
+	}
+
 }

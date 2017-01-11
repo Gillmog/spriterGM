@@ -24,7 +24,7 @@ namespace SpriterEngine
 		return 0;
 	}
 
-	std::string File::path()
+	const std::string &File::path()
 	{
 		return filePath;
 	}

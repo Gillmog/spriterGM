@@ -26,6 +26,8 @@ namespace SpriterEngine
 
 		virtual void renderSprite(UniversalObjectInterface *spriteInfo);
 
+		virtual void renderObject(int modelIndex, int instanceIndex, UniversalObjectInterface *opbject);
+
 	protected:
 		AtlasFile* atlasFile;
 		atlasframedata atlasFrameData;

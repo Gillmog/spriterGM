@@ -262,6 +262,11 @@ namespace SpriterEngine
 		Settings::error("UniversalObjectInterface::render - object does not contain this component - no action taken");
 	}
 
+	void UniversalObjectInterface::renderObject(int modelIndex, int instanceIndex, UniversalObjectInterface *opbject)
+	{
+		Settings::error("UniversalObjectInterface::renderObject - object does not contain this component - no action taken");
+	}
+
 	void UniversalObjectInterface::playTrigger()
 	{
 		Settings::error("UniversalObjectInterface::playTrigger - object does not contain this component - no action taken");

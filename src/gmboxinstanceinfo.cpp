@@ -41,8 +41,11 @@ namespace SpriterEngine
 	}
 
 
-	void GMBoxInstanceInfo::renderObject(CSpriterGM::CSpriterGMInstance &Instance)
+	void GMBoxInstanceInfo::renderObject(int ModelIndex, int InstanceIndex, UniversalObjectInterface *spriteInfo)
 	{
+		CSpriterGM::CSpriterGMModel &Model = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex);
+		CSpriterGM::CSpriterGMInstance &Instance = Model.GetInstance(InstanceIndex);
+
 		CSpriterGM::CGMObjectInfo GMObjectInfo;
 		GMObjectInfo.SetObjectName(m_ObjectName);
 		GMObjectInfo.SetObjectID(m_ObjectID);
