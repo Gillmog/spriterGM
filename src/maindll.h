@@ -190,3 +190,18 @@ DLLEXPORT std::string spriter_GetObjectInfoName(double ModelIndex, double Instan
 DLLEXPORT const char* spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
 #endif
 
+DLLEXPORT double spriter_SetLockObjectInstance(double ModelIndex, double InstanceIndex, const char *ObjectName);
+
+DLLEXPORT double spriter_SetUnlockObjectInstance(double ModelIndex, double InstanceIndex);
+
+DLLEXPORT double spriter_SetObjectInstanceIKMode(double ModelIndex, double InstanceIndex, const char *ObjectName, double bIKMode);
+
+DLLEXPORT double spriter_SetObjectInstanceIKPosition(double ModelIndex, double InstanceIndex, double x, double y);
+
+DLLEXPORT double spriter_SetObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, const char *ObjectName, double bManualControl);
+
+DLLEXPORT double spriter_SetObjectInstanceManualAngle(double ModelIndex, double InstanceIndex, double x, double y);
+
+DLLEXPORT double spriter_IsObjectInstanceIKMode(double ModelIndex, double InstanceIndex, const char *ObjectName);
+
+DLLEXPORT double spriter_IsObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, const char *ObjectName);

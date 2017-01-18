@@ -21,15 +21,28 @@ namespace SpriterEngine
 		angleCos = std::cos(parentObject->getAngle());
 	}
 
-	void TransformProcessor::transformChildObject(UniversalObjectInterface *childObject) const
+	void TransformProcessor::transformChildObject(UniversalObjectInterface *childObject)
 	{
 		point parentScale = parentObject->getScale();
 		childObject->setScale(multiply(childObject->getScale(), parentScale));
-		if (parentScale.x*parentScale.y < 0)
+
+		if (childObject->isIKMode() && !parentObject->isManualAngleControl()) 
+		{
+			real newAngle = atan2(parentObject->getPosition().y - childObject->getIKPosition().y, parentObject->getPosition().x - childObject->getIKPosition().x);
+
+			parentObject->setAngle(newAngle - childObject->getAngle());
+
+			angleSin = std::sin(parentObject->getAngle());
+			angleCos = std::cos(parentObject->getAngle());
+		}
+
+		if (parentScale.x * parentScale.y < 0)
 		{
 			childObject->setAngle( - childObject->getAngle());
 		}
+
 		childObject->setAngle(childObject->getAngle() + parentObject->getAngle());
+
 		childObject->setAlpha(childObject->getAlpha()*parentObject->getAlpha());
 		point childPosition = childObject->getPosition();
 		point preMult = multiply(childPosition, parentScale);

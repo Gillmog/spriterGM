@@ -416,3 +416,78 @@ void CSpriterGM::CGMObjectInfo::CalculateShape(const CSpriterGM::CSprite &Sprite
 
 	m_Mesh.m_UV[3] = m * CPoint(TexLeftTop.x, TexRightBottom.y);
 }
+
+void CSpriterGM::CSpriterGMInstance::SetLockObjectInstance(const std::string &ObjectName)
+{
+	SpriterEngine::UniversalObjectInterface * pObject = m_pInstance->getObjectInstance(ObjectName);
+
+	if (pObject)
+	{
+		m_pLockedObjectInstance = pObject;
+	}
+}
+
+void CSpriterGM::CSpriterGMInstance::SetUnlockObjectInstance()
+{
+	m_pLockedObjectInstance = NULL;
+}
+
+void CSpriterGM::CSpriterGMInstance::SetObjectInstanceIKMode(const std::string &ObjectName, bool bIKMode)
+{
+	SpriterEngine::UniversalObjectInterface * pObject = m_pInstance->getObjectInstance(ObjectName);
+
+	if (pObject)
+	{
+		pObject->setIKMode(bIKMode);
+	}
+}
+
+void CSpriterGM::CSpriterGMInstance::SetObjectInstanceIKPosition(const SpriterEngine::point &position)
+{
+	if (m_pLockedObjectInstance)
+	{
+		m_pLockedObjectInstance->setIKPosition(position);
+	}
+}
+
+void CSpriterGM::CSpriterGMInstance::SetObjectInstanceManualAngleControl(const std::string &ObjectName, bool bManualControl)
+{
+	SpriterEngine::UniversalObjectInterface * pObject = m_pInstance->getObjectInstance(ObjectName);
+
+	if (pObject)
+	{
+		pObject->setManualAngleControl(bManualControl);
+	}
+}
+
+void CSpriterGM::CSpriterGMInstance::SetObjectInstanceManualAngle(const SpriterEngine::point &position)
+{
+	if (m_pLockedObjectInstance)
+	{
+		m_pLockedObjectInstance->setManualAngle(position);
+	}
+}
+
+bool CSpriterGM::CSpriterGMInstance::IsObjectInstanceIKMode(const std::string &ObjectName) const
+{
+	SpriterEngine::UniversalObjectInterface * pObject = m_pInstance->getObjectInstance(ObjectName);
+
+	if (pObject)
+	{
+		return pObject->isIKMode();
+	}
+
+	return false;
+}
+
+bool CSpriterGM::CSpriterGMInstance::IsObjectInstanceManualAngleControl(const std::string &ObjectName) const
+{
+	SpriterEngine::UniversalObjectInterface * pObject = m_pInstance->getObjectInstance(ObjectName);
+
+	if (pObject)
+	{
+		return pObject->isManualAngleControl();
+	}
+
+	return false;
+}

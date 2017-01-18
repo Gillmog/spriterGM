@@ -91,16 +91,22 @@ for (i = 0; i < nObjectInfos; i++)
             var sx = spriter_GetObjectInfoScaleX(modelIndex, instanceIndex, i);
             var sy = spriter_GetObjectInfoScaleY(modelIndex, instanceIndex, i);
             var angle = -1.0 * spriter_GetObjectInfoAngle(modelIndex, instanceIndex, i);
-            var dx = px + cos(angle) * (sizex);
-            var dy = py + sin(angle) * (sizex);
+            
+            if sx * sy < 0
+            {
+                angle *= -1.0;
+            }
+            
+            var dx = px + cos(angle) * (sizex) * sx;
+            var dy = py + sin(angle) * (sizex) * sy;
             draw_set_alpha(alpha * image_alpha); 
             draw_set_colour(blend);
             draw_line(px, py, dx, dy);
-            var dx1 = px + cos(angle + degtorad(45)) * (sizey * 0.5);
-            var dy1 = py + sin(angle + degtorad(45)) * (sizey * 0.5);
+            var dx1 = px + cos(angle + degtorad(45)) * (sizey * 0.5) * sx;
+            var dy1 = py + sin(angle + degtorad(45)) * (sizey * 0.5 * sy);
             draw_line(px, py, dx1, dy1);
-            var dx2 = px + cos(angle + degtorad(-45)) * (sizey * 0.5);
-            var dy2 = py + sin(angle + degtorad(-45)) * (sizey * 0.5);
+            var dx2 = px + cos(angle + degtorad(-45)) * (sizey * 0.5) * sx;
+            var dy2 = py + sin(angle + degtorad(-45)) * (sizey * 0.5) * sy;
             draw_line(px, py, dx2, dy2);
             draw_line(dx1, dy1, dx, dy);
             draw_line(dx2, dy2, dx, dy);

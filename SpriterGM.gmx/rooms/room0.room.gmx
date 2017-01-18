@@ -18,14 +18,14 @@ var gy = 32;
 var dx = 4;
 var dy = 4;
 
-var mx = 8;
-var my = 8;
+var mx = 1;
+var my = 1;
 
 for (var i = 0; i &lt; my; i++)
 {
     for (var j = 0; j &lt; mx; j++)
     {
-        instance_create(j * gx * dx, i * gy * dy, spriterPlayerModel2);
+        instance_create(room_width / 2 + j * gx * dx, room_height / 2 + i * gy * dy, spriterPlayerModel1);
     }
     
 }</code>

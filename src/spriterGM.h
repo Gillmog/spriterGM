@@ -460,21 +460,24 @@ public:
 		std::vector<CGMTriggerInfo> m_Triggers;
 		std::vector<CGMSoundInfo> m_Sounds;
 
+		SpriterEngine::UniversalObjectInterface * m_pLockedObjectInstance;
+
 	public:
 
-		CSpriterGMInstance() : m_pInstance(NULL)
+		CSpriterGMInstance() : m_pInstance(NULL), m_pLockedObjectInstance(NULL)
 		{
 
 		}
 
 		CSpriterGMInstance(SpriterEngine::EntityInstance* pInstance) : 
-			m_pInstance(pInstance)
+			m_pInstance(pInstance), m_pLockedObjectInstance(NULL)
 		{
 
 		}
 
 		~CSpriterGMInstance()
 		{
+			m_pLockedObjectInstance = NULL;
 			Destroy();
 		}
 
@@ -540,6 +543,23 @@ public:
 		{
 			return m_pInstance;
 		}
+
+		//IK
+		void SetLockObjectInstance(const std::string &ObjectName);
+
+		void SetUnlockObjectInstance();
+
+		void SetObjectInstanceIKMode(const std::string &ObjectName, bool bIKMode);
+
+		void SetObjectInstanceIKPosition(const SpriterEngine::point &position);
+
+		void SetObjectInstanceManualAngleControl(const std::string &ObjectName, bool bManualControl);
+
+		void SetObjectInstanceManualAngle(const SpriterEngine::point &position);
+
+		bool IsObjectInstanceIKMode(const std::string &ObjectName) const;
+
+		bool IsObjectInstanceManualAngleControl(const std::string &ObjectName) const;
 	};
 
 	class CSpriterGMModel : public CGMGarbageCollector

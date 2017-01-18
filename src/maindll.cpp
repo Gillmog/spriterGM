@@ -626,3 +626,79 @@ const char* spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, d
 	return pCopyStr;
 }
 #endif
+
+double spriter_SetLockObjectInstance(double ModelIndex, double InstanceIndex, const char *ObjectName)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).SetLockObjectInstance(ObjectName);
+
+	return 0;
+}
+
+double spriter_SetUnlockObjectInstance(double ModelIndex, double InstanceIndex)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).SetUnlockObjectInstance();
+
+	return 0;
+}
+
+double spriter_SetObjectInstanceIKMode(double ModelIndex, double InstanceIndex, const char *ObjectName, double bIKMode)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).SetObjectInstanceIKMode(ObjectName, bIKMode);
+
+	return 0;
+}
+
+double spriter_SetObjectInstanceIKPosition(double ModelIndex, double InstanceIndex, double x, double y)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).SetObjectInstanceIKPosition(SpriterEngine::point(x, -1.0 * y));
+
+	return 0;
+}
+
+double spriter_SetObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, const char *ObjectName, double bManualControl)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return - 1;
+
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).SetObjectInstanceManualAngleControl(ObjectName, bManualControl);
+
+	return 0;
+}
+
+double spriter_SetObjectInstanceManualAngle(double ModelIndex, double InstanceIndex, double x, double y)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return - 1;
+
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).SetObjectInstanceManualAngle(SpriterEngine::point(x, -1.0 * y));
+
+	return 0;
+}
+
+double spriter_IsObjectInstanceIKMode(double ModelIndex, double InstanceIndex, const char *ObjectName)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).IsObjectInstanceIKMode(ObjectName);
+}
+
+double spriter_IsObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, const char *ObjectName)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).IsObjectInstanceManualAngleControl(ObjectName);
+}

@@ -94,9 +94,22 @@ namespace SpriterEngine
 
 		virtual void render();
 
-		virtual void renderObject(int modelIndex, int instanceIndex, UniversalObjectInterface *opbject);
+		virtual void renderObject(int ModelIndex, int InstanceIndex, UniversalObjectInterface *spriteInfo);
 
 		virtual void playTrigger();
+
+		//IK mode
+		virtual void setIKMode(bool bIKMode);
+
+		virtual bool isIKMode();
+
+		virtual point getIKPosition();
+		virtual real getIKAngle(point position);
+		virtual void setIKPosition(point pos);
+
+		virtual void setManualAngleControl(bool bAngleControl);
+		virtual void setManualAngle(point position);
+		virtual bool isManualAngleControl();
 	};
 
 }

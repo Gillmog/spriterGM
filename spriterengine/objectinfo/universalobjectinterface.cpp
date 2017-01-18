@@ -262,14 +262,57 @@ namespace SpriterEngine
 		Settings::error("UniversalObjectInterface::render - object does not contain this component - no action taken");
 	}
 
-	void UniversalObjectInterface::renderObject(int modelIndex, int instanceIndex, UniversalObjectInterface *opbject)
+	void UniversalObjectInterface::renderObject(int ModelIndex, int InstanceIndex, UniversalObjectInterface *spriteInfo)
 	{
-		Settings::error("UniversalObjectInterface::renderObject - object does not contain this component - no action taken");
+		
 	}
 
 	void UniversalObjectInterface::playTrigger()
 	{
 		Settings::error("UniversalObjectInterface::playTrigger - object does not contain this component - no action taken");
+	}
+
+	void UniversalObjectInterface::setIKMode(bool bIKMode)
+	{
+		Settings::error("UniversalObjectInterface::setIKMode - object does not contain this component - no action taken");
+	}
+
+	bool UniversalObjectInterface::isIKMode()
+	{
+		return false;
+	}
+
+	SpriterEngine::point UniversalObjectInterface::getIKPosition()
+	{
+		Settings::error("UniversalObjectInterface::getIKPosition - object does not contain this component - no action taken");
+		return point();
+	}
+
+	real UniversalObjectInterface::getIKAngle(point position)
+	{
+		Settings::error("UniversalObjectInterface::getIKAngle - object does not contain this component - no action taken");
+		return 0.0;
+	}
+
+	void UniversalObjectInterface::setIKPosition(point pos)
+	{
+		Settings::error("UniversalObjectInterface::setIKPosition - object does not contain this component - no action taken");
+	}
+
+	void UniversalObjectInterface::setManualAngleControl(bool bAngleControl)
+	{
+		Settings::error("UniversalObjectInterface::setManualAngleControl - object does not contain this component - no action taken");
+	}
+
+	void UniversalObjectInterface::setManualAngle(point position)
+	{
+		Settings::error("UniversalObjectInterface::setManualAngle - object does not contain this component - no action taken");
+	}
+
+	bool UniversalObjectInterface::isManualAngleControl()
+	{
+		Settings::error("UniversalObjectInterface::isManualAngleControl - object does not contain this component - no action taken");
+		return false;
 	}
 
 }
