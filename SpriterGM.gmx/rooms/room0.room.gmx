@@ -26,6 +26,7 @@ for (var i = 0; i &lt; my; i++)
     for (var j = 0; j &lt; mx; j++)
     {
         instance_create(room_width / 2 + j * gx * dx, room_height / 2 + i * gy * dy, spriterPlayerModel1);
+        instance_create(room_width / 2 + j * gx * dx, room_height / 2 + i * gy * dy, spriterPlayerModel2);
     }
     
 }</code>

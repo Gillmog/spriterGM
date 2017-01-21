@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r9">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r10">
     <atlas>
         <i name="moss_golem_atlas.json"/>
     </atlas>
@@ -563,7 +563,7 @@
             </timeline>
             <timeline id="1" obj="1" name="bip_head" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="67.45036" angle="334.704901"/>
+                    <bone x="67.45036" y="-0" angle="334.704901"/>
                 </key>
                 <key id="1" time="1499">
                     <bone x="67.45036" angle="326.872272"/>
@@ -595,7 +595,7 @@
             </timeline>
             <timeline id="5" obj="5" name="bip_left_leg" object_type="bone">
                 <key id="0">
-                    <bone x="11.203003" y="-6.678299" angle="201.543429"/>
+                    <bone x="11.203003" y="-6.678299" angle="195.13645"/>
                 </key>
                 <key id="1" time="1499" spin="-1">
                     <bone x="11.203003" y="-6.678299" angle="209.746352"/>
@@ -603,17 +603,17 @@
             </timeline>
             <timeline id="6" obj="6" name="bip_left_foot" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="38.745575" angle="324.197632"/>
+                    <bone x="38.745575" angle="336.563775"/>
                 </key>
                 <key id="1" time="1499">
                     <bone x="38.745575" angle="314.541272"/>
                 </key>
             </timeline>
             <timeline id="7" obj="7" name="bip_left_boot" object_type="bone">
-                <key id="0" spin="0">
-                    <bone x="36.45745" angle="91.313173"/>
+                <key id="0">
+                    <bone x="36.45745" y="-0" angle="90.057201"/>
                 </key>
-                <key id="1" time="1499" spin="0">
+                <key id="1" time="1499" spin="-1">
                     <bone x="36.45745" angle="91.313173"/>
                 </key>
             </timeline>
