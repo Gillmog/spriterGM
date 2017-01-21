@@ -262,7 +262,7 @@ namespace SpriterEngine
 		Settings::error("UniversalObjectInterface::render - object does not contain this component - no action taken");
 	}
 
-	void UniversalObjectInterface::renderObject(int ModelIndex, int InstanceIndex, UniversalObjectInterface *spriteInfo)
+	void UniversalObjectInterface::renderObject(int ModelIndex, int InstanceIndex, UniversalObjectInterface *opbject)
 	{
 		
 	}
@@ -286,12 +286,6 @@ namespace SpriterEngine
 	{
 		Settings::error("UniversalObjectInterface::getIKPosition - object does not contain this component - no action taken");
 		return point();
-	}
-
-	real UniversalObjectInterface::getIKAngle(point position)
-	{
-		Settings::error("UniversalObjectInterface::getIKAngle - object does not contain this component - no action taken");
-		return 0.0;
 	}
 
 	void UniversalObjectInterface::setIKPosition(point pos)

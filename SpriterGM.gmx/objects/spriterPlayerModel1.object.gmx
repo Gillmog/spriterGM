@@ -63,7 +63,7 @@ if spriter_is_manual_control(self, "bip_body")
 
 if spriter_is_IK_mode(self, "bip_head")
 {
-    spriter_set_IK_position(self, "bip_head", mouse_x, mouse_y);
+    //spriter_set_IK_position(self, "bip_head", mouse_x, mouse_y);
 }
 </string>
           </argument>

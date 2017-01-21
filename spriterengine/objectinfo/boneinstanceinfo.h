@@ -11,8 +11,6 @@ namespace SpriterEngine
 
 	class BoneInstanceInfo : public UniversalObjectInterface
 	{
-		real getAngleBetween(const point &position1, const point &position2);
-
 		real getManualAngle();
 
 	public:
@@ -38,8 +36,6 @@ namespace SpriterEngine
 
 		void setIKPosition(point newPosition) override;
 
-		real getIKAngle(point newPosition) override;
-
 		bool isIKMode() override { return bIKMode; }
 
 		point getIKPosition() override { return IKposition; }
@@ -48,6 +44,8 @@ namespace SpriterEngine
 		bool isManualAngleControl() override { return bManualAngleControl; }
 
 		void setManualAngle(point newPosition) override;
+
+		point getCurrentIKposition() override;
 
 	private:
 		point position;

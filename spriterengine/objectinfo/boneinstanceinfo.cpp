@@ -4,20 +4,6 @@
 
 namespace SpriterEngine
 {
-
-	real BoneInstanceInfo::getAngleBetween(const point &position1, const point &position2)
-	{
-		real newAngle = atan2(position1.y - position2.y, position1.x - position2.x);
-
-		if (newAngle < 0.0)
-			newAngle += 3.14159265358979323846 * 2.0;
-
-		if (getScale().x * getScale().y < 0.0)
-			newAngle -= 3.14159265358979323846;
-
-		return newAngle;
-	}
-
 	BoneInstanceInfo::BoneInstanceInfo(point initialSize) :
 		scale(1, 1),
 		alpha(1),
@@ -38,7 +24,7 @@ namespace SpriterEngine
 			return getManualAngle();
 
 		if (isIKMode())
-			return getIKAngle(position);
+			return angleBetween(IKposition, position, scale);
 
 		return angle.angle;
 	}
@@ -126,19 +112,29 @@ namespace SpriterEngine
 		IKposition = newPosition;
 	}
 
-	real BoneInstanceInfo::getIKAngle(point newPosition)
-	{
-		return getAngleBetween(IKposition, newPosition);
-	}
-
 	void BoneInstanceInfo::setManualAngle(point newPosition)
 	{
 		manualAngle = newPosition;
 	}
 
+	SpriterEngine::point BoneInstanceInfo::getCurrentIKposition()
+	{
+		point newIKPosition;
+
+		real angle = getAngle();
+
+		if (scale.x * scale.y < 0.0)
+			angle *= -1.0;
+
+		newIKPosition.x = position.x + cos(angle) * (size.x) * scale.x;
+		newIKPosition.y = position.y + sin(angle) * (size.x) * scale.y;
+
+		return newIKPosition;
+	}
+
 	real BoneInstanceInfo::getManualAngle()
 	{
-		return getAngleBetween(manualAngle, position);
+		return angleBetween(manualAngle, position, scale);
 	}
 
 }

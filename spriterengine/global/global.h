@@ -15,6 +15,8 @@ namespace std {
 }
 #endif //ANDROID
 
+#include <math.h>
+
 namespace SpriterEngine
 {
 
@@ -26,6 +28,8 @@ namespace SpriterEngine
 	const real ONEEIGHTY_OVER_PI = 57.295779513082320876798154814105;
 
 	const real MAX_RADIANS = 6.28318530718;
+
+	const real PI = 3.14159265358979323846;
 
 	inline real toRadians(real angleInDegrees)
 	{
@@ -117,6 +121,21 @@ namespace SpriterEngine
 	inline point multiply(const point &a, const point &b)
 	{
 		return point(a.x * b.x, a.y * b.y);
+	}
+
+	inline real angleBetween(const point &position1, const point &position2, const point &scale)
+	{
+		real newAngle = atan2(position1.y - position2.y, position1.x - position2.x);
+
+		if (newAngle < 0.0)
+			newAngle += SpriterEngine::PI * 2.0;
+
+		if (scale.x * scale.y < 0.0)
+		{
+			newAngle -= SpriterEngine::PI;
+		}
+
+		return newAngle;
 	}
 
 }
