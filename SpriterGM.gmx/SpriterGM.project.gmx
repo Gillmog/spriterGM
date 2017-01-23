@@ -1787,11 +1787,20 @@
       </scripts>
       <script>scripts\spriter_destroy_instance.gml</script>
       <script>scripts\spriter_find_object.gml</script>
+      <scripts name="IK">
+        <script>scripts\spriter_set_IK_mode.gml</script>
+        <script>scripts\spriter_is_IK_mode.gml</script>
+        <script>scripts\spriter_is_manual_control.gml</script>
+        <script>scripts\spriter_set_manual_control.gml</script>
+        <script>scripts\spriter_set_IK_position.gml</script>
+        <script>scripts\spriter_set_manual_angle.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\spriterPlayerModel1</object>
     <object>objects\spriterPlayerModel2</object>
+    <object>objects\text</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

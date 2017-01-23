@@ -47,6 +47,7 @@ namespace SpriterEngine
 		void pushBackTag(std::string newTag);
 
 		int fileCount();
+		int entityCount();
 
 		File * getFileAtIndex(int fileIndex);
 		FileFactory* getFileFactory() {

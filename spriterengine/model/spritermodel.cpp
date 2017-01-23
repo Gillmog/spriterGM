@@ -165,6 +165,11 @@ namespace SpriterEngine
 		return files.size();
 	}
 
+	int SpriterModel::entityCount()
+	{
+		return entities.size();
+	}
+
 	File * SpriterModel::getFileAtIndex(int fileIndex)
 	{
 		if (fileIndex >= 0 && fileIndex < files.size())

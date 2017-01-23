@@ -15,6 +15,11 @@ for (var i = 0; i < spritesCount; i++)
     if spriteIndex == -1
     {
         spriteIndex = sprite_add(spriteName,0,0,0,0,0);
+        
+        if spriteIndex == -1
+        {
+            show_error("Image '" + spriteName + "' is missing", true);
+        }
     
         spriter_AddLoadedSprite(modelIndex, spriteName, spriteIndex);
         

@@ -1,4 +1,4 @@
-//spriter_get_point_direction(object, point_name)
+///spriter_get_point_direction(object, point_name)
 
 var point_index = spriter_find_object(argument0, argument1);
 

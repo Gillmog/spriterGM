@@ -4,12 +4,16 @@
 
 namespace SpriterEngine
 {
-
 	BoneInstanceInfo::BoneInstanceInfo(point initialSize) :
 		scale(1, 1),
 		alpha(1),
-		size(initialSize)
+		size(initialSize),
+		bIKMode(false),
+		bManualAngleControl(false),
+		bIKModeFromChild(false),
+		IKTreshhold(0.01)
 	{
+			IKangle.angle = 0;
 	}
 
 	point BoneInstanceInfo::getPosition()
@@ -19,6 +23,56 @@ namespace SpriterEngine
 
 	real BoneInstanceInfo::getAngle()
 	{
+		if (isManualAngleControl())
+			return getManualAngle();
+
+		if (isIKMode())
+		{
+			real distance = distance_squared(getCurrentIKposition(), IKposition);
+
+			if (distance > getIKTreshhold())
+			{
+				point rootPos = getPosition();
+				point curEnd = getCurrentIKposition();
+				point endPos = getIKPosition();
+
+				point curVector, targetVector;
+
+				curVector.x = curEnd.x - rootPos.x;
+				curVector.y = curEnd.y - rootPos.y;
+
+				targetVector.x = endPos.x - rootPos.x;
+				targetVector.y = endPos.y - rootPos.y;
+
+				normalize(curVector);
+				normalize(targetVector);
+
+				real cosAngle = dot_product(targetVector, curVector);
+
+				if (cosAngle < 0.9999999999999999)
+				{
+					real crossResult = cross_product(targetVector, curVector);
+
+					IKangle.angle = angle.angle;
+
+					if (crossResult >= 0.0)
+					{
+						IKangle.angle = angle.angle - acos(cosAngle);
+					}
+					else
+					if (crossResult < 0.0)
+					{
+						IKangle.angle = angle.angle + acos(cosAngle);
+					}
+				}
+			}
+
+			if (IKangle.angle != IKangle.angle)
+				IKangle.angle = 0.0;
+
+			return IKangle.angle;
+		}
+
 		return angle.angle;
 	}
 
@@ -41,11 +95,34 @@ namespace SpriterEngine
 	void BoneInstanceInfo::setPosition(const point &newPosition)
 	{
 		position = newPosition;
+
+		real currentAngle = angle.angle;
+
+		if (isManualAngleControl())
+			currentAngle = getManualAngle();
+
+		if (scale.x * scale.y < 0.0)
+			currentAngle *= -1.0;
+
+		framePosition.x = position.x + cos(currentAngle) * (size.x) * scale.x;
+		framePosition.y = position.y + sin(currentAngle) * (size.x) * scale.y;
 	}
 
 	void BoneInstanceInfo::setAngle(real newAngle)
-	{
+	{	
+		if (isIKMode())
+		{
+			angle.angle = getAngle();
+			return;
+		}
+
+		if (isIKModeFromChild())
+			return;
+
 		angle.angle = newAngle;
+
+		IKangle.angle = newAngle;
+
 	}
 
 	void BoneInstanceInfo::setScale(const point &newScale)
@@ -60,15 +137,23 @@ namespace SpriterEngine
 
 	void BoneInstanceInfo::setToBlendedLinear(UniversalObjectInterface *aObject, UniversalObjectInterface *bObject, real t, real blendRatio, ObjectRefInstance *blendedRefInstance)
 	{
-		real tempAngle = angle.angle;
-		point tempPosition = position;
 		point tempScale = scale;
 		real tempAlpha = alpha;
 
-		aObject->setObjectToLinear(bObject, t, this);
+		bool bIKMode = isIKMode();
 
-		setAngle(shortestAngleLinear(tempAngle, angle.angle, blendRatio));
-		setPosition(linear(tempPosition, position, blendRatio));
+		if (!bIKMode)
+			bIKMode = isIKModeFromChild();
+
+		if (!bIKMode)
+		{
+			real tempAngle = angle.angle;
+			point tempPosition = position;
+			aObject->setObjectToLinear(bObject, t, this);
+			setAngle(shortestAngleLinear(tempAngle, angle.angle, blendRatio));
+			setPosition(linear(tempPosition, position, blendRatio));
+		}
+
 		setScale(linear(tempScale, scale, blendRatio));
 		setAlpha(linear(tempAlpha, alpha, blendRatio));
 	}
@@ -81,6 +166,44 @@ namespace SpriterEngine
 		// getPosition()
 		// getAngle();
 		// getScale() * getSize().x;
+	}
+
+	void BoneInstanceInfo::setIKMode(bool newbIKMode, real IKTreshhold)
+	{
+		if (!bIKMode)
+		{
+			real angle = getAngle();
+			IKangle.angle = angle;
+
+			if (scale.x * scale.y < 0.0)
+				angle *= -1.0;
+
+			IKposition.x = position.x + cos(angle) * (size.x) * scale.x;
+			IKposition.y = position.y + sin(angle) * (size.x) * scale.y;
+		}
+
+		bIKMode = newbIKMode;
+	}
+
+	void BoneInstanceInfo::setIKPosition(point newPosition)
+	{
+
+		IKposition = newPosition;
+	}
+
+	void BoneInstanceInfo::setManualAngle(point newPosition)
+	{
+		manualAngle = newPosition;
+	}
+
+	SpriterEngine::point BoneInstanceInfo::getCurrentIKposition()
+	{
+		return framePosition;
+	}
+
+	real BoneInstanceInfo::getManualAngle()
+	{
+		return angleBetween(manualAngle, position, scale);
 	}
 
 }

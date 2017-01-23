@@ -5,11 +5,14 @@
 
 #include "angleinfo.h"
 
+
 namespace SpriterEngine
 {
 
 	class BoneInstanceInfo : public UniversalObjectInterface
 	{
+		real getManualAngle();
+
 	public:
 		BoneInstanceInfo(point initialSize);
 
@@ -29,6 +32,27 @@ namespace SpriterEngine
 
 		void render() override;
 
+		void setIKMode(bool newbIKMode, real IKTreshhold) override;
+
+		void setIKPosition(point newPosition) override;
+
+		bool isIKMode() override { return bIKMode; }
+
+		point getIKPosition() override { return IKposition; }
+
+		void setManualAngleControl(bool bAngleControl) override { bManualAngleControl = bAngleControl; }
+		bool isManualAngleControl() override { return bManualAngleControl; }
+
+		void setManualAngle(point newPosition) override;
+
+		point getCurrentIKposition() override;
+
+		void setIKModeFromChild(bool bIKMode) { bIKModeFromChild = bIKMode; }
+
+		bool isIKModeFromChild() override  { return bIKModeFromChild; }
+
+		real getIKTreshhold() { return IKTreshhold; }
+
 	private:
 		point position;
 		AngleInfo angle;
@@ -36,6 +60,15 @@ namespace SpriterEngine
 		real alpha;
 
 		point size;
+
+		bool bIKMode;
+		point IKposition;
+		point manualAngle;
+		bool bManualAngleControl;
+		bool bIKModeFromChild;
+		point framePosition;
+		AngleInfo IKangle;
+		real IKTreshhold;
 	};
 
 }

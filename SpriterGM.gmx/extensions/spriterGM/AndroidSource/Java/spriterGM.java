@@ -282,4 +282,44 @@ public class spriterGM {
 	{
 		return spriterGMNative.spriter_GetObjectInfoName(ModelIndex, InstanceIndex, ObjectInfoIndex);
 	}
+	
+	public double spriter_SetLockObjectInstance(double ModelIndex, double InstanceIndex, String ObjectName)
+	{
+		return spriterGMNative.spriter_SetLockObjectInstance(ModelIndex, InstanceIndex, ObjectName);
+	}
+
+	public double spriter_SetUnlockObjectInstance(double ModelIndex, double InstanceIndex)
+	{
+		return spriterGMNative.spriter_SetUnlockObjectInstance(ModelIndex, InstanceIndex);
+	}
+
+	public double spriter_SetObjectInstanceIKMode(double ModelIndex, double InstanceIndex, double bIKMode, double IKTreshold)
+	{
+		return spriterGMNative.spriter_SetObjectInstanceIKMode(ModelIndex, InstanceIndex, bIKMode, IKTreshold);
+	}
+
+	public double spriter_SetObjectInstanceIKPosition(double ModelIndex, double InstanceIndex, double x, double y)
+	{
+		return spriterGMNative.spriter_SetObjectInstanceIKPosition(ModelIndex, InstanceIndex, x, y);
+	}
+
+	public double spriter_SetObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, String ObjectName, double bManualControl)
+	{
+		return spriterGMNative.spriter_SetObjectInstanceManualAngleControl(ModelIndex, InstanceIndex, ObjectName, bManualControl);
+	}
+
+	public double spriter_SetObjectInstanceManualAngle(double ModelIndex, double InstanceIndex, double x, double y)
+	{
+		return spriterGMNative.spriter_SetObjectInstanceManualAngle(ModelIndex, InstanceIndex, x, y);
+	}
+
+	public double spriter_IsObjectInstanceIKMode(double ModelIndex, double InstanceIndex, String ObjectName)
+	{
+		return spriterGMNative.spriter_IsObjectInstanceIKMode(ModelIndex, InstanceIndex, ObjectName);
+	}
+
+	public double spriter_IsObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, String ObjectName)
+	{
+		return spriterGMNative.spriter_IsObjectInstanceManualAngleControl(ModelIndex, InstanceIndex, ObjectName);
+	}
 }

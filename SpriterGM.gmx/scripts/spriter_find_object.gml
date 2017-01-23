@@ -1,4 +1,4 @@
-//spriter_find_object(object, name)
+///spriter_find_object(object, name)
 var nObjectInfo = spriter_GetObjectInfoCount(argument0.modelIndex, argument0.instanceIndex);
 spriter_check_errors();
 for (var i = 0; i < nObjectInfo; i++)

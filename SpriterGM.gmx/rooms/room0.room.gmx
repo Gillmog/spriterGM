@@ -18,14 +18,15 @@ var gy = 32;
 var dx = 4;
 var dy = 4;
 
-var mx = 8;
-var my = 8;
+var mx = 1;
+var my = 1;
 
 for (var i = 0; i &lt; my; i++)
 {
     for (var j = 0; j &lt; mx; j++)
     {
-        instance_create(j * gx * dx, i * gy * dy, spriterPlayerModel2);
+        instance_create(room_width / 2 + j * gx * dx, room_height / 2 + i * gy * dy, spriterPlayerModel1);
+        instance_create(room_width / 2 + j * gx * dx, room_height / 2 + i * gy * dy, spriterPlayerModel2);
     }
     
 }</code>
@@ -68,7 +69,9 @@ for (var i = 0; i &lt; my; i++)
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
-  <instances/>
+  <instances>
+    <instance objName="text" x="64" y="32" name="inst_F7F8C539" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+  </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

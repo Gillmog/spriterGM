@@ -14,7 +14,7 @@ namespace SpriterEngine
 		TransformProcessor(UniversalObjectInterface *hostParentObject);
 
 		void setTrigFunctions();
-		void transformChildObject(UniversalObjectInterface *childObject) const;
+		void transformChildObject(UniversalObjectInterface *childObject);
 
 	private:
 		UniversalObjectInterface *parentObject;

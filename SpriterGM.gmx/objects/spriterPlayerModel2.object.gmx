@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_load("moss_golem_atlas/moss_golem_atlas.scml", "moss_golem", false);
+            <string>spriter_load("moss_golem_atlas/moss_golem_atlas.scml", "moss_golem", true);
+spriter_update(self);
 </string>
           </argument>
         </arguments>
@@ -49,6 +50,16 @@
           <argument>
             <kind>1</kind>
             <string>spriter_update(self);
+
+if spriter_is_manual_control(self, "bip_left_leg")
+{
+    spriter_set_manual_angle(self, "bip_left_leg", mouse_x, mouse_y);
+}
+
+if spriter_is_IK_mode(self, "bip_left_boot")
+{
+    //spriter_set_IK_position(self, "bip_head", mouse_x, mouse_y);
+}
 </string>
           </argument>
         </arguments>
@@ -71,7 +82,53 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_render(self, false);
+            <string>spriter_render(self, true);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="52">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>spriter_set_manual_control(self, "bip_left_leg", !spriter_is_manual_control(self, "bip_left_leg"));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="51">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>spriter_set_IK_mode(self, "bip_left_boot", !spriter_is_IK_mode(self, "bip_left_boot"), 1.0);
 </string>
           </argument>
         </arguments>
