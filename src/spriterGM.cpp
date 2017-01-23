@@ -432,13 +432,11 @@ void CSpriterGM::CSpriterGMInstance::SetUnlockObjectInstance()
 	m_pLockedObjectInstance = NULL;
 }
 
-void CSpriterGM::CSpriterGMInstance::SetObjectInstanceIKMode(const std::string &ObjectName, bool bIKMode)
+void CSpriterGM::CSpriterGMInstance::SetObjectInstanceIKMode(bool bIKMode, double IKTreshold)
 {
-	SpriterEngine::UniversalObjectInterface * pObject = m_pInstance->getObjectInstance(ObjectName);
-
-	if (pObject)
+	if (m_pLockedObjectInstance)
 	{
-		pObject->setIKMode(bIKMode);
+		m_pLockedObjectInstance->setIKMode(bIKMode, IKTreshold);
 	}
 }
 

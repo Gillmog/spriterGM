@@ -32,7 +32,7 @@ namespace SpriterEngine
 
 		void render() override;
 
-		void setIKMode(bool newbIKMode) override;
+		void setIKMode(bool newbIKMode, real IKTreshhold) override;
 
 		void setIKPosition(point newPosition) override;
 
@@ -47,6 +47,12 @@ namespace SpriterEngine
 
 		point getCurrentIKposition() override;
 
+		void setIKModeFromChild(bool bIKMode) { bIKModeFromChild = bIKMode; }
+
+		bool isIKModeFromChild() override  { return bIKModeFromChild; }
+
+		real getIKTreshhold() { return IKTreshhold; }
+
 	private:
 		point position;
 		AngleInfo angle;
@@ -59,6 +65,10 @@ namespace SpriterEngine
 		point IKposition;
 		point manualAngle;
 		bool bManualAngleControl;
+		bool bIKModeFromChild;
+		point framePosition;
+		AngleInfo IKangle;
+		real IKTreshhold;
 	};
 
 }

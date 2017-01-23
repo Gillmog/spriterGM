@@ -489,6 +489,70 @@ extern "C" {
 	JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObjectInfoName
 	(JNIEnv *, jclass, jdouble, jdouble, jdouble);
 
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_SetLockObjectInstance
+	* Signature: (DDLjava/lang/String;)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetLockObjectInstance
+	(JNIEnv *, jclass, jdouble, jdouble, jstring);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_SetUnlockObjectInstance
+	* Signature: (DD)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetUnlockObjectInstance
+	(JNIEnv *, jclass, jdouble, jdouble);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_SetObjectInstanceIKMode
+	* Signature: (DDDD)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetObjectInstanceIKMode
+	(JNIEnv *, jclass, jdouble, jdouble, jdouble, jdouble);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_SetObjectInstanceIKPosition
+	* Signature: (DDDD)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetObjectInstanceIKPosition
+	(JNIEnv *, jclass, jdouble, jdouble, jdouble, jdouble);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_SetObjectInstanceManualAngleControl
+	* Signature: (DDLjava/lang/String;D)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetObjectInstanceManualAngleControl
+	(JNIEnv *, jclass, jdouble, jdouble, jstring, jdouble);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_SetObjectInstanceManualAngle
+	* Signature: (DDDD)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetObjectInstanceManualAngle
+	(JNIEnv *, jclass, jdouble, jdouble, jdouble, jdouble);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_IsObjectInstanceIKMode
+	* Signature: (DDLjava/lang/String;)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsObjectInstanceIKMode
+	(JNIEnv *, jclass, jdouble, jdouble, jstring);
+
+	/*
+	* Class:     com_libspritergm_spriterGMNative
+	* Method:    spriter_IsObjectInstanceManualAngleControl
+	* Signature: (DDLjava/lang/String;)D
+	*/
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsObjectInstanceManualAngleControl
+	(JNIEnv *, jclass, jdouble, jdouble, jstring);
+
 #ifdef __cplusplus
 }
 #endif

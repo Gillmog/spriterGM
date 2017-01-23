@@ -647,12 +647,12 @@ double spriter_SetUnlockObjectInstance(double ModelIndex, double InstanceIndex)
 	return 0;
 }
 
-double spriter_SetObjectInstanceIKMode(double ModelIndex, double InstanceIndex, const char *ObjectName, double bIKMode)
+double spriter_SetObjectInstanceIKMode(double ModelIndex, double InstanceIndex, double bIKMode, double IKTreshold)
 {
 	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
 		return -1;
 
-	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).SetObjectInstanceIKMode(ObjectName, bIKMode);
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).SetObjectInstanceIKMode(bIKMode, IKTreshold);
 
 	return 0;
 }

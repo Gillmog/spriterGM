@@ -27,6 +27,15 @@
             <kind>1</kind>
             <string>spriter_load("player/human.scml", "human", true);
 spriter_apply_character_map(self, "male");
+spriter_apply_character_map(self, "golem_set_longsword");
+spriter_apply_character_map(self, "wood_shield");
+spriter_apply_character_map(self, "golem_set_legs");
+spriter_apply_character_map(self, "cheftain_set_armor");
+spriter_apply_character_map(self, "hair1");
+current_animation = "idle";
+set_animation = "";
+image_xscale = 1.2;
+image_yscale = 1.2;
 </string>
           </argument>
         </arguments>
@@ -64,6 +73,77 @@ if spriter_is_manual_control(self, "bip_body")
 if spriter_is_IK_mode(self, "bip_head")
 {
     //spriter_set_IK_position(self, "bip_head", mouse_x, mouse_y);
+}
+
+if set_animation != ""
+{
+    current_animation = set_animation;
+    set_animation = "";
+    
+    var blend_time = 0.0;
+    
+    if current_animation == "idle" { blend_time = 1000.0;}
+    if current_animation == "run" { blend_time = 200.0;}
+     
+    spriter_set_current_animation(self, current_animation, blend_time);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="39">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>x += 2;
+image_xscale = 1.2;
+
+if current_animation != "run"
+{
+    set_animation = "run";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="37">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>x -= 2
+image_xscale = -1.2;
+
+if current_animation != "run"
+{
+    set_animation = "run";
 }
 </string>
           </argument>
@@ -110,7 +190,7 @@ if spriter_is_IK_mode(self, "bip_head")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spriter_set_IK_mode(self, "bip_head", !spriter_is_IK_mode(self, "bip_head"));
+            <string>spriter_set_IK_mode(self, "bip_head", !spriter_is_IK_mode(self, "bip_head"), 0.01);
 </string>
           </argument>
         </arguments>
@@ -140,7 +220,7 @@ if spriter_is_IK_mode(self, "bip_head")
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="39">
+    <event eventtype="10" enumb="39">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -157,15 +237,13 @@ if spriter_is_IK_mode(self, "bip_head")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x += 5;
-
-image_xscale = 1.0;
+            <string>set_animation = "idle";
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="37">
+    <event eventtype="10" enumb="37">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -182,8 +260,7 @@ image_xscale = 1.0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x -= 5
-image_xscale = -1.0;
+            <string>set_animation = "idle";
 </string>
           </argument>
         </arguments>

@@ -138,5 +138,36 @@ namespace SpriterEngine
 		return newAngle;
 	}
 
+	inline real dot_product(const point &v1, const point &v2)
+	{
+		return v1.x * v2.x + v1.y * v2.y;
+	}
+
+	inline real cross_product(const point &v1, const point &v2)
+	{
+		return v1.x * v2.y - v1.y * v2.x;
+	}
+
+	inline void normalize(point &v1)
+	{
+		real magnitude = sqrt(v1.x * v1.x + v1.y * v1.y);
+	
+		if (magnitude > 1e-5)
+		{
+			real invMagnitude = 1.0 / magnitude;
+
+			v1.x *= invMagnitude;
+			v1.y *= invMagnitude;
+		}
+	}
+
+	inline real distance_squared(const point &v1, const point &v2)
+	{
+		real dx = v2.x - v1.x;
+		real dy = v2.y - v1.y;
+
+		return dx * dx + dy * dy;
+	}
+
 }
 #endif // GLOBAL_H

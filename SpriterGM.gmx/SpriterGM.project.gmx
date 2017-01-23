@@ -1800,6 +1800,7 @@
   <objects name="objects">
     <object>objects\spriterPlayerModel1</object>
     <object>objects\spriterPlayerModel2</object>
+    <object>objects\text</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

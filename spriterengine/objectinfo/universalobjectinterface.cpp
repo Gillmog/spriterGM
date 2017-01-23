@@ -262,17 +262,17 @@ namespace SpriterEngine
 		Settings::error("UniversalObjectInterface::render - object does not contain this component - no action taken");
 	}
 
-	void UniversalObjectInterface::renderObject(int ModelIndex, int InstanceIndex, UniversalObjectInterface *opbject)
-	{
-		
-	}
-
 	void UniversalObjectInterface::playTrigger()
 	{
 		Settings::error("UniversalObjectInterface::playTrigger - object does not contain this component - no action taken");
 	}
 
-	void UniversalObjectInterface::setIKMode(bool bIKMode)
+	void UniversalObjectInterface::renderObject(int ModelIndex, int InstanceIndex, UniversalObjectInterface *opbject)
+	{
+
+	}
+
+	void UniversalObjectInterface::setIKMode(bool bIKMode, real IKTreshhold)
 	{
 		Settings::error("UniversalObjectInterface::setIKMode - object does not contain this component - no action taken");
 	}

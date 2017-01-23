@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r9">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r10">
     <folder id="0" name="images">
         <file id="0" name="images/male_31.png" width="19" height="21" pivot_x="0" pivot_y="1"/>
         <file id="1" name="images/male_08.png" width="28" height="37" pivot_x="0" pivot_y="1"/>
@@ -673,7 +673,7 @@
             </timeline>
             <timeline id="1" obj="1" name="bip_body" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="10.236596" y="-0" angle="7.730245"/>
+                    <bone x="10.236596" angle="7.730245"/>
                 </key>
                 <key id="1" time="2600" spin="0">
                     <bone x="10.236596" angle="7.730245"/>
@@ -689,7 +689,7 @@
             </timeline>
             <timeline id="3" obj="3" name="bip_head" object_type="bone">
                 <key id="0">
-                    <bone x="5.37182" y="0" angle="352.112616"/>
+                    <bone x="5.37182" angle="352.112616"/>
                 </key>
                 <key id="1" time="1171" spin="0">
                     <bone x="5.37182" angle="353.36961"/>
@@ -793,12 +793,12 @@
             </timeline>
             <timeline id="13" obj="13" name="bip_left_leg1" object_type="bone">
                 <key id="0">
-                    <bone x="5.398534" y="-3.702668" angle="233.215411"/>
+                    <bone x="5.398534" y="-3.702668" angle="229.874517"/>
                 </key>
                 <key id="1" time="1171" spin="-1">
                     <bone x="5.398534" y="-3.702668" angle="240.625399"/>
                 </key>
-                <key id="2" time="2600">
+                <key id="2" time="2600" spin="0">
                     <bone x="5.398534" y="-3.702668" angle="229.874517"/>
                 </key>
             </timeline>

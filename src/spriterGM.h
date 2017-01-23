@@ -549,7 +549,7 @@ public:
 
 		void SetUnlockObjectInstance();
 
-		void SetObjectInstanceIKMode(const std::string &ObjectName, bool bIKMode);
+		void SetObjectInstanceIKMode(bool bIKMode, double IKTreshold);
 
 		void SetObjectInstanceIKPosition(const SpriterEngine::point &position);
 

@@ -1,4 +1,4 @@
-//spriter_get_box_point_x(object, box_index, point_name)
+///spriter_get_box_point_x(object, box_index, point_name)
 var mesh_index = -1;
 
 switch(argument2)

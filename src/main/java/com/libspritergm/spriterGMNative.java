@@ -140,4 +140,20 @@ public class spriterGMNative {
 	native public static double spriter_DestroyAllModels();
 
 	native public static String spriter_GetObjectInfoName(double ModelIndex, double InstanceIndex, double ObjectInfoIndex);
+	
+	native public static double spriter_SetLockObjectInstance(double ModelIndex, double InstanceIndex, String ObjectName);
+
+	native public static double spriter_SetUnlockObjectInstance(double ModelIndex, double InstanceIndex);
+
+	native public static double spriter_SetObjectInstanceIKMode(double ModelIndex, double InstanceIndex, double bIKMode, double IKTreshold);
+
+	native public static double spriter_SetObjectInstanceIKPosition(double ModelIndex, double InstanceIndex, double x, double y);
+
+	native public static double spriter_SetObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, String ObjectName, double bManualControl);
+
+	native public static double spriter_SetObjectInstanceManualAngle(double ModelIndex, double InstanceIndex, double x, double y);
+
+	native public static double spriter_IsObjectInstanceIKMode(double ModelIndex, double InstanceIndex, String ObjectName);
+
+	native public static double spriter_IsObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, String ObjectName);
 }

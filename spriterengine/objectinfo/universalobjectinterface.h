@@ -99,7 +99,7 @@ namespace SpriterEngine
 		virtual void playTrigger();
 
 		//IK mode
-		virtual void setIKMode(bool bIKMode);
+		virtual void setIKMode(bool bIKMode, real IKTreshhold);
 		virtual bool isIKMode();
 		virtual point getIKPosition();
 		virtual point getCurrentIKposition() { return point(); }
@@ -107,6 +107,12 @@ namespace SpriterEngine
 		virtual void setManualAngleControl(bool bAngleControl);
 		virtual void setManualAngle(point position);
 		virtual bool isManualAngleControl();
+
+		virtual void setIKModeFromChild(bool bIKMode) {}
+		virtual bool isIKModeFromChild() { return 0; }
+
+		real getIKTreshhold() { return 0.01; }
+
 	};
 
 }

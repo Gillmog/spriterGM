@@ -194,7 +194,7 @@ DLLEXPORT double spriter_SetLockObjectInstance(double ModelIndex, double Instanc
 
 DLLEXPORT double spriter_SetUnlockObjectInstance(double ModelIndex, double InstanceIndex);
 
-DLLEXPORT double spriter_SetObjectInstanceIKMode(double ModelIndex, double InstanceIndex, const char *ObjectName, double bIKMode);
+DLLEXPORT double spriter_SetObjectInstanceIKMode(double ModelIndex, double InstanceIndex, double bIKMode, double IKTreshold);
 
 DLLEXPORT double spriter_SetObjectInstanceIKPosition(double ModelIndex, double InstanceIndex, double x, double y);
 

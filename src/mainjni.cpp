@@ -413,3 +413,64 @@ JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetObje
 {
 	return GetJStringContent(env, spriter_GetObjectInfoName(modelIndex, instanceIndex, objectInfoIndex));
 }
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetLockObjectInstance
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jstring objectName)
+{
+	std::string str;
+	GetJStringContent(env, objectName, str);
+
+	return spriter_SetLockObjectInstance(modelIndex, instanceIndex, str.c_str());
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetUnlockObjectInstance
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex)
+{
+	return spriter_SetUnlockObjectInstance(modelIndex, instanceIndex);
+}
+
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetObjectInstanceIKMode
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble IKMode, jdouble IKTreshold)
+{
+	return spriter_SetObjectInstanceIKMode(modelIndex, instanceIndex, IKMode, IKTreshold);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetObjectInstanceIKPosition
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble x, jdouble y)
+{
+	return spriter_SetObjectInstanceIKPosition(modelIndex, instanceIndex, x, y);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetObjectInstanceManualAngleControl
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jstring objectName, jdouble manualCOntrol)
+{
+	std::string str;
+	GetJStringContent(env, objectName, str);
+
+	return spriter_SetObjectInstanceManualAngleControl(modelIndex, instanceIndex, str.c_str(), manualCOntrol);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1SetObjectInstanceManualAngle
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jdouble x, jdouble y)
+{
+	return spriter_SetObjectInstanceManualAngle(modelIndex, instanceIndex, x, y);
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsObjectInstanceIKMode
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jstring objectName)
+{
+	std::string str;
+	GetJStringContent(env, objectName, str);
+
+	return spriter_IsObjectInstanceIKMode(modelIndex, instanceIndex, str.c_str());
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsObjectInstanceManualAngleControl
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jstring objectName)
+{
+	std::string str;
+	GetJStringContent(env, objectName, str);
+
+	return spriter_IsObjectInstanceManualAngleControl(modelIndex, instanceIndex, str.c_str());
+}
