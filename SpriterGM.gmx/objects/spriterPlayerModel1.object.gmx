@@ -36,6 +36,9 @@ current_animation = "idle";
 set_animation = "";
 image_xscale = 1.2;
 image_yscale = 1.2;
+spriter_update(self);
+spriter_set_manual_control(self, "bip_body", !spriter_is_manual_control(self, "bip_body"));
+spriter_set_IK_mode(self, "bip_head", !spriter_is_IK_mode(self, "bip_head"), 0.01);
 </string>
           </argument>
         </arguments>
