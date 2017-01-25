@@ -115,4 +115,3 @@ for (i = 0; i < nObjectInfos; i++)
 }
 draw_set_alpha_test(true);
 spriter_check_errors();
-draw_self();
