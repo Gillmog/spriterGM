@@ -39,6 +39,9 @@ image_yscale = 1.2;
 spriter_update(self);
 spriter_set_manual_control(self, "bip_body", !spriter_is_manual_control(self, "bip_body"));
 spriter_set_IK_mode(self, "bip_head", !spriter_is_IK_mode(self, "bip_head"), 0.01);
+variablesText1 = "";
+variablesText2 = "";
+tagActiveText = "";
 </string>
           </argument>
         </arguments>
@@ -89,6 +92,31 @@ if set_animation != ""
     if current_animation == "run" { blend_time = 200.0;}
      
     spriter_set_current_animation(self, current_animation, blend_time);
+}
+
+if spriter_is_tag_active(self, "male_14", "Test3")
+{
+    tagActiveText = "Test3 tag active";
+}
+
+if spriter_is_variable_exist(self, "male_14", "Test2")
+{
+    var result = spriter_get_variable_string_value(self, "male_14", "Test2");
+    
+    if string_length(result) != 0
+    {
+       variablesText2 = "Test2 var: " + string(result);
+    }
+}
+
+if spriter_is_variable_exist(self, "male_14", "Test1")
+{
+    var result = spriter_get_variable_real_value(self, "male_14", "Test1");
+    
+    if result != 0
+    {
+        variablesText1 = "Test1 var: " + string(result);
+    }
 }
 </string>
           </argument>
@@ -171,6 +199,10 @@ if current_animation != "run"
           <argument>
             <kind>1</kind>
             <string>spriter_render(self, true);
+draw_text(x, y, variablesText1);
+draw_text(x, y + 12, variablesText2);
+draw_text(x, y + 24, tagActiveText);
+
 </string>
           </argument>
         </arguments>

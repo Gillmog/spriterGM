@@ -156,4 +156,14 @@ public class spriterGMNative {
 	native public static double spriter_IsObjectInstanceIKMode(double ModelIndex, double InstanceIndex, String ObjectName);
 
 	native public static double spriter_IsObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, String ObjectName);
+	
+	native public static double spriter_IsTagActive(double ModelIndex, double InstanceIndex, String ObjectName, String TagName);
+
+	native public static double spriter_IsVariableExist(double ModelIndex, double InstanceIndex, String ObjectName, String VariableName);
+
+	native public static String spriter_GetVariableStringValue(double ModelIndex, double InstanceIndex, String ObjectName, String VariableName);
+
+	native public static double spriter_GetVariableRealValue(double ModelIndex, double InstanceIndex, String ObjectName, String VariableName);
+
+	native public static double spriter_GetVariableIntValue(double ModelIndex, double InstanceIndex, String ObjectName, String VariableName);
 }

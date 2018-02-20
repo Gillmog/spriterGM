@@ -1795,6 +1795,13 @@
         <script>scripts\spriter_set_IK_position.gml</script>
         <script>scripts\spriter_set_manual_angle.gml</script>
       </scripts>
+      <scripts name="tags_and_variable">
+        <script>scripts\spriter_is_tag_active.gml</script>
+        <script>scripts\spriter_is_variable_exist.gml</script>
+        <script>scripts\spriter_get_variable_string_value.gml</script>
+        <script>scripts\spriter_get_variable_real_value.gml</script>
+        <script>scripts\spriter_get_variable_int_value.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">
