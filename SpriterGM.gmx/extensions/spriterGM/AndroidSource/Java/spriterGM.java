@@ -322,4 +322,29 @@ public class spriterGM {
 	{
 		return spriterGMNative.spriter_IsObjectInstanceManualAngleControl(ModelIndex, InstanceIndex, ObjectName);
 	}
+	
+	public double spriter_IsTagActive(double ModelIndex, double InstanceIndex, String ObjectName, String TagName)
+	{
+		return spriterGMNative.spriter_IsTagActive(ModelIndex, InstanceIndex, ObjectName, TagName);
+	}
+
+	public double spriter_IsVariableExist(double ModelIndex, double InstanceIndex, String ObjectName, String VariableName)
+	{
+		return spriterGMNative.spriter_IsVariableExist(ModelIndex, InstanceIndex, ObjectName, VariableName);
+	}
+
+	public String spriter_GetVariableStringValue(double ModelIndex, double InstanceIndex, String ObjectName, String VariableName)
+	{
+		return spriterGMNative.spriter_GetVariableStringValue(ModelIndex, InstanceIndex, ObjectName, VariableName);
+	}
+
+	public double spriter_GetVariableRealValue(double ModelIndex, double InstanceIndex, String ObjectName, String VariableName)
+	{
+		return spriterGMNative.spriter_GetVariableRealValue(ModelIndex, InstanceIndex, ObjectName, VariableName);
+	}
+
+	public double spriter_GetVariableIntValue(double ModelIndex, double InstanceIndex, String ObjectName, String VariableName)
+	{
+		return spriterGMNative.spriter_GetVariableIntValue(ModelIndex, InstanceIndex, ObjectName, VariableName);
+	}
 }

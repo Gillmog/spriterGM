@@ -702,3 +702,62 @@ double spriter_IsObjectInstanceManualAngleControl(double ModelIndex, double Inst
 
 	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).IsObjectInstanceManualAngleControl(ObjectName);
 }
+
+double spriter_IsTagActive(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *TagName)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).IsTagActive(ObjectName, TagName);
+}
+
+double spriter_IsVariableExist(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).IsVariableExist(ObjectName, VariableName);
+}
+
+#if defined(ANDROID)
+std::string  spriter_GetVariableStringValue(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return "";
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetVariableStringValue(ObjectName, VariableName);
+}
+#else
+const char* spriter_GetVariableStringValue(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return "";
+
+	if (!CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).IsVariableExist(ObjectName, VariableName))
+	{
+		return "";
+	}
+
+	std::string TmpStr = CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetVariableStringValue(ObjectName, VariableName);
+	char *pCopyStr = new char[TmpStr.length() + 1];
+	strcpy(pCopyStr, TmpStr.c_str());
+	CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).AddToGarbage(pCopyStr);
+	return pCopyStr;
+}
+#endif
+
+double spriter_GetVariableRealValue(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetVariableRealValue(ObjectName, VariableName);
+}
+
+double spriter_GetVariableIntValue(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName)
+{
+	if (!CSpriterGM::GetSingleton()->IsInstanceValid(ModelIndex, InstanceIndex))
+		return -1;
+
+	return CSpriterGM::GetSingleton()->GetSpriterGMModel(ModelIndex).GetInstance(InstanceIndex).GetVariableIntValue(ObjectName, VariableName);
+}

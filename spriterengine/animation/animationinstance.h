@@ -2,7 +2,7 @@
 #define ANIMATIONINSTANCE_H
 
 #include <vector>
-
+#include <string>
 #include "mainlinekeyinstance.h"
 
 namespace SpriterEngine

@@ -560,6 +560,16 @@ public:
 		bool IsObjectInstanceIKMode(const std::string &ObjectName) const;
 
 		bool IsObjectInstanceManualAngleControl(const std::string &ObjectName) const;
+
+		bool IsTagActive(const std::string &ObjectName, const std::string &TagName);
+
+		bool IsVariableExist(const std::string &ObjectName, const std::string &VariableName);
+
+		std::string GetVariableStringValue(const std::string &ObjectName, const std::string &VariableName);
+
+		int GetVariableRealValue(const std::string &ObjectName, const std::string &VariableName);
+
+		int GetVariableIntValue(const std::string &ObjectName, const std::string &VariableName);
 	};
 
 	class CSpriterGMModel : public CGMGarbageCollector
@@ -868,6 +878,9 @@ public:
 #if defined(ANDROID)
 	std::string GetLastError()
 	{
+		if (m_ErrorsList.size() == 0)
+			return "";
+
 		std::string Error = m_ErrorsList.back();
 
 		m_ErrorsList.pop_back();
@@ -877,6 +890,9 @@ public:
 #else
 	const char *GetLastError()
 	{
+		if (m_ErrorsList.size() == 0)
+			return "";
+
 		const std::string &Error = m_ErrorsList.back();
 
 		char *pCopyStr = new char[Error.length() + 1];

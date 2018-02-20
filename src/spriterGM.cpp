@@ -489,3 +489,48 @@ bool CSpriterGM::CSpriterGMInstance::IsObjectInstanceManualAngleControl(const st
 
 	return false;
 }
+
+bool CSpriterGM::CSpriterGMInstance::IsTagActive(const std::string &ObjectName, const std::string &TagName)
+{
+	if (!GetInstance())
+		return false;
+
+	return GetInstance()->tagIsActive(ObjectName, TagName);
+}
+
+bool CSpriterGM::CSpriterGMInstance::IsVariableExist(const std::string &ObjectName, const std::string &VariableName)
+{
+	if (!GetInstance())
+		return false;
+
+	SpriterEngine::UniversalObjectInterface *variable = GetInstance()->getVariable(ObjectName, VariableName);
+
+	if (!variable)
+		return false;
+
+	return true;
+}
+
+std::string CSpriterGM::CSpriterGMInstance::GetVariableStringValue(const std::string &ObjectName, const std::string &VariableName)
+{
+	if (!GetInstance())
+		return "";
+
+	return GetInstance()->getStringValue(ObjectName, VariableName);
+}
+
+int CSpriterGM::CSpriterGMInstance::GetVariableRealValue(const std::string &ObjectName, const std::string &VariableName)
+{
+	if (!GetInstance())
+		return false;
+
+	return GetInstance()->getRealValue(ObjectName, VariableName);
+}
+
+int CSpriterGM::CSpriterGMInstance::GetVariableIntValue(const std::string &ObjectName, const std::string &VariableName)
+{
+	if (!GetInstance())
+		return false;
+
+	return GetInstance()->getIntValue(ObjectName, VariableName);
+}

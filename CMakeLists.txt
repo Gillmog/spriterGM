@@ -14,10 +14,10 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   # using Visual Studio C++
 endif()
 
-include_directories(${CMAKE_SOURCE_DIR}/nlohmann-json)
-add_subdirectory(${CMAKE_SOURCE_DIR}/tinyxml2)
-add_subdirectory(${CMAKE_SOURCE_DIR}/pugixml)
-add_subdirectory(${CMAKE_SOURCE_DIR}/spriterengine)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/nlohmann-json)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tinyxml2)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/pugixml)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/spriterengine)
 
 set( SOURCE_LIB 
 	src/tinyxmlspriterfileelementwrapper.h

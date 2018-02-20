@@ -552,6 +552,46 @@ extern "C" {
 	*/
 	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsObjectInstanceManualAngleControl
 	(JNIEnv *, jclass, jdouble, jdouble, jstring);
+	
+	/*
+	 * Class:     com_libspritergm_spriterGMNative
+	 * Method:    spriter_IsTagActive
+	 * Signature: (DDLjava/lang/String;Ljava/lang/String;)D
+	 */
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsTagActive
+	  (JNIEnv *, jclass, jdouble, jdouble, jstring, jstring);
+
+	/*
+	 * Class:     com_libspritergm_spriterGMNative
+	 * Method:    spriter_IsVariableExist
+	 * Signature: (DDLjava/lang/String;Ljava/lang/String;)D
+	 */
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsVariableExist
+	  (JNIEnv *, jclass, jdouble, jdouble, jstring, jstring);
+
+	/*
+	 * Class:     com_libspritergm_spriterGMNative
+	 * Method:    spriter_GetVariableStringValue
+	 * Signature: (DDLjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	 */
+	JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetVariableStringValue
+	  (JNIEnv *, jclass, jdouble, jdouble, jstring, jstring);
+
+	/*
+	 * Class:     com_libspritergm_spriterGMNative
+	 * Method:    spriter_GetVariableRealValue
+	 * Signature: (DDLjava/lang/String;Ljava/lang/String;)D
+	 */
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetVariableRealValue
+	  (JNIEnv *, jclass, jdouble, jdouble, jstring, jstring);
+
+	/*
+	 * Class:     com_libspritergm_spriterGMNative
+	 * Method:    spriter_GetVariableIntValue
+	 * Signature: (DDLjava/lang/String;Ljava/lang/String;)D
+	 */
+	JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetVariableIntValue
+	  (JNIEnv *, jclass, jdouble, jdouble, jstring, jstring);
 
 #ifdef __cplusplus
 }

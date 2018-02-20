@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r10">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0" name="images">
         <file id="0" name="images/male_31.png" width="19" height="21" pivot_x="0" pivot_y="1"/>
         <file id="1" name="images/male_08.png" width="28" height="37" pivot_x="0" pivot_y="1"/>
@@ -71,6 +71,9 @@
     <folder id="6" name="waves">
         <file id="0" name="waves/walk.wav" type="sound"/>
     </folder>
+    <tag_list>
+        <i id="0" name="Test3"/>
+    </tag_list>
     <entity id="0" name="human">
         <obj_info name="bip_pelvis" type="bone" w="10.2366" h="10"/>
         <obj_info name="bip_body" type="bone" w="28.4289" h="10"/>
@@ -88,6 +91,15 @@
         <obj_info name="bip_left_leg1" type="bone" w="26.4134" h="10"/>
         <obj_info name="bip_left_leg2" type="bone" w="23.1928" h="10"/>
         <obj_info name="bip_left_leg3" type="bone" w="11.2539" h="10"/>
+        <obj_info name="male_14" type="sprite">
+            <var_defs>
+                <i id="0" name="Test1" type="float" default="0"/>
+                <i id="1" name="Test2" type="string" default=""/>
+            </var_defs>
+            <frames>
+                <i folder="0" file="10"/>
+            </frames>
+        </obj_info>
         <character_map id="0" name="golem_set_helm">
             <map folder="2" file="0" target_folder="2" target_file="0"/>
             <map folder="0" file="7"/>
@@ -824,13 +836,30 @@
                     <bone x="23.192771" angle="71.366402"/>
                 </key>
             </timeline>
-            <timeline id="16" name="male_14">
+            <timeline id="16" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" angle="57.528808"/>
                 </key>
                 <key id="1" time="2600" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" angle="57.528808"/>
                 </key>
+                <meta>
+                    <varline id="0" def="1">
+                        <key id="0" time="296" val="Hello World"/>
+                    </varline>
+                    <varline id="1" def="0">
+                        <key id="0" time="169" val="10"/>
+                    </varline>
+                    <tagline>
+                        <key id="0" time="169">
+                            <tag id="0" t="0"/>
+                        </key>
+                        <key id="1" time="233">
+                            <tag id="0" t="0"/>
+                        </key>
+                        <key id="2" time="305"/>
+                    </tagline>
+                </meta>
             </timeline>
             <timeline id="17" name="male_11_000">
                 <key id="0" spin="0">
@@ -1585,7 +1614,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="85.229978" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" angle="57.528808"/>
                 </key>
@@ -2269,7 +2298,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="85.229978" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" angle="57.528808"/>
                 </key>
@@ -3658,7 +3687,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="85.229978" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" angle="57.528808"/>
                 </key>
@@ -4561,7 +4590,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="85.229978" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -5458,7 +5487,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="43.035593" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -6392,7 +6421,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="339.175915" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -7473,7 +7502,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="54.743741" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -8578,7 +8607,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="24.353037" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -9560,7 +9589,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="85.229978" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -11031,7 +11060,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="23.641628" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -12396,7 +12425,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -13850,7 +13879,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -14846,7 +14875,7 @@
                     <object folder="2" file="6" x="2.939571" y="0.157912" pivot_x="0.201389" pivot_y="0.545455" angle="85.229978" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -16420,7 +16449,7 @@
                     <object folder="2" file="6" x="15.157432" y="-10.962898" pivot_x="0.201389" pivot_y="0.545455" angle="144.415026" scale_x="0.493305" scale_y="0.445745"/>
                 </key>
             </timeline>
-            <timeline id="20" name="male_14">
+            <timeline id="20" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -17408,7 +17437,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" angle="57.528808"/>
                 </key>
@@ -18114,7 +18143,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -18817,7 +18846,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -19768,7 +19797,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -20698,7 +20727,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -21681,7 +21710,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -22343,7 +22372,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -22946,7 +22975,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>
@@ -24033,7 +24062,7 @@
                     <object folder="2" file="15" x="2.392655" y="0.960973" pivot_x="0.5" pivot_y="0.5" angle="77.55082" scale_x="0.419294" scale_y="0.45254"/>
                 </key>
             </timeline>
-            <timeline id="19" name="male_14">
+            <timeline id="19" obj="16" name="male_14">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="-1.40938" y="-0.622749" pivot_x="0" pivot_y="1" angle="57.528808"/>
                 </key>

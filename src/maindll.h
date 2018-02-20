@@ -205,3 +205,19 @@ DLLEXPORT double spriter_SetObjectInstanceManualAngle(double ModelIndex, double 
 DLLEXPORT double spriter_IsObjectInstanceIKMode(double ModelIndex, double InstanceIndex, const char *ObjectName);
 
 DLLEXPORT double spriter_IsObjectInstanceManualAngleControl(double ModelIndex, double InstanceIndex, const char *ObjectName);
+
+//New
+
+DLLEXPORT double spriter_IsTagActive(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *TagName);
+
+DLLEXPORT double spriter_IsVariableExist(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName);
+
+#if defined(ANDROID)
+DLLEXPORT std::string spriter_GetVariableStringValue(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName);
+#else
+DLLEXPORT const char* spriter_GetVariableStringValue(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName);
+#endif
+
+DLLEXPORT double spriter_GetVariableRealValue(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName);
+
+DLLEXPORT double spriter_GetVariableIntValue(double ModelIndex, double InstanceIndex, const char *ObjectName, const char *VariableName);

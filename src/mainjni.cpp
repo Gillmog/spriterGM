@@ -474,3 +474,58 @@ JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsObjec
 
 	return spriter_IsObjectInstanceManualAngleControl(modelIndex, instanceIndex, str.c_str());
 }
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsTagActive
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jstring objectName, jstring tagName)
+{
+	std::string objectNameStr;
+	std::string tagNameStr;
+	GetJStringContent(env, objectName, objectNameStr);
+	GetJStringContent(env, objectName, tagNameStr);
+
+	return spriter_IsTagActive(modelIndex, instanceIndex, objectNameStr.c_str(), tagNameStr.c_str());
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1IsVariableExist
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jstring objectName, jstring variableName)
+{
+	std::string objectNameStr;
+	std::string variableNameStr;
+	GetJStringContent(env, objectName, objectNameStr);
+	GetJStringContent(env, objectName, variableNameStr);
+
+	return spriter_IsVariableExist(modelIndex, instanceIndex, objectNameStr.c_str(), variableNameStr.c_str());
+}
+
+JNIEXPORT jstring JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetVariableStringValue
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jstring objectName, jstring variableName)
+{
+	std::string objectNameStr;
+	std::string variableNameStr;
+	GetJStringContent(env, objectName, objectNameStr);
+	GetJStringContent(env, objectName, variableNameStr);
+
+	return GetJStringContent(env, spriter_GetVariableStringValue(modelIndex, instanceIndex, objectNameStr.c_str(), variableNameStr.c_str()));
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetVariableRealValue
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jstring objectName, jstring variableName)
+{
+	std::string objectNameStr;
+	std::string variableNameStr;
+	GetJStringContent(env, objectName, objectNameStr);
+	GetJStringContent(env, objectName, variableNameStr);
+
+	return spriter_GetVariableRealValue(modelIndex, instanceIndex, objectNameStr.c_str(), variableNameStr.c_str());
+}
+
+JNIEXPORT jdouble JNICALL Java_com_libspritergm_spriterGMNative_spriter_1GetVariableIntValue
+(JNIEnv *env, jclass object, jdouble modelIndex, jdouble instanceIndex, jstring objectName, jstring variableName)
+{
+	std::string objectNameStr;
+	std::string variableNameStr;
+	GetJStringContent(env, objectName, objectNameStr);
+	GetJStringContent(env, objectName, variableNameStr);
+
+	return spriter_GetVariableIntValue(modelIndex, instanceIndex, objectNameStr.c_str(), variableNameStr.c_str());
+}
