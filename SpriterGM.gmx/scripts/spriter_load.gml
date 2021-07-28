@@ -26,8 +26,9 @@ for (var i = 0; i < spritesCount; i++)
         var srcImageWidth = sprite_get_width(spriteIndex);
         var srcImageHeight = sprite_get_height(spriteIndex);
         var texture = sprite_get_texture(spriteIndex, -1);
-        var texelWidth = texture_get_texel_width(texture);
-        var texelHeight = texture_get_texel_height(texture);
+		var text_uvs = sprite_get_uvs(spriteIndex, -1);
+        var texelWidth = texture_get_texel_width(texture) / text_uvs[2];
+        var texelHeight = texture_get_texel_height(texture) / text_uvs[3];
         
         spriter_SetLoadedSpriteTexelSize(modelIndex, spriteName, texelWidth, texelHeight);
         spriter_SetLoadedSpriteSize(modelIndex, spriteName, srcImageWidth, srcImageHeight);
